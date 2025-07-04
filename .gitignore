@@ -1,0 +1,75 @@
+# Xcode
+*.xcworkspace
+*.xccheckout
+*.xcuserstate
+*.xcscmblueprint
+!default.xcworkspace
+
+# Xcode user data
+*.xcuserdatad/
+*.xcuserdata/
+
+# Build artifacts
+DerivedData/
+build/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# SwiftPM
+.swiftpm/
+.build/
+
+# CocoaPods
+Pods/
+Podfile.lock
+*.xcconfig
+Generated.xcconfig
+
+# Carthage
+Carthage/
+Carthage/Build/
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/
+fastlane/test_output/
+
+# Swift Package Manager
+Package.resolved
+
+# Xcode playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Archives
+*.xcarchive
+
+# Firebase / GoogleService info
+GoogleService-Info.plist
+
+# Environment files
+.env
+
+# Xcode Preview Thumbnails
+*.preview-thumbnails
+
+# Tuist
+Tuist/Dependencies/
+Tuist/Generated/
+Tuist/ProjectDescriptionHelpers/
+
+# Other
+*.moved-aside
+*.swp
+*.lock
+*.orig
+
+# DS_Store
+.DS_Store
+
+# AppCenter
+appcenter-pre-build.sh
+appcenter-post-clone.sh
+appcenter-post-build.sh
