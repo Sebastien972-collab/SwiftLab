@@ -23,7 +23,7 @@ struct ContentView: View {
             Tab("Jeux", systemImage: "gamecontroller.fill") {
                 Text("Mon parcours")
             }
-            Tab("Mes cours", systemImage: "road.lanes") {
+            Tab("Mes cours", systemImage: "books.vertical.fill") {
                 Text("Mes cours")
             }
             Tab("Account", systemImage: "person.fill") {
