@@ -13,5 +13,5 @@ struct Course: Identifiable {
     let text: String
     let videoUrl: String?
     let sections: [SectionOfCourses]
-    let
+    
 }
