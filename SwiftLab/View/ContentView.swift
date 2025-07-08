@@ -10,7 +10,7 @@ import SwiftData
 
 struct ContentView: View {
     enum Selection {
-    case courses, game, coursesListe, profile
+        case courses, game, coursesListe, profile
     }
     @State private var selection = Selection.courses
     @Environment(\.modelContext) private var modelContext
@@ -27,7 +27,7 @@ struct ContentView: View {
                 Text("Mes cours")
             }
             Tab("Account", systemImage: "person.fill") {
-                Text("Mon parcours")
+                ProfilView()
             }
             .badge("!")
         }
@@ -36,5 +36,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        
+    
 }
