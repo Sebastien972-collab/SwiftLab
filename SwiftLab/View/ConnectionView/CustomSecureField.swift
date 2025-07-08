@@ -12,7 +12,7 @@ struct CustomSecureField: View {
     var body: some View {
        SecureField("Password", text: $password)
             .padding(.horizontal, 20)
-            .frame(maxWidth: 300, maxHeight: 50)
+            .frame(maxWidth: 350, maxHeight: 50)
             .background(Color.white)
             .clipShape(Capsule())
             .overlay(content: {
@@ -27,5 +27,8 @@ struct CustomSecureField: View {
 }
 
 #Preview {
-    CustomSecureField(password: .constant("Password"))
+    ZStack {
+        Color.background.ignoresSafeArea()
+        CustomSecureField(password: .constant("Password"))
+    }
 }

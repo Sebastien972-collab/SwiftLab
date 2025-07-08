@@ -23,16 +23,16 @@ struct SignUpView: View {
                 }
                 Spacer()
                 ContinueButtonView(title: "Créer un compte", action: {})
-                VStack {
-                    Text("Créer un compte avec")
-                        .foregroundStyle(.secondary)
-                    
-                    HStack {
-                        Image(systemName: "apple.logo")
-                            .foregroundColor(.blue)
-                        Image(systemName: "google.circle")
-                            .foregroundColor(.red)
+                Spacer()
+                ExternalConnectionMethodTypeList(selection: .signUp)
+                Spacer()
+                HStack {
+                    Text("Déjà un compte ?")
+                    Button {
+                    } label: {
+                        Text("Se connecter")
                     }
+
                 }
                 Spacer()
             }
