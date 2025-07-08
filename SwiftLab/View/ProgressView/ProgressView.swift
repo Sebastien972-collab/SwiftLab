@@ -9,7 +9,23 @@ import SwiftUI
 
 struct ProgressView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+       NavigationStack {
+            ZStack {
+               ScrollView {
+                    VStack {
+                        HStack {
+                            
+                            Text("Progression Globale :")
+                                .font(.system(size: 24))
+                                .fontWeight(.bold)
+                                .minimumScaleFactor(0.7)
+                        }
+                        .padding()
+                        ProgressionCercle(progress: 0.62)
+                   }
+                }
+           }
+        }
     }
 }
 
