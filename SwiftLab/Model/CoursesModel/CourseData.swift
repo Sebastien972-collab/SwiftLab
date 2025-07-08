@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CourseData: Identifiable {
+struct CourseData: Identifiable {
     var id: UUID
     var title: String
     var videoUrl: String?
@@ -18,19 +18,6 @@ class CourseData: Identifiable {
     var tableau: String
     var mentalCard: String
     var sections: [SectionOfCourses]
-    
-    init(id: UUID, title: String, videoUrl: String?, text: String, image: String, exemple: String, explication: String, tableau: String, mentalCard: String, sections: [SectionOfCourses]) {
-        self.id = id
-        self.title = title
-        self.videoUrl = videoUrl
-        self.text = text
-        self.image = image
-        self.exemple = exemple
-        self.explication = explication
-        self.tableau = tableau
-        self.mentalCard = mentalCard
-        self.sections = sections
-    }
 }
 let courses: [CourseData] = [
     CourseData(

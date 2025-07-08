@@ -7,24 +7,16 @@
 
 import Foundation
 
-//struct PProgressViewModel {
-//    var id: UUID = UUID()
-//    var name: String = ""
-//    var image: String = ""
-//    var titleCourse: String = ""
-//    var titleExercise: String = ""
-//    
-//}
 
 struct Cours: Identifiable {
     let id: UUID = UUID()
     let titre: String
-    let progression: Double  
+    let progression: Double
     let type: CategorieCours
 }
 
-enum CategorieCours {
-    case algorithme, function, closure
+enum CategorieCours  {
+    case cours1, cours2, cours3, cours4
 }
 
 struct Exercice: Identifiable {
