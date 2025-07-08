@@ -23,7 +23,7 @@ struct LandingScreenView: View {
                 Text("Jeux")
             }
             Tab("Mes cours", systemImage: "books.vertical.fill") {
-                Text("Mes cours")
+                CoursesView()
             }
             Tab("Account", systemImage: "person.fill") {
                 Text("Profil")
