@@ -23,7 +23,7 @@ struct SwiftLabApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LandingScreenView()
         }
         .modelContainer(sharedModelContainer)
     }
