@@ -13,24 +13,17 @@ struct ProgressionView: View {
             ZStack {
                ScrollView {
                     VStack {
-                        HStack {
-                            
-                            Text("Progression Globale :")
-                                .font(.system(size: 24))
-                                .fontWeight(.bold)
-                                .minimumScaleFactor(0.7)
-                        }
-                        .padding()
-                        
                         ProgressionCercle(progress: 0.62)
                         CarouselCustomCourse()
                         CardCourseView()
                        
-
                    }
+                    .padding()
                 }
                 
            }
+           
+            .navigationTitle(Text("Progression Globale"))
         }
     }
 }
