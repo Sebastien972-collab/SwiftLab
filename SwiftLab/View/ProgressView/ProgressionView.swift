@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProgressView: View {
+struct ProgressionView: View {
     var body: some View {
        NavigationStack {
             ZStack {
@@ -23,7 +23,8 @@ struct ProgressView: View {
                         .padding()
                         
                         ProgressionCercle(progress: 0.62)
-                       
+                        CarouselCustomCourse()
+                        CardCourseView()
                        
 
                    }
@@ -35,5 +36,5 @@ struct ProgressView: View {
 }
 
 #Preview {
-    ProgressView()
+    ProgressionView()
 }
