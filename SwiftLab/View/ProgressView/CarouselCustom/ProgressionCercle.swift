@@ -11,6 +11,7 @@ struct ProgressionCercle: View {
     var progress: Double // valeur entre 0 et 1
 
     var body: some View {
+        
         ZStack {
             // Cercle gris (fond)
             Circle()

@@ -21,9 +21,14 @@ struct ProgressView: View {
                                 .minimumScaleFactor(0.7)
                         }
                         .padding()
+                        
                         ProgressionCercle(progress: 0.62)
+                       
+                       
+
                    }
                 }
+                
            }
         }
     }

@@ -40,7 +40,7 @@ struct ProgressCard: View {
                 .foregroundStyle(.black.opacity(0.7))
             
             // Barre de progression
-            ProgressView(value: progress)
+            ProgressView()
                 .tint(.orange)
                 .scaleEffect(x: 1, y: 1.5)
         }
