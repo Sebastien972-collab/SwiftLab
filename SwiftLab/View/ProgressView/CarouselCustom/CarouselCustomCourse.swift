@@ -10,7 +10,7 @@ import SwiftUI
 struct CarouselCustomCourse: View {
     var body: some View {
         VStack(alignment: .leading){
-            Text("Cours")
+            Text("Cours :")
                 .font(.title2)
                 .bold()
                 .padding(.horizontal)
