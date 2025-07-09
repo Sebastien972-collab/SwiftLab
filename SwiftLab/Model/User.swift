@@ -8,7 +8,7 @@
 import Foundation
 
 
-class User: Identifiable {
+final class User: Identifiable {
     let id = UUID()
     var username: String 
     var password: String
