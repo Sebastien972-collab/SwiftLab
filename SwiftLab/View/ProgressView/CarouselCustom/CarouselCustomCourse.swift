@@ -31,6 +31,7 @@ struct CarouselCustomCourse: View {
                     }
                 }
             }
+            .padding(.leading)
         }
     }
 }

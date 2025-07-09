@@ -9,10 +9,20 @@ import SwiftUI
 
 struct MyCoursesView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Color.background.ignoresSafeArea(edges: .all)
+            VStack(alignment: .leading,content: {
+                CarouselCustomCourse()
+                CardCourseView()
+                Spacer()
+            })
+            .navigationTitle(Text("Mes cours"))
+        }
     }
 }
 
 #Preview {
-    MyCoursesView()
+    NavigationStack {
+        MyCoursesView()
+    }
 }
