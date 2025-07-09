@@ -15,7 +15,7 @@ struct CustomTextField: View {
         TextField(placeholder, text: $text)
             .font(.system(size: 16, weight: .regular, design: .default))
                 .padding(.horizontal, 20)
-                .frame(maxWidth: 300, maxHeight: 50)
+                .frame(maxWidth: 350, maxHeight: 50)
                 .background(Color.white)
                 .clipShape(Capsule())
                 .overlay(content: {

@@ -1,48 +1,45 @@
 //
-//  SignUpView.swift
+//  SignInView.swift
 //  SwiftLab
 //
-//  Created by Sébastien DAGUIN  on 08/07/2025.
+//  Created by Sébastien DAGUIN  on 09/07/2025.
 //
 
 import SwiftUI
 
-struct SignUpView: View {
+struct SignInView: View {
     @Binding var manager: ConnectionManager
-    
     var body: some View {
         ZStack {
             Color.background.ignoresSafeArea(edges: .all)
             VStack {
                 Spacer()
                 VStack(spacing: 20) {
-                    CustomTextField(placeholder: "Username", text: $manager.username)
                     CustomTextField(placeholder: "Email", text: $manager.username)
                     CustomSecureField(password: $manager.password)
                     
                 }
                 Spacer()
-                ContinueButtonView(title: "Créer un compte", action: {})
+                ContinueButtonView(title: "Se connecter", action: {})
                 Spacer()
-                ExternalConnectionMethodTypeList(selection: .signUp)
+                ExternalConnectionMethodTypeList(selection: .signIn)
                 Spacer()
                 HStack {
-                    Text("Déjà un compte ?")
+                    Text("Avez-vous un compte ?")
                     Button {
                     } label: {
-                        Text("Se connecter")
+                        Text("Créer un compte")
                     }
 
                 }
                 Spacer()
             }
-            .navigationTitle(Text("Créer un compte"))
+            .navigationTitle(Text("Se connecter"))
         }
+
     }
 }
 
 #Preview {
-    NavigationStack {
-        SignUpView(manager: .constant(ConnectionManager()))
-    }
+    SignInView(manager: .constant(.init()))
 }
