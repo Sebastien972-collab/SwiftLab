@@ -6,9 +6,10 @@
 //
 
 import Foundation
+
 struct ExercicesSolo {
     var nameOfExercices: String
     var exerciceFinished: Bool
-    var exercice:[Exercice]
+    var exercice: [QuizExercice]
     
 }

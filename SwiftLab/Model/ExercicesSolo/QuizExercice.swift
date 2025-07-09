@@ -6,7 +6,8 @@
 //
 
 import Foundation
-struct Exercice {
+
+struct QuizExercice {
     var question: String
     var answers : [String]
     var goodAnswer: Int
