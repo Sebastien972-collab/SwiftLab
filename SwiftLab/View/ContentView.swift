@@ -17,7 +17,7 @@ struct ContentView: View {
     var body: some View {
         TabView {
             Tab("Mon parcours", systemImage: "graduationcap.fill") {
-                Text("Mon parcours")
+               ProgressionView()
             }
             .badge(2)
             Tab("Jeux", systemImage: "gamecontroller.fill") {
@@ -29,7 +29,6 @@ struct ContentView: View {
             Tab("Account", systemImage: "person.fill") {
                 ProfilView()
             }
-            .badge("!")
         }
     }
 }
