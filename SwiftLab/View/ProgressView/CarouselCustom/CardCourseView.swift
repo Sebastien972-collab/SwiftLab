@@ -16,7 +16,7 @@ struct CardCourseView: View {
         ) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
-                    ForEach(courses) { course in
+                    ForEach(Course.allCourses) { course in
                         ProgressCard(
                             title: course.title.replacingOccurrences(of: "Cours", with: "Exercice"),
                             progress: generateProgress(for: course),
@@ -31,7 +31,7 @@ struct CardCourseView: View {
     }
 }
 // Utilise l'ID pour avoir la barre de progression (à changer)
-private func generateProgress(for course: CourseData) -> Double {
+private func generateProgress(for course: Course) -> Double {
     let hash = course.id.hashValue
     return Double(abs(hash) % 101) / 100.0
 }

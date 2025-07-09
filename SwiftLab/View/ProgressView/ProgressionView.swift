@@ -9,20 +9,21 @@ import SwiftUI
 
 struct ProgressionView: View {
     var body: some View {
-       NavigationStack {
+        NavigationStack {
             ZStack {
-               ScrollView {
+                Color.background.ignoresSafeArea()
+                ScrollView {
                     VStack {
                         ProgressionCercle(progress: 0.62)
                         CarouselCustomCourse()
                         CardCourseView()
-                       
-                   }
+                        
+                    }
                     .padding()
                 }
                 
-           }
-           
+            }
+            
             .navigationTitle(Text("Progression Globale"))
         }
     }
