@@ -28,7 +28,7 @@ struct CustomSecureField: View {
 
 #Preview {
     ZStack {
-        Color.background.ignoresSafeArea()
+        Color.customBeige.ignoresSafeArea()
         CustomSecureField(password: .constant("Password"))
     }
 }

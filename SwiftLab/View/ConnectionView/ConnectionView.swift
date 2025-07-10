@@ -11,7 +11,7 @@ struct ConnectionView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.background.ignoresSafeArea()
+                Color.customBeige.ignoresSafeArea()
                 VStack(alignment: .center) {
                     Spacer()
                     Text("SwiftLab")
