@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CardExerciceView: View {
-    @State var managerExercice = ExerciceSoloManager(exercice: swiftBasics)
+    @State var managerExercice = ExerciceSoloManager(exercice:  ExoDatas.swiftBasics)
     @State private var progress: Double = 0.5
     
     var body: some View {

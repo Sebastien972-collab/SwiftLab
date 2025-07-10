@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExerciceSoloView: View {
     // On crée un manager d'exercice à partir de nos données
-    @State var manager = ExerciceSoloManager(exercice: swiftBasics)
+    @State var manager = ExerciceSoloManager(exercice:  ExoDatas.swiftBasics)
     @State private var isSelected = false
 
     var body: some View {
