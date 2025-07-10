@@ -13,6 +13,11 @@ final class User: Identifiable {
     var username: String 
     var password: String
     var imageUrl: URL?
+
+    
+    
+    
+    
     
     
     init(username: String, password: String) {
