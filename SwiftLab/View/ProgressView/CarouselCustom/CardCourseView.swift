@@ -25,9 +25,10 @@ struct CardCourseView: View {
                         )
                     }
                 }
-                .padding(.horizontal)
+                
             }
         }
+        .padding(.leading)
     }
 }
 // Utilise l'ID pour avoir la barre de progression (à changer)
