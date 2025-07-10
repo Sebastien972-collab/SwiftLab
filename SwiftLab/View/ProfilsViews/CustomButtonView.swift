@@ -31,7 +31,7 @@ struct CustomButtonView: View {
 
 #Preview {
     ZStack {
-        Color.background.ignoresSafeArea(.all)
+        Color.customBeige.ignoresSafeArea(.all)
         CustomButtonView(title: "Déconnecter", action: {})
     }
 }

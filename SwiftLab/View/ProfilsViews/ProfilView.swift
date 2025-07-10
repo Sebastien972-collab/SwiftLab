@@ -12,7 +12,7 @@ struct ProfilView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.background.ignoresSafeArea()
+                Color.customBeige.ignoresSafeArea()
                 ScrollView {
                     VStack {
                         CircleImageProfil(url: manager.userManager.currentUser.imageUrl)

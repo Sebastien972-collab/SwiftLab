@@ -15,7 +15,7 @@ struct ExerciceSoloView: View {
     var body: some View {
         
         ZStack{
-            Color.background.ignoresSafeArea()
+            Color.customBeige.ignoresSafeArea()
             VStack{
                 
                 

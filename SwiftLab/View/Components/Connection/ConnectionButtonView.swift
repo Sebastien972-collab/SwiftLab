@@ -31,7 +31,7 @@ struct ConnectionButtonView: View {
 
 #Preview {
     ZStack {
-        Color.background.ignoresSafeArea(edges: .all)
+        Color.customBeige.ignoresSafeArea(edges: .all)
         ConnectionButtonView(imageName: "googleLogo")
     }
 }

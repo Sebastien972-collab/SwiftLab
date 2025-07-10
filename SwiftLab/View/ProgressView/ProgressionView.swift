@@ -11,7 +11,7 @@ struct ProgressionView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.background.ignoresSafeArea()
+                Color.customBeige.ignoresSafeArea()
                 ScrollView {
                     VStack {
                         ProgressionCercle(progress: 0.62)
