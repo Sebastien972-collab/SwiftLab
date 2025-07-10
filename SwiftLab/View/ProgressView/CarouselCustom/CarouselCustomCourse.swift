@@ -14,25 +14,26 @@ struct CarouselCustomCourse: View {
                 .font(.title2)
                 .bold()
                 .padding(.horizontal)
-            
             ScrollView(.horizontal, showsIndicators: false){
                 HStack(spacing: 16){
-                    ForEach(0..<5, id: \.self){ _ in
-                        ProgressCard(
-                            title: "Algorithme - 1",
-                            progress: 0.75,
-                            backgroundColor: .blue.opacity(0.8),
-                            iconName: "book.fill"
-                        )
+                    ForEach(Course.allCourses){ course in
+                        //                        ProgressCard(
+                        //                            title: course.title,
+                        //                            progress: 0.75,
+                        //                            backgroundColor: .blue.opacity(0.8),
+                        //                            iconName: "book.fill"
+                        //                        )
+                        NavigationLink {
+                            Text(course.title)
+                        } label: {
+                            CourseCard(course: course, progress: 0.45)
+                        }
                     }
                 }
-                .padding(.horizontal)
             }
-            
-           
+            .padding(.leading)
         }
     }
-    
 }
 
 #Preview {
