@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExerciceSoloView: View {
     // On crée un manager d'exercice à partir de nos données
-    @State var manager = ExerciceSoloManager(exercice: exempleExercice)
+    @State var manager = ExerciceSoloManager(exercice: swiftBasics)
     @State private var isSelected = false
 
     var body: some View {
@@ -40,9 +40,9 @@ struct ExerciceSoloView: View {
                         ForEach(question.answers.indices, id: \.self) { index in
                             Button(action: {
                                 manager.answerCurrentQuestion(with: index)
-//                                if question.validAnswer {
-//                                    isSelected.toggle()
-//                                }
+                                if question.validAnswer {
+                                    isSelected.toggle()
+                                }
                             }) {
                                 ZStack {
                                     Text(question.answers[index])
@@ -72,10 +72,10 @@ struct ExerciceSoloView: View {
                         }
                         
 //
-//                        // Bouton pour aller à la prochaine question
-//                        Button("Question suivante") {
-//                            manager.goToNextQuestion()
-//                        }
+                        // Bouton pour aller à la prochaine question
+                        Button("Question suivante") {
+                            manager.goToNextQuestion()
+                        }
                         
                     
                     }

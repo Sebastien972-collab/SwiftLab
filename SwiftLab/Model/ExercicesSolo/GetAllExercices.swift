@@ -6,3 +6,11 @@
 //
 
 import Foundation
+let allExercices: [ExercicesSolo] = [
+    swiftBasics,
+    functionsQuiz,
+    optionalsQuiz,
+    arraysQuiz,
+    structsAndClassesQuiz,
+    closuresQuiz
+]
