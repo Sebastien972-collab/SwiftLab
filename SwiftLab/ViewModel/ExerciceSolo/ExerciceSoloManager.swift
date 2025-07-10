@@ -18,13 +18,12 @@ class ExerciceSoloManager {
         init(exercice: ExercicesSolo) {
             self.currentExercice = exercice
         }
-
         var currentQuestion: QuizExercice? {
             guard currentQuestionIndex < currentExercice.exercice.count else { return nil }
             return currentExercice.exercice[currentQuestionIndex]
         }
 
-        // Vérifie si la réponse donnée est correcte et met à jour `validAnswer`
+        /// Vérifie si la réponse donnée est correcte et met à jour `validAnswer`
         func answerCurrentQuestion(with index: Int) {
             guard currentQuestionIndex < currentExercice.exercice.count else { return }
 
@@ -50,3 +49,4 @@ class ExerciceSoloManager {
             }
         }
 }
+

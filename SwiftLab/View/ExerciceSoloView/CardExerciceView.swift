@@ -12,23 +12,21 @@ struct CardExerciceView: View {
     @State private var progress: Double = 0.5
     
     var body: some View {
+        // ici boucle tableau
         VStack(alignment: .leading) {
-            // icons
+            // Icons
             Image("exerciceIcons")
                 .resizable()
                 .frame(width: 24, height: 24)
                 .padding(.top, 12.0)
-            
-            // Titre
-            VStack{
+            // Titre des exo
                 Text(managerExercice.currentExercice.nameOfExercices)
                     .font(.system(size: 16, weight: .medium))
                     .lineLimit(nil)
                     .multilineTextAlignment(.leading)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundStyle(.black)
-                    
-            }
+
             Spacer()
             
             // Texte de progression
