@@ -40,10 +40,6 @@ struct ProgressionCercle: View {
     }
 }
 
-struct ProgressionCercle_Previews: PreviewProvider {
-    static var previews: some View {
-        ProgressionCercle(progress: 0.62)
-            .previewLayout(.sizeThatFits)
-            .padding()
-    }
+#Preview {
+    ProgressionCercle(progress: 0.62)
 }

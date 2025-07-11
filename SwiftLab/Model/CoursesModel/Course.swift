@@ -44,12 +44,37 @@ extension Course {
                 SectionOfCourses(title: "Text Cours", text: """
                     Swift est un langage moderne, sécurisé et performant, développé par Apple et présenté pour la première fois en 2014. Il a été conçu pour remplacer Objective-C, avec l’ambition d’apporter simplicité, sécurité et rapidité au développement sur les plateformes Apple.
 
-                    En 2019, Apple introduit **SwiftUI**, un nouveau framework qui permet de construire des interfaces utilisateur de manière **déclarative**. Plutôt que de dire comment construire l’interface (comme en UIKit), on décrit simplement **ce qu’on veut voir**, et SwiftUI s’occupe du rendu en fonction de l’état des données.
+                    En 2019, Apple introduit **SwiftUI**, un nouveau framework qui permet de construire des interfaces utilisateur de manière **déclarative**. Plutôt que de dire comment construire l’interface (comme en UIKit), on décrit simplement **ce qu’on
+                    veut voir**, et SwiftUI s’occupe du rendu en fonction de l’état des données.
 
                     Swift + SwiftUI : écrire moins de code, plus lisible, plus dynamique.
                     """, imageName: nil),
-                SectionOfCourses(title: "Image cours", text: nil, imageName: "cours-1imag-1" )
-                
+                SectionOfCourses(title: "Image cours", text: nil, imageName: "cours-1-image-1.png"),
+                SectionOfCourses(title: "Exemple code", text: nil, imageName: "cours-1-code-1.png"),
+                SectionOfCourses(title: "Explication  du code", text: """
+ • `@main` : point d’entrée de l’application SwiftUI
+ • `MonApp` : structure principale de l’app
+ • `WindowGroup` : conteneur principal de la vue
+ • `ContentView` : composant de type `View`
+ • `VStack` : empilement vertical
+ •`Text()` : composant d’affichage de texte
+ • Modificateurs comme `.font`, `.foregroundColor`, `.padding` : stylisent l’apparence
+ """, imageName: nil),
+                SectionOfCourses(title: "Tableau synthèse ", text: """
+                    | Modificateur | Description |
+                    | --- | --- |
+                    | `.font()` | Change la taille/poids de la police (`.title`, `.body`, `.headline`, etc.) |
+                    | `.foregroundColor()` | Définit la couleur du texte |
+                    | `.background()` | Ajoute une couleur ou une vue en arrière-plan |
+                    | `.padding()` | Ajoute de l’espace autour de la vue |
+                    | `.frame()` | Définit une largeur/hauteur fixe |
+                    | `.cornerRadius()` | Arrondit les coins d’un fond |
+                    | `.shadow()` | Ajoute une ombre |
+                    | `.opacity()` | Change la transparence de la vue |
+                    | `.bold()` / `.italic()` | Rend le texte gras ou italique |
+                    | `.multilineTextAlignment()` | Aligne le texte (ex. `.center`) |
+                    """, imageName: nil),
+                SectionOfCourses(title: "Carte Mentale", text: nil, imageName: "cours-1-carte-mentale")
                      ]
         ),
         Course(
