@@ -17,6 +17,8 @@ class ExerciceSoloManager {
     var currentQuestiion: QuizExercice {
         exercices.exercice[0]
     }
+    
+
     init(exercices: ExercicesSolo) {
         self.exercices = exercices
     }

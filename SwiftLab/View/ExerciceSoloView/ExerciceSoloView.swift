@@ -12,11 +12,11 @@ struct ExerciceSoloView: View {
     @State var manager = ExerciceSoloManager(exercices:  ExoDatas.swiftBasics)
     @State private var isSelected = false
     
-//    @Binding var exercice: exercice
+    
     
     var body: some View {
         ZStack{
-            Color.customBeige.ignoresSafeArea()
+            Color.customBeige.ignoresSafeArea(.all)
             VStack {
                 if manager.exerciceFinished {
                     Text(" Exercice terminé !")
@@ -28,7 +28,7 @@ struct ExerciceSoloView: View {
                 }
             }
         }
-                   .padding()
+        
         
         
     }

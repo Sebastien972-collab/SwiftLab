@@ -19,7 +19,7 @@ struct CarouselCustomExercice: View {
 //                            .lineLimit(nil)
 //                    }
                     NavigationLink {
-//                        ExerciceSoloView(exercice: exercice)
+
                         ExerciceSoloView(manager: ExerciceSoloManager(exercices: exercice))
                     } label: {
                         CardExerciceView(exercice: exercice)
@@ -28,7 +28,7 @@ struct CarouselCustomExercice: View {
                 }
             }
         }
-        .padding()
+        .padding(.leading)
     }
 }
 
