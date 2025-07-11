@@ -19,6 +19,20 @@ struct Course: Identifiable {
     var mentalCard: String
     
     
+    var isFinished: Bool = false
+    var isInProgress: Bool = false
+    
+    
+    
+}
+
+
+
+
+
+
+
+extension Course {
     static let allCourses: [Course] = [
         Course(
             id: UUID(),
@@ -132,4 +146,3 @@ struct Course: Identifiable {
         )
     ]
 }
-

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ExercicesSolo {
+struct ExercicesSolo: Hashable {
     var nameOfExercices: String
     var exerciceFinished: Bool
     var exercice: [QuizExercice]

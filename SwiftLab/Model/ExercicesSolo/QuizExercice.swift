@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct QuizExercice {
+struct QuizExercice: Hashable {
     var question: String
-    var answers : [String]
-    var goodAnswer: Int
+    var choices : [String]
+    var goodAnswer: String
     var validAnswer: Bool 
 }

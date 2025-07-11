@@ -11,42 +11,44 @@ import Foundation
 @Observable
 class ExerciceSoloManager {
     
-    var currentExercice: ExercicesSolo
+    var exercices: ExercicesSolo = ExoDatas.swiftBasics
+    var selectedAnswer: String = ""
+    var exerciceFinished: Bool = false
+    var currentQuestiion: QuizExercice {
+        exercices.exercice[0]
+    }
     
-        private(set) var currentQuestionIndex: Int = 0
+
+    init(exercices: ExercicesSolo) {
+        self.exercices = exercices
+    }
+    
+    
+    
+    
+    private(set) var currentQuestionIndex: Int = 0
+    
+    /// Vérifie si la réponse donnée est correcte et met à jour `validAnswer`
+    func answerCurrentQuestion(with index: Int) {
         
-        init(exercice: ExercicesSolo) {
-            self.currentExercice = exercice
+    }
+    
+    //Passe à la question suivante
+    func goToNextQuestion() {
+        guard exercices.exercice.isNotEmpty else {
+            self.exerciceFinished = true
+            return
         }
-        var currentQuestion: QuizExercice? {
-            guard currentQuestionIndex < currentExercice.exercice.count else { return nil }
-            return currentExercice.exercice[currentQuestionIndex]
+        guard selectedAnswer == currentQuestiion.goodAnswer  else { return }
+        guard exercices.exercice.count != 1 else {
+            self.exerciceFinished = true
+            return
         }
-
-        /// Vérifie si la réponse donnée est correcte et met à jour `validAnswer`
-        func answerCurrentQuestion(with index: Int) {
-            guard currentQuestionIndex < currentExercice.exercice.count else { return }
-
-            let isCorrect = currentExercice.exercice[currentQuestionIndex].goodAnswer == index
-            currentExercice.exercice[currentQuestionIndex].validAnswer = isCorrect
-        }
-
-        //Passe à la question suivante
-        func goToNextQuestion() {
-            if currentQuestionIndex + 1 < currentExercice.exercice.count {
-                currentQuestionIndex += 1
-            } else {
-                currentExercice.exerciceFinished = true
-            }
-        }
-
-        // Redémarre l'exercice
-        func restartExercice() {
-            currentQuestionIndex = 0
-            currentExercice.exerciceFinished = false
-            for i in 0..<currentExercice.exercice.count {
-                currentExercice.exercice[i].validAnswer = false
-            }
-        }
+        exercices.exercice.remove(at: 0)
+    }
+    
+    // Redémarre l'exercice
+    func restartExercice() {
+    }
 }
 
