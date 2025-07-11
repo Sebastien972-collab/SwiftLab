@@ -18,8 +18,6 @@ struct CourseConsultationView: View {
                         .font(.body)
                         .foregroundColor(.secondary)
                     CourseVideo()
-                    Text(course.exemple)
-                    Text(course.explication)
                     ForEach(course.section) { section in
                         VStack(alignment: .leading) {
                             Text(section.title)
