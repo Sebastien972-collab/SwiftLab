@@ -34,7 +34,6 @@ class ExerciceSoloManager {
     //Passe à la question suivante
     func goToNextQuestion() {
         guard exercices.exercice.isNotEmpty else {
-            print("<<<<<<<<<<<<<<Il est putin de vide le batard !!!!!>>>>>>>>>>>>>>")
             self.exerciceFinished = true
             return
         }
