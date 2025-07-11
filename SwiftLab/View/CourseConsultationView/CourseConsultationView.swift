@@ -43,6 +43,7 @@ struct CourseConsultationView: View {
                 }
                 .padding()
                 .navigationTitle(course.title)
+                .navigationBarTitleDisplayMode(.inline)
                 
             }
             
