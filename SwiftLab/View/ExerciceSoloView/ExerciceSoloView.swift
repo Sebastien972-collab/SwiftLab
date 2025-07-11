@@ -106,7 +106,7 @@ struct QuizView: View {
                 .padding()
             
             // Liste des réponses proposées
-            ForEach(manager.currentQuestiion.choices, id: \.self) { choice in
+            ForEach(question.choices, id: \.self) { choice in
                 QuizChoiceView(selectedChoice: $manager.selectedAnswer, choices: choice)
                 
             }

@@ -33,12 +33,14 @@ class ExerciceSoloManager {
     
     //Passe à la question suivante
     func goToNextQuestion() {
-        guard selectedAnswer == currentQuestiion.goodAnswer && exercices.exercice.isNotEmpty  else {
-            if exercices.exercice.isEmpty {
-                self.exerciceFinished = true
-            } else {
-                self.selectedAnswer.removeAll()
-            }
+        guard exercices.exercice.isNotEmpty else {
+            print("<<<<<<<<<<<<<<Il est putin de vide le batard !!!!!>>>>>>>>>>>>>>")
+            self.exerciceFinished = true
+            return
+        }
+        guard selectedAnswer == currentQuestiion.goodAnswer  else { return }
+        guard exercices.exercice.count != 1 else {
+            self.exerciceFinished = true
             return
         }
         exercices.exercice.remove(at: 0)
