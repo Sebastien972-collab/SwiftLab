@@ -29,7 +29,7 @@ struct CustomTextField: View {
 
 #Preview {
     ZStack {
-        Color.background
+        Color.customBeige.ignoresSafeArea()
         CustomTextField(placeholder: "E-Mail", text: .constant(""))
     }
 }

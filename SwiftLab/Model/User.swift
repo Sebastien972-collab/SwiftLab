@@ -13,7 +13,7 @@ final class User: Identifiable {
     var username: String 
     var password: String
     var imageUrl: URL?
-
+    var coursesInProgress: [Course] = []
     
     
     

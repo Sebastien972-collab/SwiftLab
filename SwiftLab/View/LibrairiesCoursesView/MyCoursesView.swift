@@ -10,7 +10,7 @@ import SwiftUI
 struct MyCoursesView: View {
     var body: some View {
         ZStack {
-            Color.background.ignoresSafeArea(edges: .all)
+            Color.customBeige.ignoresSafeArea(edges: .all)
             VStack(alignment: .leading,content: {
                 CarouselCustomCourse()
                 CardCourseView()

@@ -8,16 +8,32 @@
 import SwiftUI
 
 struct CarouselCustomExercice: View {
+    
+    @State var exercices = ExoDatas.allExercices
     var body: some View {
-        VStack{
-            Text("Exercice")
-                .font(.title2)
-                .bold()
-                .padding(.horizontal)
+        ScrollView(.horizontal, showsIndicators: false){
+            HStack(spacing: 16) {
+                ForEach(exercices, id: \.self) { exercice in
+//                    VStack{
+//                        Text("\(exercice.exercice)")
+//                            .lineLimit(nil)
+//                    }
+                    NavigationLink {
+
+                        ExerciceSoloView(manager: ExerciceSoloManager(exercices: exercice))
+                    } label: {
+                        CardExerciceView(exercice: exercice)
+                    }
+
+                }
+            }
         }
+        .padding(.leading)
     }
 }
 
 #Preview {
-    CarouselCustomExercice()
+    NavigationStack {
+        CarouselCustomExercice()
+    }
 }

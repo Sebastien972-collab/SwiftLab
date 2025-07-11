@@ -11,7 +11,7 @@ struct SignInView: View {
     @Binding var manager: ConnectionManager
     var body: some View {
         ZStack {
-            Color.background.ignoresSafeArea(edges: .all)
+            Color.customBeige.ignoresSafeArea(edges: .all)
             VStack {
                 Spacer()
                 VStack(spacing: 20) {
