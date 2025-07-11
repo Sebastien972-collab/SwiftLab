@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CardExerciceView: View {
-    @State var managerExercice = ExerciceSoloManager(exercice:  ExoDatas.swiftBasics)
+    let exercice: ExercicesSolo
     @State private var progress: Double = 0.5
     
     var body: some View {
@@ -20,7 +20,7 @@ struct CardExerciceView: View {
                 .frame(width: 24, height: 24)
                 .padding(.top, 12.0)
             // Titre des exo
-                Text(managerExercice.currentExercice.nameOfExercices)
+            Text(exercice.nameOfExercices)
                     .font(.system(size: 16, weight: .medium))
                     .lineLimit(nil)
                     .multilineTextAlignment(.leading)
@@ -52,5 +52,5 @@ struct CardExerciceView: View {
 }
 
 #Preview {
-    CardExerciceView()
+    CardExerciceView(exercice: ExoDatas.swiftBasics)
 }
