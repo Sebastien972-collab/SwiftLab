@@ -9,7 +9,7 @@ import Foundation
 
 struct QuizExercice {
     var question: String
-    var answers : [String]
-    var goodAnswer: Int
+    var choices : [String]
+    var goodAnswer: String
     var validAnswer: Bool 
 }

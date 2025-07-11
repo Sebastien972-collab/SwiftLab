@@ -11,85 +11,40 @@ struct ExerciceSoloView: View {
     // On crée un manager d'exercice à partir de nos données
     @State var manager = ExerciceSoloManager(exercice:  ExoDatas.swiftBasics)
     @State private var isSelected = false
-
+    
     var body: some View {
-        
         ZStack{
             Color.customBeige.ignoresSafeArea()
-            VStack{
-                
-                
-           
-            
-            if manager.currentExercice.exerciceFinished {
-                Text(" Exercice terminé !")
-                    .font(.title)
-                    .padding()
-            } else  {
-                // Sinon, on affiche la question actuelle
-                if let question = manager.currentQuestion {
-                    VStack{
-                        
-                        Text(question.question)
-                            .font(.largeTitle)
-                            .multilineTextAlignment(.center)
-                            .padding()
-                        
-                        
-                        // Liste des réponses proposées
-                        ForEach(question.answers.indices, id: \.self) { index in
-                            Button(action: {
-                                manager.answerCurrentQuestion(with: index)
-                                if question.validAnswer {
-                                    isSelected.toggle()
-                                }
-                            }) {
-                                ZStack {
-                                    Text(question.answers[index])
-                                        .frame(width: 300, height: 50, alignment: .center)
-                                        .background(isSelected ? Color.green : Color.white)
-                                        .cornerRadius(25)
-                                        
-                                        
-                                    
-                                    
-                                    
-                                   
-//                                    if question.validAnswer {
-//                                        // Affiche  si la réponse est correcte
-//                                        
-//                                    } else if question.validAnswer == false && index == question.goodAnswer {
-//                                        
-//                                    }
-                                }
+            VStack {
+                if manager.currentExercice.exerciceFinished {
+                    Text(" Exercice terminé !")
+                        .font(.title)
+                        .padding()
+                } else {
+                    // Sinon, on affiche la question actuelle
+                    if let question = manager.currentQuestion {
+                        VStack {
+                            Text(question.question)
+                                .font(.largeTitle)
+                                .multilineTextAlignment(.center)
+                                .padding()
+                            
+                            // Liste des réponses proposées
+                            ForEach(question.choices, id: \.self) { choice in
+                                QuizChoiceView(selectedChoice: $manager.selectedAnswer, choices: choice)
                                 
                             }
-                            
-//                            .padding(25)
-//                            .background(Color.gray.opacity(0.1))
-//                            .cornerRadius(25)
-                            
+                            // Bouton pour aller à la prochaine question
+                            ContinueButtonView(title: "Question suivante", color: .customClearOrange) {
+                                manager.goToNextQuestion()
+                            }
+                            .frame(width: 200, height: 30)
+                            .padding()
                         }
-                        
-//
-                        // Bouton pour aller à la prochaine question
-                        Button("Question suivante") {
-                            manager.goToNextQuestion()
-                        }
-                        
-                    
                     }
-                
-                }
                 }
             }
-            
         }
-        
-        
-        
-        
-        
         //                VStack(spacing: 20) {
         //                    // Si l'exercice est terminé, on affiche un message final
         //                    if manager.currentExercice.exerciceFinished {
@@ -149,23 +104,12 @@ struct ExerciceSoloView: View {
         //                .padding()
         
         
-        
-        
-        
     }
     
 }
 
-
-
-
-
-
-
-//
-
-
-
 #Preview {
-    ExerciceSoloView()
+    NavigationStack {
+        ExerciceSoloView()
+    }
 }
