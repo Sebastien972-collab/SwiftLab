@@ -17,8 +17,18 @@ struct Course: Identifiable {
     var explication: String
     var tableau: String
     var mentalCard: String
+    var section: [SectionOfCourses] = []
     
     
+}
+
+
+
+
+
+
+
+extension Course {
     static let allCourses: [Course] = [
         Course(
             id: UUID(),
@@ -30,6 +40,17 @@ struct Course: Identifiable {
             explication: "Ce code affiche une chaîne dans la console.",
             tableau: "| Élément | Description |\n|---|---|\n| Swift | Langage rapide et sûr |",
             mentalCard: "carte_mentale_1.png",
+            section: [
+                SectionOfCourses(title: "Text Cours", text: """
+                    Swift est un langage moderne, sécurisé et performant, développé par Apple et présenté pour la première fois en 2014. Il a été conçu pour remplacer Objective-C, avec l’ambition d’apporter simplicité, sécurité et rapidité au développement sur les plateformes Apple.
+
+                    En 2019, Apple introduit **SwiftUI**, un nouveau framework qui permet de construire des interfaces utilisateur de manière **déclarative**. Plutôt que de dire comment construire l’interface (comme en UIKit), on décrit simplement **ce qu’on veut voir**, et SwiftUI s’occupe du rendu en fonction de l’état des données.
+
+                    Swift + SwiftUI : écrire moins de code, plus lisible, plus dynamique.
+                    """, imageName: nil),
+                SectionOfCourses(title: "Image cours", text: nil, imageName: "cours-1imag-1" )
+                
+                     ]
         ),
         Course(
             id: UUID(),
@@ -132,4 +153,3 @@ struct Course: Identifiable {
         )
     ]
 }
-
