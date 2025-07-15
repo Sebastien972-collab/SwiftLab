@@ -62,7 +62,7 @@ struct QuizView: View {
                     manager.goToNextQuestion()
                 }
             }
-            .frame(width: 200, height: 30)
+            .frame(width: 300, height: 60)
             .padding()
         }
     }

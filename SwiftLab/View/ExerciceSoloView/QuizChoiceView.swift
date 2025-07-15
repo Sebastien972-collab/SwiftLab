@@ -18,13 +18,16 @@ struct QuizChoiceView: View {
             ZStack {
                 Capsule()
                     .fill(selectedChoice == choices ? Color.customClearOrange : Color.white)
-                    .frame(width: 200, height: 40)
                 Text(choices)
                     .foregroundStyle(.black)
                     .font(.headline)
+                    .lineLimit(2) // ou nil pour illimité
+                    .minimumScaleFactor(0.75)
+                    .padding()
+                
             }
         }
-        .clipped()
+        .frame(width: 300, height: 70)
 
     }
 }
