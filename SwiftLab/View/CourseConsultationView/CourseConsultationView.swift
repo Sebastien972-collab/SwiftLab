@@ -11,7 +11,7 @@ struct CourseConsultationView: View {
     let course: Course
     var body: some View {
         ZStack {
-            Color.background.ignoresSafeArea()
+            Color.customBeige.ignoresSafeArea()
             ScrollView {
                 VStack(alignment: .leading) {
                     Text(course.text)
