@@ -18,8 +18,6 @@ struct CourseConsultationView: View {
                         .font(.body)
                         .foregroundColor(.secondary)
                     CourseVideo()
-                    Text(course.exemple)
-                    Text(course.explication)
                     ForEach(course.section) { section in
                         VStack(alignment: .leading) {
                             Text(section.title)
@@ -27,6 +25,10 @@ struct CourseConsultationView: View {
                                 .bold()
                             if let text = section.text {
                                 Text(text)
+                                    .foregroundColor(.primary)
+                                    .padding()
+                                    .background(Color.gray.opacity(0.1))
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))
                             }
                             
                             if let image = section.imageName {
@@ -35,7 +37,7 @@ struct CourseConsultationView: View {
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                     .frame(maxWidth: .infinity, maxHeight: 300)
                                     .clipped()
-                                    
+                                
                             }
                         }
                         .padding(.horizontal, 3)
