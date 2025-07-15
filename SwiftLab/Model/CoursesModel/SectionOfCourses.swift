@@ -8,8 +8,8 @@
 import Foundation
 
 struct SectionOfCourses: Identifiable {
-    let id: UUID
+    let id: UUID = UUID()
     let title: String
-    let text: String
-    let image: Data?
+    let text: String?
+    let imageName: String?
 }

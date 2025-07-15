@@ -24,7 +24,7 @@ struct CarouselCustomCourse: View {
                         //                            iconName: "book.fill"
                         //                        )
                         NavigationLink {
-                            Text(course.title)
+                            CourseConsultationView(course: course)
                         } label: {
                             CourseCard(course: course, progress: 0.45)
                         }
