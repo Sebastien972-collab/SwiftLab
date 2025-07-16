@@ -14,19 +14,36 @@ struct CourseCard: View {
     var body: some View {
         VStack(alignment: .leading) {
             VStack(alignment: .leading) {
-                Image(systemName: "book.fill")
-                .resizable()
-                .frame(width: 20, height: 20)
-                .padding(8)
+                HStack {
+                    Image(systemName: "book.fill")
+                        .resizable()
+                        .foregroundStyle(.white)
+                        .frame(width: 20, height: 20)
+                        .padding(8)
+                    Spacer()
+                    Text("Nouveau")
+                        .font(.system(size: 7))
+                        .foregroundStyle(.white)
+                        .minimumScaleFactor(0.75)
+                        .frame(width: 40, height: 15)
+                        .padding(4)
+                        .background {
+                            Capsule()
+                                .fill(Color.customClearGreen)
+                        }
+                        
+                        .padding(.trailing)
+                }
                 Text(course.title)
+                    .foregroundStyle(.white)
                     .lineLimit(1)
                     .bold()
                     .padding(.horizontal, 5)
             }
             VStack(alignment: .leading) {
                 Text("Progression: \(Int(progress * 100))%")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+                    .font(.system(size: 7))
+                    .foregroundStyle(.white)
                 ProgressView(value: progress)
             }
             .padding(7)
@@ -48,3 +65,4 @@ struct CourseCard: View {
 //        CourseCard(course: .allCourses[0], progress: 0.7)
     }
 }
+

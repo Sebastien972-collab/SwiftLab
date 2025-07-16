@@ -14,11 +14,17 @@ final class User: Identifiable {
     var password: String
     var imageUrl: URL?
     var coursesInProgress: [Course] = []
+    var exoInProgress: [Exercices] = []
     
+    //MARK: - Add functions
+    func addExoInProgress(_ course: Exercices) {
+        guard exoInProgress.contains(where: { $0 == course }) else { return }
+       
+    }
     
-    
-    
-    
+    func removeExoInProgresse(_ exercice: Exercices) {
+        guard exoInProgress.contains(exercice) else { return }
+    }
     
     init(username: String, password: String) {
         self.username = username

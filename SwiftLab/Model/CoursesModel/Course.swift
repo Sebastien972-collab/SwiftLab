@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Course: Identifiable {
+struct Course: Identifiable, Equatable {
+    
     var id: UUID
     var title: String
     var videoUrl: String?
@@ -21,6 +22,9 @@ struct Course: Identifiable {
     var isInProgress: Bool = false
     
     
+    static func == (lhs: Course, rhs: Course) -> Bool {
+        lhs.title == rhs.title && lhs.text == rhs.text
+    }
     
 }
 

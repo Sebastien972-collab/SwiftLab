@@ -11,7 +11,7 @@ import Foundation
 @Observable
 class ExerciceSoloManager {
     
-    var exercices: ExercicesSolo = ExoDatas.swiftBasics
+    var exercices: Exercices = ExoDatas.swiftBasics
     var selectedAnswer: String = ""
     var exerciceFinished: Bool = false
     var currentQuestiion: QuizExercice {
@@ -19,7 +19,7 @@ class ExerciceSoloManager {
     }
     
 
-    init(exercices: ExercicesSolo) {
+    init(exercices: Exercices) {
         self.exercices = exercices
     }
     

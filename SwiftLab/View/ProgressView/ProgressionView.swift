@@ -16,9 +16,7 @@ struct ProgressionView: View {
                     VStack {
                         ProgressionCercle(progress: 0.62)
                         CarouselCustomCourse()
-                        
                         CarouselCustomExercice()
-                        
                     }
                     .padding()
                 }

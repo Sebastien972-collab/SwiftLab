@@ -18,10 +18,10 @@ struct Cours: Identifiable {
 enum CategorieCours  {
     case cours1, cours2, cours3, cours4
 }
-
-struct Exercice: Identifiable {
-    let id: UUID = UUID()
-    let titre: String
-    let progression: Double
-    let parentCours: CategorieCours
-}
+//
+//struct Exercice: Identifiable {
+//    let id: UUID = UUID()
+//    let titre: String
+//    let progression: Double
+//    let parentCours: CategorieCours
+//}

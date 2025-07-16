@@ -28,7 +28,7 @@ struct ProgressionCercle: View {
 
             // Texte au centre
             VStack(spacing: 4) {
-                Text("Score")
+                Text("Progrès")
                     .font(.title)
                     .bold()
                 Text("\(Int(progress * 100))%")

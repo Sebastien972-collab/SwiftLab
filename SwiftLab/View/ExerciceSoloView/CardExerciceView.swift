@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CardExerciceView: View {
-    let exercice: ExercicesSolo
+    let exercice: Exercices
     @State private var progress: Double = 0.5
     
     var body: some View {

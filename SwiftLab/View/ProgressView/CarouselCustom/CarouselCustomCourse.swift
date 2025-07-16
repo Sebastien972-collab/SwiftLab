@@ -17,12 +17,6 @@ struct CarouselCustomCourse: View {
             ScrollView(.horizontal, showsIndicators: false){
                 HStack(spacing: 16){
                     ForEach(Course.allCourses){ course in
-                        //                        ProgressCard(
-                        //                            title: course.title,
-                        //                            progress: 0.75,
-                        //                            backgroundColor: .blue.opacity(0.8),
-                        //                            iconName: "book.fill"
-                        //                        )
                         NavigationLink {
                             CourseConsultationView(course: course)
                         } label: {
@@ -37,5 +31,7 @@ struct CarouselCustomCourse: View {
 }
 
 #Preview {
-    CarouselCustomCourse()
+    NavigationStack {
+        CarouselCustomCourse()
+    }
 }

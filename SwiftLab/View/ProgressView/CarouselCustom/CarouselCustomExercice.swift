@@ -14,17 +14,11 @@ struct CarouselCustomExercice: View {
         ScrollView(.horizontal, showsIndicators: false){
             HStack(spacing: 16) {
                 ForEach(exercices, id: \.self) { exercice in
-//                    VStack{
-//                        Text("\(exercice.exercice)")
-//                            .lineLimit(nil)
-//                    }
                     NavigationLink {
-
                         ExerciceSoloView(manager: ExerciceSoloManager(exercices: exercice))
                     } label: {
                         CardExerciceView(exercice: exercice)
                     }
-
                 }
             }
         }

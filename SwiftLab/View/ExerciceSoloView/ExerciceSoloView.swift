@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExerciceSoloView: View {
     // On crée un manager d'exercice à partir de nos données
-    @State var manager = ExerciceSoloManager(exercices:  ExoDatas.swiftBasics)
+    @State var manager = ExerciceSoloManager(exercices: ExoDatas.swiftBasics)
     @State private var isSelected = false
     
     
@@ -18,6 +18,15 @@ struct ExerciceSoloView: View {
         ZStack{
             Color.customBeige.ignoresSafeArea(.all)
             VStack {
+                HStack {
+                    VStack {
+                        Text("Quiz")
+                            .font(.title)
+                            .bold()
+                            .padding(.horizontal)
+                    }
+                    Spacer()
+                }
                 if manager.exerciceFinished {
                     Text(" Exercice terminé !")
                         .font(.title)
@@ -50,6 +59,7 @@ struct QuizView: View {
                 .font(.largeTitle)
                 .multilineTextAlignment(.center)
                 .padding()
+                .bold()
             
             // Liste des réponses proposées
             ForEach(question.choices, id: \.self) { choice in

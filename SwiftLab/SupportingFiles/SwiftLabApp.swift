@@ -23,7 +23,7 @@ struct SwiftLabApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainTabView()
                 .preferredColorScheme(.light)
         }
         .modelContainer(sharedModelContainer)

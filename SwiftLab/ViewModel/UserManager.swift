@@ -10,4 +10,7 @@ import Foundation
 @Observable
 class UserManager {
     var currentUser: User = .preview
+    
+    
+    
 }

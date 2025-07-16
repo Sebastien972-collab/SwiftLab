@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CourseConsultationView: View {
     let course: Course
+    @State private var selectedImageName: Bool = false
+    @State private var image: Image? = nil
     var body: some View {
         ZStack {
             Color.customBeige.ignoresSafeArea()
@@ -34,10 +36,24 @@ struct CourseConsultationView: View {
                             if let image = section.imageName {
                                 Image(image)
                                     .resizable()
+                                    .scaledToFill()
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                     .frame(maxWidth: .infinity, maxHeight: 300)
                                     .clipped()
-                                
+                                    .contextMenu {
+                                        Button {
+                                            self.image = Image(image)
+                                            selectedImageName.toggle()
+                                        } label: {
+                                            Label("Examiner l'image", systemImage: "eye")
+                                        }
+
+                                        Button(action: {
+                                            // Action pour sauvegarder l'image
+                                        }) {
+                                            Label("Enregistrer l'image", systemImage: "square.and.arrow.down")
+                                        }
+                                    }
                             }
                         }
                         .padding(.horizontal, 3)
@@ -50,7 +66,6 @@ struct CourseConsultationView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 
             }
-            
         }
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 struct ExoDatas {
 
     //MARK: - swiftBasics
-    static let swiftBasics = ExercicesSolo(
+    static let swiftBasics = Exercices(
         nameOfExercices: "Les Bases du Swift - 1",
         exerciceFinished: false,
         exercice: [
@@ -52,7 +52,7 @@ struct ExoDatas {
     )
     
     //MARK: - functionsQuiz
-    static let functionsQuiz = ExercicesSolo(
+    static let functionsQuiz = Exercices(
         nameOfExercices: "Les Fonctions en Swift",
         exerciceFinished: false,
         exercice: [
@@ -95,7 +95,7 @@ struct ExoDatas {
     )
     
     //MARK: - optionalsQuiz
-    static let optionalsQuiz = ExercicesSolo(
+    static let optionalsQuiz = Exercices(
         nameOfExercices: "Les Optionnels en Swift",
         exerciceFinished: false,
         exercice: [
@@ -133,7 +133,7 @@ struct ExoDatas {
     )
     
     //MARK: - arraysQuiz
-    static let arraysQuiz = ExercicesSolo(
+    static let arraysQuiz = Exercices(
         nameOfExercices: "Les Tableaux en Swift",
         exerciceFinished: false,
         exercice: [
@@ -171,7 +171,7 @@ struct ExoDatas {
     )
     
     //MARK: - structsAndClassesQuiz
-    static let structsAndClassesQuiz = ExercicesSolo(
+    static let structsAndClassesQuiz = Exercices(
         nameOfExercices: "Structures et Classes en Swift",
         exerciceFinished: false,
         exercice: [
@@ -214,7 +214,7 @@ struct ExoDatas {
     )
     
     //MARK: - closuresQuiz
-    static let closuresQuiz = ExercicesSolo(
+    static let closuresQuiz = Exercices(
         nameOfExercices: "Les Closures en Swift",
         exerciceFinished: false,
         exercice: [
@@ -257,7 +257,7 @@ struct ExoDatas {
     )
     
     //MARK: - allExercices
-    static let allExercices: [ExercicesSolo] = [
+    static let allExercices: [Exercices] = [
         swiftBasics,
         functionsQuiz,
         optionalsQuiz,
