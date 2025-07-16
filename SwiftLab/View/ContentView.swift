@@ -19,14 +19,13 @@ struct ContentView: View {
             Tab("Mon parcours", systemImage: "graduationcap.fill") {
                ProgressionView()
             }
-            .badge(2)
             Tab("Jeux", systemImage: "gamecontroller.fill") {
                 Text("Mon parcours")
             }
-            Tab("Mes cours", systemImage: "books.vertical.fill") {
+            Tab("Ressources", systemImage: "books.vertical.fill") {
                 Text("Mes cours")
             }
-            Tab("Account", systemImage: "person.fill") {
+            Tab("Profil", systemImage: "person.fill") {
                 ProfilView()
             }
         }
