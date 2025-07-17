@@ -8,26 +8,45 @@
 import SwiftUI
 
 struct CarouselCustomExercice: View {
+    @State private var exercices = ExoDatas.allExercices
     
-    @State var exercices = ExoDatas.allExercices
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false){
-            HStack(spacing: 16) {
-                ForEach(exercices, id: \.self) { exercice in
-                    NavigationLink {
-                        ExerciceSoloView(manager: ExerciceSoloManager(exercices: exercice))
-                    } label: {
-                        CardExerciceView(exercice: exercice)
+        VStack(alignment: .leading, spacing: 12) {
+            Text("Exercices :")
+                .font(.title2)
+                .fontWeight(.bold)
+                .foregroundColor(.primary)
+                .padding(.horizontal)
+            
+            ScrollView(.horizontal, showsIndicators: false) {
+                LazyHStack(spacing: 16) {
+                    ForEach(exercices, id: \.self) { exercice in
+                        NavigationLink {
+                            ExerciceSoloView(manager: ExerciceSoloManager(exercices: exercice))
+                        } label: {
+                            CardExerciceView(exercice: exercice)
+                        }
+                        .buttonStyle(.plain)
+                        .scaleEffect(1.0)
+                        .animation(.easeInOut(duration: 0.1), value: UUID())
                     }
                 }
+                .padding(.horizontal)
+                .padding(.vertical, 2)
             }
+            .scrollTargetBehavior(.viewAligned)
+            .scrollBounceBehavior(.basedOnSize)
         }
-        .padding(.leading)
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel("Section des exercices")
     }
 }
 
 #Preview {
     NavigationStack {
-        CarouselCustomExercice()
+        ZStack {
+            Color.customBeige.ignoresSafeArea()
+            CarouselCustomExercice()
+        }
     }
 }

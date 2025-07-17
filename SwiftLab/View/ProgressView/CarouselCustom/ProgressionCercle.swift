@@ -8,38 +8,64 @@
 import SwiftUI
 
 struct ProgressionCercle: View {
-    var progress: Double // valeur entre 0 et 1
-
+    let progress: Double
+    
+    private var circleSize: CGFloat {
+        min(UIScreen.main.bounds.width * 0.4, 160)
+    }
+    
+    private let strokeWidth: CGFloat = 12
+    
     var body: some View {
-        
         ZStack {
-            // Cercle gris (fond)
             Circle()
-                .stroke(lineWidth: 20)
-                .opacity(0.3)
-                .foregroundColor(.orange)
-
-            // Cercle coloré (progression)
+                .stroke(lineWidth: strokeWidth)
+                .foregroundColor(.white.opacity(0.2))
+            
             Circle()
                 .trim(from: 0.0, to: progress)
-                .stroke(style: StrokeStyle(lineWidth: 20, lineCap: .round, lineJoin: .round))
-                .foregroundColor(.orange)
+                .stroke(
+                    style: StrokeStyle(
+                        lineWidth: strokeWidth,
+                        lineCap: .round,
+                        lineJoin: .round
+                    )
+                )
+                .foregroundStyle(
+                    LinearGradient(
+                        colors: [.orange, .orange.opacity(0.7)],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
                 .rotationEffect(.degrees(-90))
-
-            // Texte au centre
+                .animation(.spring(response: 0.8, dampingFraction: 0.8), value: progress)
+            
             VStack(spacing: 4) {
                 Text("Progrès")
-                    .font(.title)
-                    .bold()
+                    .font(.callout)
+                    .fontWeight(.medium)
+                    .foregroundColor(.primary)
+                
                 Text("\(Int(progress * 100))%")
-                    .font(.title2)
-                    .bold()
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundColor(.orange)
+                    .contentTransition(.numericText())
             }
         }
-        .frame(width: 160, height: 160)
+        .frame(width: circleSize, height: circleSize)
+        .padding(.vertical, 8) // Réduit de 16 à 8
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Progression du cours")
+        .accessibilityValue("\(Int(progress * 100)) pourcent")
+        .accessibilityHint("Votre progression actuelle dans le parcours")
     }
 }
 
 #Preview {
-    ProgressionCercle(progress: 0.62)
+    ZStack {
+        Color.customBeige.ignoresSafeArea()
+        ProgressionCercle(progress: 0.62)
+    }
 }

@@ -33,8 +33,7 @@ struct CourseSection<Content: View>: View {
                 }) {
                     Text(seeAllText)
                         .font(.caption)
-                        .foregroundStyle(.secondary)
-                        .underline()
+                        .foregroundStyle(.accent)
                 }
             }
                 content

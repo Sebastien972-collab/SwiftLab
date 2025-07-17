@@ -13,41 +13,66 @@ struct CardExerciceView: View {
     
     var body: some View {
         // ici boucle tableau
-        VStack(alignment: .leading) {
-            // Icons
-            Image("exerciceIcons")
-                .resizable()
-                .frame(width: 24, height: 24)
-                .padding(.top, 12.0)
+        VStack(alignment: .leading, spacing: 0) {
+            // Icons & badge
+            HStack {
+                Image(systemName: "inset.filled.rectangle.and.person.filled")
+                    .resizable()
+                    .foregroundStyle(.white)
+                    .frame(width: 26, height: 18)
+                
+                Spacer()
+                
+                Text("Nouveau")
+                    .font(.system(size: 8, weight: .medium))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background {
+                        Capsule()
+                            .fill(Color.customClearGreen)
+                    }
+            }
+            .padding(.horizontal, 16)
+            .padding(.top, 16)
+            
             // Titre des exo
-            Text(exercice.nameOfExercices)
-                    .font(.system(size: 16, weight: .medium))
-                    .lineLimit(nil)
+            VStack(alignment: .leading, spacing: 4) {
+                Text(exercice.nameOfExercices)
+                    .font(.system(size: 16, weight: .bold))
+                    .foregroundStyle(.white)
+                    .lineLimit(2)
                     .multilineTextAlignment(.leading)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .foregroundStyle(.black)
-
-            Spacer()
-            
-            // Texte de progression
-            Text("progression \(100)%")
-                .font(.caption)
-                .foregroundStyle(.black.opacity(0.7))
-            
-            // Barre de progression
-            
-            ProgressView(value: progress)
-                .progressViewStyle(LinearProgressViewStyle())
-                .padding(.bottom, 10.0)
-                .accentColor(.black)
+                    .fixedSize(horizontal: false, vertical: true)
                 
+                Spacer()
                 
+                // Progression
+                VStack(alignment: .leading, spacing: 6) {
+                    // Texte de progression
+                    Text("progression \(Int(progress * 100))%")
+                        .font(.system(size: 10, weight: .medium))
+                        .foregroundStyle(.white.opacity(0.9))
+                    
+                    // Barre de progression
+                    ProgressView(value: progress)
+                        .progressViewStyle(LinearProgressViewStyle())
+                        .scaleEffect(x: 1, y: 0.8, anchor: .center)
+                        .accentColor(.orange)
+                        .background(Color.white.opacity(0.3))
+                        .cornerRadius(2)
+                }
+            }
+            .padding(.horizontal, 16)
+            .padding(.top, 12)
+            .padding(.bottom, 16)
         }
-        .padding(.horizontal, 16)
-        .frame(width: 150, height: 130)
-        .background(Color.customClearGreen)
-        .clipShape(RoundedRectangle(cornerRadius: 16))
-
+        .background {
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color.customDarkGreen)
+        }
+        .frame(width: 150, height: 140)
+        .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
     }
 }
 

@@ -12,7 +12,7 @@ struct CardCourseView: View {
         // Section: Refaire les exercices
         CourseSection(
             title: "Refaire les exercices",
-            seeAllText: "Voir tout les exercices"
+            seeAllText: "Voir tout"
         ) {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
@@ -20,7 +20,7 @@ struct CardCourseView: View {
                         ProgressCard(
                             title: course.title.replacingOccurrences(of: "Cours", with: "Exercice"),
                             progress: generateProgress(for: course),
-                            backgroundColor: .green.opacity(0.8),
+                            backgroundColor: .customDarkGreen,
                             iconName: "laptopcomputer"
                         )
                     }
