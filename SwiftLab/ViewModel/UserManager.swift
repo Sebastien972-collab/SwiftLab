@@ -10,7 +10,68 @@ import Foundation
 @Observable
 class UserManager {
     var currentUser: User = .preview
+    var isConnected: Bool = false
+    var isWorking: Bool = false
+    var isEditing: Bool = false
+
+    // MARK: - Authentification
+    func login(username: String, password: String) -> Bool {
+        // Exemple simplifié, à remplacer par de la vraie logique plus tard
+        if username == currentUser.username && password == currentUser.password {
+            isConnected = true
+            return true
+        }
+        return false
+    }
     
+    func logout() {
+        isConnected = false
+        currentUser = .guest
+    }
     
+    func register(username: String, password: String) {
+        currentUser = User(username: username, password: password)
+        isConnected = true
+    }
+    
+    // MARK: - Profil
+    func updateProfile(username: String? = nil, imageUrl: URL? = nil) {
+        if let username = username {
+            currentUser.username = username
+        }
+        if let imageUrl = imageUrl {
+            currentUser.imageUrl = imageUrl
+        }
+    }
+    
+    // MARK: - Exercices
+    func addExerciceInProgress(_ exercice: Exercices) {
+        currentUser.addExoInProgress(exercice)
+    }
+    
+    func removeExerciceInProgress(_ exercice: Exercices) {
+        currentUser.removeExoInProgresse(exercice)
+    }
+    
+    func hasExerciceInProgress(_ exercice: Exercices) -> Bool {
+        return currentUser.exoInProgress.contains(where: { $0 == exercice })
+    }
+    
+    // MARK: - Cours
+    func addCourseInProgress(_ course: Course) {
+        if !currentUser.coursesInProgress.contains(where: { $0 == course }) {
+            currentUser.coursesInProgress.append(course)
+        }
+    }
+    
+    func removeCourseInProgress(_ course: Course) {
+        if let index = currentUser.coursesInProgress.firstIndex(where: { $0 == course }) {
+            currentUser.coursesInProgress.remove(at: index)
+        }
+    }
+    
+    func hasCourseInProgress(_ course: Course) -> Bool {
+        return currentUser.coursesInProgress.contains(where: { $0 == course })
+    }
     
 }
