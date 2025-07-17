@@ -8,13 +8,21 @@
 import Foundation
 
 
-final class User: Identifiable {
+final class User: Identifiable, Equatable {
+    
     let id = UUID()
     var username: String 
     var password: String
     var imageUrl: URL?
     var coursesInProgress: [Course] = []
     var exoInProgress: [Exercices] = []
+    
+
+    
+    
+    static func == (lhs: User, rhs: User) -> Bool {
+        lhs.username == rhs.username && lhs.imageUrl == rhs.imageUrl
+    }
     
     //MARK: - Add functions
     func addExoInProgress(_ course: Exercices) {

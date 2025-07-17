@@ -9,8 +9,6 @@ import Foundation
 
 @Observable
 class UserManager {
-    var currentUser: User = .preview
-    
-    
-    
+    private(set) var currentUser: User = .preview
+    var isLoggedIn: Bool { currentUser != .guest }
 }
