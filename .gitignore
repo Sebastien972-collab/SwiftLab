@@ -73,3 +73,5 @@ Tuist/ProjectDescriptionHelpers/
 appcenter-pre-build.sh
 appcenter-post-clone.sh
 appcenter-post-build.sh
+
+SwiftLab.xcodeproj/project.pbxproj
