@@ -65,13 +65,14 @@ struct CourseCard: View {
             RoundedRectangle(cornerRadius: 16)
                 .fill(Color.customBlue)
         }
-        .frame(width: 150, height: 120)
+        .frame(width: 150, height: 140)
         .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
     }
 }
 
 #Preview {
     VStack {
+        CourseCard(course: .allCourses[0], progress: 0.5)
         CourseCard(course: .allCourses[0], progress: 0.5)
     }
     .padding()
