@@ -18,7 +18,7 @@ struct CourseCard: View {
                 Image(systemName: "book.fill")
                     .resizable()
                     .foregroundStyle(.white)
-                    .frame(width: 18, height: 18)
+                    .frame(width: 22, height: 18)
                 
                 Spacer()
                 
@@ -43,8 +43,7 @@ struct CourseCard: View {
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
                     .fixedSize(horizontal: false, vertical: true)
-                
-                Spacer()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                 
                 // Progression
                 VStack(alignment: .leading, spacing: 6) {
@@ -53,11 +52,9 @@ struct CourseCard: View {
                         .foregroundStyle(.white.opacity(0.9))
                     
                     ProgressView(value: progress)
-                        .progressViewStyle(LinearProgressViewStyle())
-                        .scaleEffect(x: 1, y: 0.8, anchor: .center)
-                        .accentColor(.orange)
+                        .progressViewStyle(LinearProgressViewStyle(tint: .orange))
                         .background(Color.white.opacity(0.3))
-                        .cornerRadius(2)
+                        .clipShape(RoundedRectangle(cornerRadius: 2))
                 }
             }
             .padding(.horizontal, 16)
@@ -68,7 +65,7 @@ struct CourseCard: View {
             RoundedRectangle(cornerRadius: 16)
                 .fill(Color.customBlue)
         }
-        .frame(width: 150, height: 140)
+        .frame(width: 150, height: 120)
         .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
     }
 }
