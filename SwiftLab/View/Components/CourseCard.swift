@@ -59,19 +59,16 @@ struct CourseCard: View {
                         .background(Color.white.opacity(0.3))
                         .cornerRadius(2)
                 }
-                .padding(.top, 8)
             }
             .padding(.horizontal, 16)
             .padding(.top, 12)
-            .padding(.bottom, 16)
-            
-            Spacer()
+            .padding(.bottom, 16)            
         }
         .background {
             RoundedRectangle(cornerRadius: 16)
                 .fill(Color.customBlue)
         }
-        .frame(width: 160, height: 140)
+        .frame(width: 150, height: 140)
         .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
     }
 }
