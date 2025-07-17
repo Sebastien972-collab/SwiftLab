@@ -44,6 +44,8 @@ struct CourseCard: View {
                     .multilineTextAlignment(.leading)
                     .fixedSize(horizontal: false, vertical: true)
                 
+                Spacer()
+                
                 // Progression
                 VStack(alignment: .leading, spacing: 6) {
                     Text("Progression \(Int(progress * 100))%")
