@@ -10,10 +10,13 @@ import SwiftUI
 struct QuizChoiceView: View {
     @Binding var selectedChoice: String
     let choices: String
+    @State private var attempts: Int = 0
+    @State private var offset: CGFloat = 0
     
     var body: some View {
         Button {
             selectedChoice = choices
+            
         } label: {
             ZStack {
                 Capsule()
@@ -28,7 +31,7 @@ struct QuizChoiceView: View {
             }
         }
         .frame(width: 300, height: 70)
-
+        
     }
 }
 

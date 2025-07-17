@@ -18,12 +18,14 @@ final class User: Identifiable {
     
     //MARK: - Add functions
     func addExoInProgress(_ course: Exercices) {
-        guard exoInProgress.contains(where: { $0 == course }) else { return }
+        guard !exoInProgress.contains(where: { $0 == course }) else { return }
+        exoInProgress.append(course)
        
     }
     
     func removeExoInProgresse(_ exercice: Exercices) {
-        guard exoInProgress.contains(exercice) else { return }
+        guard exoInProgress.contains(exercice), let index = exoInProgress.firstIndex(of: exercice) else { return }
+        exoInProgress.remove(at: index)
     }
     
     init(username: String, password: String) {
