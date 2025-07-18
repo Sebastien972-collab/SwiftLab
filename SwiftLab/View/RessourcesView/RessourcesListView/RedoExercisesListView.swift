@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct RedoExercisesListView: View {
+    @State private var exercices = ExoDatas.allExercices
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             // Header section with navigation
             HStack {
-                Text("Revoir les exercices")
+                Text("Refaire les exercices")
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.primary)
@@ -22,25 +24,30 @@ struct RedoExercisesListView: View {
                 NavigationLink(destination: AllExercisesListView()) {
                     Text("Voir tous")
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                       
                 }
             }
             .padding(.horizontal, 20)
             
             // Horizontal scrollable carousel
             ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: 16) {
-                    ForEach(ExoDatas.allExercices, id: \.self) { exercice in
+                
+                HStack(spacing: 16) {
+                    ForEach(exercices, id: \.self) { exercice in
                         NavigationLink {
                             ExerciceSoloView(manager: ExerciceSoloManager(exercices: exercice))
                         } label: {
+                            RessourcesExercicesCard(exercice: exercice)
                         }
                         .buttonStyle(.plain)
+                        
                     }
                 }
+                
                 .padding(.horizontal, 20)
-                .padding(.vertical, 8)
+              
             }
+            
             .scrollTargetBehavior(.viewAligned)
             .scrollBounceBehavior(.basedOnSize)
         }

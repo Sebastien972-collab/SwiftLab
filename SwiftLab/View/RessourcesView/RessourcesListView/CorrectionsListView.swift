@@ -9,7 +9,8 @@ import SwiftUI
 
 struct CorrectionsListView: View {
     var body: some View {
-        Text("CorrectionsListView")
+
+       CarouselCorrection()
     }
 }
 

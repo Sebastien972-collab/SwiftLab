@@ -11,13 +11,13 @@ struct CarouselCustomExercice: View {
     @State private var exercices = ExoDatas.allExercices
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading) {
             HStack {
                 Text("Exercices")
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.primary)
-                Spacer()
+               Spacer()
                 NavigationLink(destination: AllExercisesListView()) {
                                     Text("Voir tous")
                                         .font(.caption)

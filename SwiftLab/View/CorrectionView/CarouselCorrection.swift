@@ -11,16 +11,19 @@ struct CarouselCorrection: View {
     @State var corrections = ExoDatas.allExercices
     var body: some View {
         VStack{
-            HStack{
-                Text("Corrections")
-                    .fontWeight(.medium)
-                    Spacer()
-                Text("Voir tous")
-                    .font(.footnote)
-                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                    
-                //
-            } .padding(.horizontal)
+            HStack {
+                Text("Revoir les corrections")
+                    .font(.title2)
+                    .fontWeight(.bold)
+               
+                Spacer()
+                NavigationLink(destination: AllCoursesListView()) {
+                    Text("Voir tous")
+                        .font(.caption)
+                }
+            }
+            .padding(.horizontal, 20)
+            
             ScrollView(.horizontal,showsIndicators: false ){
                
                 HStack(spacing : 16){

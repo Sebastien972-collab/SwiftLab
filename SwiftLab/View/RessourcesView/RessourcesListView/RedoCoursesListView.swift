@@ -17,9 +17,9 @@ struct RedoCoursesListView: View {
                     .foregroundColor(.primary)
                 Spacer()
                 NavigationLink(destination: AllCoursesListView()) {
-                                    Text("Voir tous")
-                                        .font(.caption)
-                                }
+                    Text("Voir tous")
+                        .font(.caption)
+                }
             }
             .padding(.horizontal, 20)
             
@@ -34,9 +34,10 @@ struct RedoCoursesListView: View {
                     }
                 }
                 .padding(.horizontal, 20)
-                .padding(.vertical, 8)
+                
             }
             .scrollTargetBehavior(.viewAligned)
+            
         }
     }
 }
