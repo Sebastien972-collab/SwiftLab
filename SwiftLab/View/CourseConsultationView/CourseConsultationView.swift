@@ -29,14 +29,17 @@ struct CourseConsultationView: View {
                                     .padding()
                                     .background(Color.gray.opacity(0.1))
                                     .clipShape(RoundedRectangle(cornerRadius: 8))
+                                
                             }
                             
                             if let image = section.imageName {
                                 Image(image)
                                     .resizable()
+                                    .aspectRatio(contentMode: .fit)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
                                     .frame(maxWidth: .infinity, maxHeight: 300)
                                     .clipped()
+                                
                                 
                             }
                         }
