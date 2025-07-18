@@ -22,7 +22,7 @@ struct CarouselCustomExercice: View {
                 }
             }
         }
-        .padding(.leading)
+        .contentMargins(.horizontal, 16)
     }
 }
 

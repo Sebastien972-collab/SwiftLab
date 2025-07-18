@@ -9,7 +9,23 @@ import SwiftUI
 
 struct CorrectionExercieView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+            Color.customBeige.ignoresSafeArea(.all)
+            VStack{
+                HStack{
+                    VStack{
+                        Text("correction")
+                            .font(.title)
+                            .bold()
+                            .padding(.horizontal)
+                    }
+                    Spacer()
+                }
+                //affichage page suivante ou fin
+            }
+           
+        }
+        
     }
 }
 

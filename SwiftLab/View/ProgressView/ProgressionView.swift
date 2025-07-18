@@ -18,7 +18,7 @@ struct ProgressionView: View {
                         CarouselCustomCourse()
                         CarouselCustomExercice()
                     }
-                    .padding()
+                    .padding(.vertical)
                 }
                 
             }
