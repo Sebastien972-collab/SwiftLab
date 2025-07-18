@@ -14,15 +14,15 @@ final class User: Identifiable {
     var password: String
     var imageUrl: URL?
     var coursesInProgress: [Course] = []
-    var exoInProgress: [Exercices] = []
+    var exoInProgress: [Exercice] = []
     
     //MARK: - Add functions
-    func addExoInProgress(_ course: Exercices) {
+    func addExoInProgress(_ course: Exercice) {
         guard exoInProgress.contains(where: { $0 == course }) else { return }
        
     }
     
-    func removeExoInProgresse(_ exercice: Exercices) {
+    func removeExoInProgresse(_ exercice: Exercice) {
         guard exoInProgress.contains(exercice) else { return }
     }
     

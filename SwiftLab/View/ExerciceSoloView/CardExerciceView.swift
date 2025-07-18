@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CardExerciceView: View {
-    let exercice: Exercices
+    let exercice: Exercice
     @State private var progress: Double = 0.5
     
     var body: some View {
@@ -37,7 +37,7 @@ struct CardExerciceView: View {
             
             // Titre des exo
             VStack(alignment: .leading, spacing: 4) {
-                Text(exercice.nameOfExercices)
+                Text(exercice.name)
                     .font(.system(size: 16, weight: .bold))
                     .foregroundStyle(.white)
                     .lineLimit(2)

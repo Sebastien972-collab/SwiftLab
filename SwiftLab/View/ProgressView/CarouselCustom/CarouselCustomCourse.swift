@@ -10,7 +10,6 @@ import SwiftUI
 struct CarouselCustomCourse: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            
             HStack {
                 Text("Cours")
                     .font(.title2)
@@ -18,12 +17,11 @@ struct CarouselCustomCourse: View {
                     .foregroundColor(.primary)
                 Spacer()
                 NavigationLink(destination: AllCoursesListView()) {
-                                    Text("Voir tous")
-                                        .font(.caption)
-                                }
+                    Text("Voir tous")
+                        .font(.caption)
+                }
             }
             .padding(.horizontal)
-            
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 16) {
                     ForEach(Course.allCourses) { course in

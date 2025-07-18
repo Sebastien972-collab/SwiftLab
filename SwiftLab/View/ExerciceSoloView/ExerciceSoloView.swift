@@ -51,7 +51,7 @@ struct ExerciceSoloView: View {
 }
 
 struct QuizView: View {
-    var question: QuizExercice
+    var question: Quiz
     @Binding var manager:  ExerciceSoloManager
     var body: some View {
         VStack {

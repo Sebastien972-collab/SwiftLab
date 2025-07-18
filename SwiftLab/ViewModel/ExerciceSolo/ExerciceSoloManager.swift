@@ -11,15 +11,15 @@ import Foundation
 @Observable
 class ExerciceSoloManager {
     
-    var exercices: Exercices = ExoDatas.swiftBasics
+    var exercices: Exercice = ExoDatas.swiftBasics
     var selectedAnswer: String = ""
     var exerciceFinished: Bool = false
-    var currentQuestiion: QuizExercice {
-        exercices.exercice[0]
+    var currentQuestiion: Quiz {
+        exercices.quizs[0]
     }
     
 
-    init(exercices: Exercices) {
+    init(exercices: Exercice) {
         self.exercices = exercices
     }
     
@@ -35,16 +35,16 @@ class ExerciceSoloManager {
     
     //Passe à la question suivante
     func goToNextQuestion() {
-        guard exercices.exercice.isNotEmpty else {
+        guard exercices.quizs.isNotEmpty else {
             self.exerciceFinished = true
             return
         }
         guard selectedAnswer == currentQuestiion.goodAnswer  else { return }
-        guard exercices.exercice.count != 1 else {
+        guard exercices.quizs.count != 1 else {
             self.exerciceFinished = true
             return
         }
-        exercices.exercice.remove(at: 0)
+        exercices.quizs.remove(at: 0)
     }
     
     // Redémarre l'exercice
