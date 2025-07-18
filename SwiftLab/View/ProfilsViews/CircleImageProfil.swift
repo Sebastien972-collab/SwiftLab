@@ -17,8 +17,8 @@ struct CircleImageProfil: View {
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 150, height: 150)
                         .clipShape(Circle())
+                        .frame(maxWidth: 150, maxHeight: 150)
                         
                 } else {
                     ProgressView() // Acts as a placeholder.
