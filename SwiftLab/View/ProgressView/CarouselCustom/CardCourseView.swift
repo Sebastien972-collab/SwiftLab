@@ -36,7 +36,13 @@ private func generateProgress(for course: Course) -> Double {
     let hash = course.id.hashValue
     return Double(abs(hash) % 101) / 100.0
 }
+
 #Preview {
-    CardCourseView()
+    NavigationStack {
+        ZStack {
+            Color.customBeige.ignoresSafeArea()
+            CardCourseView()
+        }
+    }
 }
 
