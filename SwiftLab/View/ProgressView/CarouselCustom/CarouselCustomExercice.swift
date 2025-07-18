@@ -12,11 +12,18 @@ struct CarouselCustomExercice: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Exercices :")
-                .font(.title2)
-                .fontWeight(.bold)
-                .foregroundColor(.primary)
-                .padding(.horizontal)
+            HStack {
+                Text("Exercices")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(.primary)
+                Spacer()
+                NavigationLink(destination: AllExercisesListView()) {
+                                    Text("Voir tous")
+                                        .font(.caption)
+                                }
+            }
+            .padding(.horizontal)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 16) {

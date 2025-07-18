@@ -74,8 +74,5 @@ struct CourseCard: View {
 }
 
 #Preview {
-    VStack {
         CourseCard(course: .allCourses[0], progress: 0.5)
-    }
-    .padding()
 }

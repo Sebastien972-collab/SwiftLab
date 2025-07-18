@@ -64,8 +64,5 @@ struct ProgressionCercle: View {
 }
 
 #Preview {
-    ZStack {
-        Color.customBeige.ignoresSafeArea()
         ProgressionCercle(progress: 0.62)
-    }
 }
