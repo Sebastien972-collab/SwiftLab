@@ -36,7 +36,7 @@ struct CorrectionExercieView: View {
                                 
                             }
                         }
-                        ContinueButtonView(title: "Question suivante", color: .customClearOrange) {
+                        ContinueButtonView(title: "Réponse suivante", color: .customClearOrange) {
                             withAnimation {
                                 //                            prochaine question -->
                             }
