@@ -17,10 +17,11 @@ struct CarouselCorrection: View {
                     .fontWeight(.bold)
                
                 Spacer()
-                NavigationLink(destination: AllCoursesListView()) {
+                NavigationLink(destination: AllCorrectionListView()) {
                     Text("Voir tous")
                         .font(.caption)
                 }
+                
             }
             .padding(.horizontal, 20)
             

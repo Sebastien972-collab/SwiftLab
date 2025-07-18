@@ -11,6 +11,7 @@ struct CorrectionsListView: View {
     var body: some View {
 
        CarouselCorrection()
+            
     }
 }
 
