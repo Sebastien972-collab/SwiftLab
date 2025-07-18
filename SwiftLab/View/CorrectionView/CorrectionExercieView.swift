@@ -1,0 +1,18 @@
+//
+//  CorrectionExercieView.swift
+//  SwiftLab
+//
+//  Created by cyrilH on 17/07/2025.
+//
+
+import SwiftUI
+
+struct CorrectionExercieView: View {
+    var body: some View {
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    }
+}
+
+#Preview {
+    CorrectionExercieView()
+}
