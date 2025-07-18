@@ -20,14 +20,14 @@ struct ProgressCard: View {
             Image(systemName: iconName)
                 .font(.title2)
                 .fontWeight(.medium)
-                .foregroundStyle(.black)
+                .foregroundStyle(.white)
             
             // Titre
             if !title.isEmpty {
                 Text(title)
                     .font(.headline)
                     .fontWeight(.medium)
-                    .foregroundStyle(.black)
+                    .foregroundStyle(.white)
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
             }
@@ -37,7 +37,7 @@ struct ProgressCard: View {
             // Texte de progression
             Text("progression \(Int(progress * 100))%")
                 .font(.caption)
-                .foregroundStyle(.black.opacity(0.7))
+                .foregroundStyle(.white)
             
             // Barre de progression
             ProgressView(value: progress)
@@ -56,7 +56,7 @@ struct ProgressCard: View {
     ProgressCard(
         title: "Algorithme - 1",
         progress: 0.75,
-        backgroundColor: .blue.opacity(0.8),
+        backgroundColor: .customBlue,
         iconName: "book.fill"
     )
 }
