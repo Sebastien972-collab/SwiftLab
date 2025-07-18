@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CarouselCorrection: View {
+    @State var corrections = ExoDatas.allExercices
     var body: some View {
         VStack{
             HStack{
@@ -23,11 +24,14 @@ struct CarouselCorrection: View {
             ScrollView(.horizontal,showsIndicators: false ){
                
                 HStack(spacing : 16){
-//                    forEach ici
-                    CardCorrectionView()
-                    CardCorrectionView()
-                    CardCorrectionView()
-                    CardCorrectionView()
+                    ForEach(corrections,id:\.self) { correction in
+
+                        CardCorrectionView(correction: correction)
+                    }
+                        
+                    
+                    
+                    
                 }
             }.contentMargins(.horizontal, 16)
             

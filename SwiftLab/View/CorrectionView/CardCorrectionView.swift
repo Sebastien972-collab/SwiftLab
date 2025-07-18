@@ -8,26 +8,27 @@
 import SwiftUI
 
 struct CardCorrectionView: View {
+    let correction : Exercices
     var body: some View {
-        VStack(alignment:.center){
-            
+        VStack(alignment:.center, spacing: 10){
+            Spacer()
             Image(systemName: "pencil.and.scribble")
                 .resizable()
                 .foregroundColor(Color.white)
                 .frame(width: 24, height: 20)
-                .padding(.top, 12.0)
+                .padding(.top,8)
                 
-            
-            Text("Les bases de swift - 1")
-                .fontWeight(.medium)
+            Spacer()
+            Text("\(correction.nameOfExercices)")
+                .font(.system(size: 16, weight: .medium))
                 .lineLimit(nil)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 5.0)
+                .multilineTextAlignment(.leading)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundStyle(.white)
+            Spacer()
         }
         .padding(.horizontal)
-        .frame(width: 150, height: 130)
+        .frame(width: 150, height: 140)
         .background(Color.pourpre)
         .clipShape(RoundedRectangle(cornerRadius: 16))
 
@@ -35,5 +36,5 @@ struct CardCorrectionView: View {
 }
 
 #Preview {
-    CardCorrectionView()
+    CardCorrectionView(correction: ExoDatas.swiftBasics)
 }
