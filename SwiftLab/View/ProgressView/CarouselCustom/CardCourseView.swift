@@ -9,11 +9,20 @@ import SwiftUI
 
 struct CardCourseView: View {
     var body: some View {
-        // Section: Refaire les exercices
-        CourseSection(
-            title: "Refaire les exercices",
-            seeAllText: "Voir tout"
-        ) {
+        VStack(alignment: .leading) {
+            HStack {
+                Text("Refaire les exercices")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(.primary)
+                Spacer()
+                NavigationLink(destination: AllExercisesListView()) {
+                    Text("Voir tous")
+                        .font(.caption)
+                }
+            }
+            .padding(.horizontal)
+            
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
                     ForEach(Course.allCourses) { course in
@@ -28,9 +37,9 @@ struct CardCourseView: View {
                 
             }
         }
-        .padding(.leading)
     }
 }
+
 // Utilise l'ID pour avoir la barre de progression (à changer)
 private func generateProgress(for course: Course) -> Double {
     let hash = course.id.hashValue
