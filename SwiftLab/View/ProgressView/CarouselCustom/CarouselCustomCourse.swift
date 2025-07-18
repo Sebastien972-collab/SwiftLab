@@ -29,9 +29,9 @@ struct CarouselCustomCourse: View {
                         .animation(.easeInOut(duration: 0.1), value: UUID())
                     }
                 }
-                .padding(.horizontal)
                 .padding(.vertical, 2)
             }
+            .contentMargins(.horizontal, 16)
             .scrollTargetBehavior(.viewAligned)
             .scrollBounceBehavior(.basedOnSize)
         }

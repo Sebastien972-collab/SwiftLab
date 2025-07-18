@@ -12,7 +12,6 @@ struct CardExerciceView: View {
     @State private var progress: Double = 0.5
     
     var body: some View {
-        // ici boucle tableau
         VStack(alignment: .leading, spacing: 0) {
             // Icons & badge
             HStack {

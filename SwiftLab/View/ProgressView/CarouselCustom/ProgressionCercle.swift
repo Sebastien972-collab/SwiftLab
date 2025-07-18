@@ -20,7 +20,7 @@ struct ProgressionCercle: View {
         ZStack {
             Circle()
                 .stroke(lineWidth: strokeWidth)
-                .foregroundColor(.white.opacity(0.2))
+                .foregroundColor(.white)
             
             Circle()
                 .trim(from: 0.0, to: progress)
@@ -55,7 +55,7 @@ struct ProgressionCercle: View {
             }
         }
         .frame(width: circleSize, height: circleSize)
-        .padding(.vertical, 8) // Réduit de 16 à 8
+        .padding(.vertical, 8)
         .accessibilityElement(children: .ignore)
         .accessibilityLabel("Progression du cours")
         .accessibilityValue("\(Int(progress * 100)) pourcent")

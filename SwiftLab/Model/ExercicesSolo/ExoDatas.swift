@@ -10,7 +10,7 @@ struct ExoDatas {
 
     //MARK: - swiftBasics
     static let swiftBasics = Exercices(
-        nameOfExercices: "Les Bases du Swift - 1",
+        nameOfExercices: "Les Bases du Swift",
         exerciceFinished: false,
         exercice: [
             QuizExercice(
