@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-public struct AllExercisesListView: View {
+struct AllExercisesListView: View {
     
-    public var body: some View {
+    var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 20) {
                 // Grouper les exercices par paires (by: 2)

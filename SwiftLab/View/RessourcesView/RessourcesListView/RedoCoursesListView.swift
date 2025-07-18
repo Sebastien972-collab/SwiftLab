@@ -9,10 +9,50 @@ import SwiftUI
 
 struct RedoCoursesListView: View {
     var body: some View {
-        Text("RedoCoursesListView")
+        VStack(alignment: .leading, spacing: 16) {
+            HStack {
+                Text("Revoir les cours")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundColor(.primary)
+                Spacer()
+                NavigationLink(destination: AllCoursesListView()) {
+                                    Text("Voir tous")
+                                        .font(.caption)
+                                }
+            }
+            .padding(.horizontal, 20)
+            
+            // Horizontal scrollable carousel
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 16) {
+                    ForEach(Course.allCourses) { course in
+                        NavigationLink(destination: CourseConsultationView(course: course)) {
+                            RessourcesCoursesCard(course: course)
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 8)
+            }
+            .scrollTargetBehavior(.viewAligned)
+        }
     }
 }
 
-#Preview {
-    RedoCoursesListView()
+// Utilise l'ID pour avoir la barre de progression (à changer)
+private func generateProgress(for course: Course) -> Double {
+    let hash = course.id.hashValue
+    return Double(abs(hash) % 101) / 100.0
 }
+
+#Preview {
+    NavigationStack {
+        ZStack {
+            Color.customBeige.ignoresSafeArea()
+            RedoCoursesListView()
+        }
+    }
+}
+
