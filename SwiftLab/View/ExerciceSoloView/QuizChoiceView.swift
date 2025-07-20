@@ -22,6 +22,7 @@ struct QuizChoiceView: View {
                 Capsule()
                     .fill(selectedChoice == choices ? Color.customClearOrange : Color.white)
                 Text(choices)
+                // si quiz fini ou .. == true alors montre color good answer ou recree un page ?
                     .foregroundStyle(.black)
                     .font(.headline)
                     .lineLimit(2) // ou nil pour illimité

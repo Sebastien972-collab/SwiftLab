@@ -23,7 +23,7 @@ struct MainTabView: View {
                 Text("Mon parcours")
             }
             Tab("Ressources", systemImage: "books.vertical.fill") {
-                Text("Mes cours")
+               RessourcesView()
             }
             Tab("Profil", systemImage: "person.fill") {
                 ProfilView()

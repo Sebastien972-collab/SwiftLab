@@ -13,7 +13,7 @@ struct RessourcesView: View {
       
         VStack(alignment: .leading, spacing: 16) {
             
-            // balec
+         
             
       
             RedoCoursesListView()

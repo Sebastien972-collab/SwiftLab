@@ -26,7 +26,7 @@ struct CarouselCustomExercice: View {
             .padding(.horizontal)
             
             ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: 16) {
+                HStack(spacing: 16) {
                     ForEach(exercices, id: \.self) { exercice in
                         NavigationLink {
                             ExerciceSoloView(manager: ExerciceSoloManager(exercices: exercice))

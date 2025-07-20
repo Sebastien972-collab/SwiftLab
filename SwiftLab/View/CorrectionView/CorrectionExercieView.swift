@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CorrectionExercieView: View {
-    @State var tableau : Array = ["a", "b", "c", "d"]
+   
     @State var manager = ExerciceSoloManager(exercices: ExoDatas.swiftBasics)
     var body: some View {
         ZStack{

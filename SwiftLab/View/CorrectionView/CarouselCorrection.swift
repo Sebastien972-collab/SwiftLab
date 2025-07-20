@@ -29,8 +29,12 @@ struct CarouselCorrection: View {
                
                 HStack(spacing : 16){
                     ForEach(corrections,id:\.self) { correction in
-
-                        CardCorrectionView(correction: correction)
+                        NavigationLink{
+                            CorrectionExercieView(manager: ExerciceSoloManager(exercices: correction))
+                        } label:{
+                            CardCorrectionView(correction: correction)
+                        }
+                        
                     }
                         
                     
