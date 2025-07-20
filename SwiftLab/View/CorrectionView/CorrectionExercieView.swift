@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CorrectionExercieView: View {
     @State var tableau : Array = ["a", "b", "c", "d"]
+    @State var manager = ExerciceSoloManager(exercices: ExoDatas.swiftBasics)
     var body: some View {
         ZStack{
             Color.customBeige.ignoresSafeArea(.all)
@@ -23,28 +24,16 @@ struct CorrectionExercieView: View {
                         }
                         Spacer()
                     }
-                    //affichage page suivante ou fin
-                    VStack{
-                        Text("question")
-                            .font(.largeTitle)
-                            .multilineTextAlignment(.center)
-                            .padding()
-                            .bold()
-                        VStack(spacing : 8){
-                            ForEach(tableau.indices, id: \.self) { choice in
-                                QuizChoiceView( selectedChoice: $tableau[choice] , choices: tableau[choice])
-                                
-                            }
-                        }
-                        ContinueButtonView(title: "Réponse suivante", color: .customClearOrange) {
-                            withAnimation {
-                                //                            prochaine question -->
-                            }
-                        }
-                        .frame(width: 300, height: 60)
-                        .padding()
-                    }
                     
+                    if manager.exerciceFinished {
+                        Text(" Exercice terminé !")
+                            .font(.title)
+                            .padding()
+                    } else {
+                        // Sinon, on affiche la question actuelle
+                        QuizView(question: manager.currentQuestiion, manager: $manager)
+//                        a revoir ici
+                    }
                     VStack{
                         
                         VStack{
@@ -55,7 +44,7 @@ struct CorrectionExercieView: View {
                                         .frame(width: 24, height: 24)
                                 }.padding(.trailing,5)
                                 
-                                Text("Les constantes sont déclarées en LET tandis que VAR correspond aux variables. Const n’existe pas en Swift et private concerne la portée d’un classe")
+                                Text("\(manager.currentQuestiion.correction)")
                                     .font(.system(size: 14, weight: .medium))
                                     .multilineTextAlignment(.leading)
                                     .foregroundStyle(.black)

@@ -33,7 +33,7 @@ class ExerciceSoloManager {
         
     }
     
-    //Passe à la question suivante
+    ///Passe à la question suivante
     func goToNextQuestion() {
         guard exercices.exercice.isNotEmpty else {
             self.exerciceFinished = true

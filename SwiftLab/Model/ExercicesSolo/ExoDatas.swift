@@ -18,8 +18,8 @@ struct ExoDatas {
                 choices: ["var", "let", "const", "static"],
                 goodAnswer: "let",
                 correction: """
-                        let est utilisé pour déclarer une constante en Swift.
-                        Une constante ne peut pas changer de valeur après son initialisation. C’est utile pour garantir l’immuabilité des données, ce qui renforce la sécurité du code.
+                    let est utilisé pour déclarer une constante en Swift.
+                    Une constante ne peut pas changer de valeur après son initialisation.C’est utile pour garantir l’immuabilité des données, ce qui renforce la sécurité du code.
                     """,
                 validAnswer: false
                 
@@ -29,7 +29,8 @@ struct ExoDatas {
                 choices: ["String", "Int", "Double", "Bool"],
                 goodAnswer: "Int",
                 correction: """
-                        Int est le type utilisé pour représenter des nombres entiers. Int est un type natif en Swift pour gérer les nombres sans décimales. Il peut être positif ou négatif selon les besoins.
+                    Int est le type utilisé pour représenter des nombres entiers. 
+                    Int est un type natif en Swift pour gérer les nombres sans décimales. Il peut être positif ou négatif selon les besoins.
                     """,
                 validAnswer: false
             ),
