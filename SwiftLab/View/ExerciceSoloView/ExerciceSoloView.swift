@@ -11,6 +11,7 @@ struct ExerciceSoloView: View {
     // On crée un manager d'exercice à partir de nos données
     @State var manager = ExerciceSoloManager(exercices: ExoDatas.swiftBasics)
     @State private var isSelected = false
+    @State var valuePage = 0
     
     var body: some View {
         ZStack{
@@ -30,14 +31,11 @@ struct ExerciceSoloView: View {
                         .font(.title)
                         .padding()
                 } else {
-                    // Sinon, on affiche la question actuelle
-                    QuizView(question: manager.currentQuestiion, manager: $manager)
+                    
+                    QuizView(question: manager.currentQuestiion, showDiferentView: $valuePage, manager: $manager)
                 }
             }
-        }
-        
-        
-        
+        }       
     }
     
 }
@@ -50,16 +48,19 @@ struct ExerciceSoloView: View {
 
 struct QuizView: View {
     var question: QuizExercice
+    @Binding var showDiferentView : Int
     @Binding var manager:  ExerciceSoloManager
+    
     var body: some View {
         VStack {
+            //            Text("\(showDiferentView)")
             Text(manager.currentQuestiion.question)
                 .font(.largeTitle)
                 .multilineTextAlignment(.center)
                 .padding()
                 .bold()
             ForEach(question.choices, id: \.self) { choice in
-                QuizChoiceView(selectedChoice: $manager.selectedAnswer, choices: choice)
+                QuizChoiceView(selectedChoice: $manager.selectedAnswer, showDiferentView: $showDiferentView, choices: choice)
                 
             }
             ContinueButtonView(title: "Question suivante", color: .customClearOrange) {

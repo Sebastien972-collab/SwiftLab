@@ -32,7 +32,7 @@ struct CorrectionExercieView: View {
                             .padding()
                     } else {
                         // Sinon, on affiche la question actuelle
-                        QuizView(question: manager.currentQuestiion, manager: $manager)
+                        QuizView(question: manager.currentQuestiion, showDiferentView: $valuePage, manager: $manager)
 //                        a revoir ici
                     }
                     VStack{
