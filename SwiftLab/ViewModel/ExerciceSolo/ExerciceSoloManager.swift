@@ -49,6 +49,8 @@ class ExerciceSoloManager {
     
     // Redémarre l'exercice
     func restartExercice() {
+       
+        self.exerciceFinished = false
     }
 }
 

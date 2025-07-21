@@ -13,12 +13,13 @@ struct QuizChoiceView: View {
     let choices: String
     @State private var attempts: Int = 0
     @State private var offset: CGFloat = 0
-    
+    let correctAnswer : String
     var body: some View {
         
 //        si valeur == 0 alors normal sinno buton bonne reponse active et couleur vert
         Button {
             selectedChoice = choices
+            
             
         } label: {
             ZStack {
@@ -34,6 +35,11 @@ struct QuizChoiceView: View {
                 
             }
         }
+        .onAppear {
+            if showDiferentView != 0 && choices == correctAnswer {
+                selectedChoice = correctAnswer
+            }
+        }
         .frame(width: 300, height: 70)
         
     }
@@ -43,8 +49,8 @@ struct QuizChoiceView: View {
     ZStack {
         Color.customBeige.ignoresSafeArea()
         VStack {
-            QuizChoiceView(selectedChoice: .constant(""), showDiferentView: .constant(0)  , choices: "Var")
-            QuizChoiceView(selectedChoice: .constant("Var"), showDiferentView: .constant(0), choices: "Var")
+            QuizChoiceView(selectedChoice: .constant(""), showDiferentView: .constant(0)  , choices: "Var", correctAnswer: "Var")
+            QuizChoiceView(selectedChoice: .constant("Var"), showDiferentView: .constant(0), choices: "Var", correctAnswer: "Var")
         }
     }
 }

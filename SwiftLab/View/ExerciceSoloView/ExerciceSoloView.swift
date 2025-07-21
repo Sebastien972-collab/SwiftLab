@@ -30,6 +30,7 @@ struct ExerciceSoloView: View {
                     Text(" Exercice terminé !")
                         .font(.title)
                         .padding()
+                    
                 } else {
                     
                     QuizView(question: manager.currentQuestiion, showDiferentView: $valuePage, manager: $manager)
@@ -48,6 +49,7 @@ struct ExerciceSoloView: View {
 
 struct QuizView: View {
     var question: QuizExercice
+    
     @Binding var showDiferentView : Int
     @Binding var manager:  ExerciceSoloManager
     
@@ -60,7 +62,7 @@ struct QuizView: View {
                 .padding()
                 .bold()
             ForEach(question.choices, id: \.self) { choice in
-                QuizChoiceView(selectedChoice: $manager.selectedAnswer, showDiferentView: $showDiferentView, choices: choice)
+                QuizChoiceView(selectedChoice: $manager.selectedAnswer, showDiferentView: $showDiferentView, choices: choice,correctAnswer: question.goodAnswer)
                 
             }
             ContinueButtonView(title: "Question suivante", color: .customClearOrange) {

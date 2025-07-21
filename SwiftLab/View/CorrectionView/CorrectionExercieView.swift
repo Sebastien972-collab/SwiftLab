@@ -30,37 +30,43 @@ struct CorrectionExercieView: View {
                         Text(" Exercice terminé !")
                             .font(.title)
                             .padding()
+                        Button {
+                            manager.restartExercice()
+                        } label: {
+                            Text("Revoir les réponse")
+                        }
+
                     } else {
-                        // Sinon, on affiche la question actuelle
+                       
                         QuizView(question: manager.currentQuestiion, showDiferentView: $valuePage, manager: $manager)
-//                        a revoir ici
-                    }
-                    VStack{
                         
                         VStack{
-                            HStack(alignment: .top){
-                                VStack{
-                                    Image(systemName: "lightbulb.circle.fill")
-                                        .resizable(capInsets: EdgeInsets())
-                                        .frame(width: 24, height: 24)
-                                }.padding(.trailing,5)
+                            VStack{
+                                HStack(alignment: .top){
+                                    VStack{
+                                        Image(systemName: "lightbulb.circle.fill")
+                                            .resizable(capInsets: EdgeInsets())
+                                            .frame(width: 24, height: 24)
+                                    }.padding(.trailing,5)
+                                    
+                                    Text("\(manager.currentQuestiion.correction)")
+                                        .font(.system(size: 14, weight: .medium))
+                                        .multilineTextAlignment(.leading)
+                                        .foregroundStyle(.black)
+                                        .fixedSize(horizontal: false, vertical: true)
+                                }
                                 
-                                Text("\(manager.currentQuestiion.correction)")
-                                    .font(.system(size: 14, weight: .medium))
-                                    .multilineTextAlignment(.leading)
-                                    .foregroundStyle(.black)
-                                    .fixedSize(horizontal: false, vertical: true)
                             }
+                            
                             
                         }
                         
-                        
+                        .padding( 20)
+                        .frame(width: 300 )
+                        .background(Color.grayBorder)
+                        .clipShape(RoundedRectangle(cornerRadius: 25))
                     }
                     
-                    .padding( 20)
-                    .frame(width: 300 )
-                    .background(Color.grayBorder)
-                    .clipShape(RoundedRectangle(cornerRadius: 25))
                 }
                 .padding(.top,40)
             }
