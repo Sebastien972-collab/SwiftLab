@@ -10,6 +10,7 @@ import SwiftUI
 struct CorrectionExercieView: View {
    
     @State var manager = ExerciceSoloManager(exercices: ExoDatas.swiftBasics)
+    @State var valuePage = 1
     var body: some View {
         ZStack{
             Color.customBeige.ignoresSafeArea(.all)

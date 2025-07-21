@@ -25,13 +25,8 @@ struct AllCorrectionListView: View {
                         } label:{
                             CardCorrectionView(correction: correction)
                         }
-                        
-   
                     }
-                    
-                    
-                    
-                    
+    
                 }
                 
             }

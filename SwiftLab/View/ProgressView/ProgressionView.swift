@@ -14,30 +14,23 @@ struct ProgressionView: View {
         NavigationStack {
             ZStack {
                 Color.customBeige.ignoresSafeArea()
-                ScrollView {
-                    VStack {
-                        ProgressionCercle(progress: 0.62)
-                        CarouselCustomCourse()
-                        CarouselCustomExercice()
+                ScrollView(showsIndicators: false) {
+                    GeometryReader { geometry in
+                        let availableHeight = geometry.size.height
+                        let optimalSpacing = availableHeight > 700 ? 24 : 16
+                        
+                            LazyVStack(spacing: CGFloat(optimalSpacing)) {
+                                ProgressionCercle(progress: 0.62)
+                                    .padding(.top, 8)
+                                
+                                CarouselCustomCourse()
+                                CarouselCustomExercice()
+                            }
+                            .safeAreaInset(edge: .bottom) {
+                                Color.clear.frame(height: 60)
+                            }
+                        .scrollBounceBehavior(.basedOnSize)
                     }
-                    .padding(.vertical)
-                }
-                
-                GeometryReader { geometry in
-                    let availableHeight = geometry.size.height
-                    let optimalSpacing = availableHeight > 700 ? 24 : 16
-                    
-                        LazyVStack(spacing: CGFloat(optimalSpacing)) {
-                            ProgressionCercle(progress: 0.62)
-                                .padding(.top, 8)
-                            
-                            CarouselCustomCourse()
-                            CarouselCustomExercice()
-                        }
-                        .safeAreaInset(edge: .bottom) {
-                            Color.clear.frame(height: 60)
-                        }
-                    .scrollBounceBehavior(.basedOnSize)
                 }
             }
             .navigationTitle("Mon parcours")

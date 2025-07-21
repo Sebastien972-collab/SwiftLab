@@ -9,20 +9,17 @@ import SwiftUI
 
 struct RessourcesView: View {
     var body: some View {
-       
-      
-        VStack(alignment: .leading, spacing: 16) {
-            
-         
-            
-      
-            RedoCoursesListView()
-            RedoExercisesListView()
-            CorrectionsListView()
-       
-            
-        }.navigationTitle("Ressources")
-        
+        NavigationStack {
+            ZStack {
+                Color.customBeige.ignoresSafeArea()
+                VStack(alignment: .leading, spacing: 16) {
+                    RedoCoursesListView()
+                    RedoExercisesListView()
+                    CorrectionsListView()
+                }
+                .navigationTitle("Ressources")
+            }
+        }
     }
 }
 
