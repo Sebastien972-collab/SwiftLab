@@ -13,45 +13,22 @@ struct ProfilView: View {
         NavigationStack {
             ZStack {
                 Color.customBeige.ignoresSafeArea()
-                ScrollView {
+                VStack {
                     VStack {
                         CircleImageProfil(url: manager.userManager.currentUser.imageUrl)
                         Text(manager.userManager.currentUser.username)
-                            .font(.title)
-                            .bold()
-                        Spacer()
-                        VStack(alignment: .leading) {
-                            Text("Choix du programme: ")
-                                .font(.title2)
-                                .bold()
-                            HStack {
-                                
-                            }
-                        }
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding()
+                            .font(.title2)
                     }
-                    .navigationTitle(Text("Mon compte"))
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .topBarTrailing) {
-                            Button {
-                                
-                            } label: {
-                                Image(systemName: "power")
-                                    .foregroundStyle(.black)
-                                    .bold()
-                            }
-
-                            
-                        }
-                    }
+                    
+                    CarouselCustomCourse(title: "Terminés")
+                    
+                    BadgesListView()
                 }
             }
         }
-        
     }
 }
+
 
 #Preview {
     ProfilView()
