@@ -19,10 +19,11 @@ struct ProfilView: View {
                         Text(manager.userManager.currentUser.username)
                             .font(.title2)
                     }
+                    .padding(.vertical)
                     
                     CarouselCustomCourse(title: "Terminés")
                     
-                    BadgesListView()
+                    BadgesListView(badges: Badge.all, limit: 8, isScrollEnabled: false)
                 }
             }
         }
