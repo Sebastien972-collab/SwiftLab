@@ -17,12 +17,14 @@ struct SignUpView: View {
                 Spacer()
                 VStack(spacing: 20) {
                     CustomTextField(placeholder: "Username", text: $manager.username)
-                    CustomTextField(placeholder: "Email", text: $manager.username)
+                    // CustomTextField(placeholder: "Email", text: $manager.username)
                     CustomSecureField(password: $manager.password)
                     
                 }
                 Spacer()
-                ContinueButtonView(title: "Créer un compte", action: {})
+                ContinueButtonView(title: "Créer un compte", action: {
+                    manager.signUp()
+                })
                 Spacer()
                 ExternalConnectionMethodTypeList(selection: .signUp)
                 Spacer()
@@ -32,12 +34,19 @@ struct SignUpView: View {
                     } label: {
                         Text("Se connecter")
                     }
-
+                    
                 }
                 Spacer()
             }
             .navigationTitle(Text("Créer un compte"))
+            .alert(manager.error?.localizedDescription ?? "Erreur inattendue", isPresented: $manager.showError) {
+                Button("OK", role: .cancel) {
+                    manager.showError = false
+                }
+            }
         }
+        
+        
     }
 }
 

@@ -14,20 +14,25 @@ struct MainTabView: View {
     }
     @State private var selection = Selection.courses
     @Environment(\.modelContext) private var modelContext
+    @State private var userManager: UserManager = .init()
     var body: some View {
-        TabView {
-            Tab("Mon parcours", systemImage: "graduationcap.fill") {
-               ProgressionView()
+        if userManager.isConnected {
+            TabView {
+                Tab("Mon parcours", systemImage: "graduationcap.fill") {
+                   ProgressionView()
+                }
+                Tab("Jeux", systemImage: "gamecontroller.fill") {
+                    Text("Mon parcours")
+                }
+                Tab("Ressources", systemImage: "books.vertical.fill") {
+                    RessourcesView()
+                }
+                Tab("Profil", systemImage: "person.fill") {
+                    ProfilView()
+                }
             }
-            Tab("Jeux", systemImage: "gamecontroller.fill") {
-                Text("Mon parcours")
-            }
-            Tab("Ressources", systemImage: "books.vertical.fill") {
-                RessourcesView()
-            }
-            Tab("Profil", systemImage: "person.fill") {
-                ProfilView()
-            }
+        } else {
+            ConnectionView(userManger: userManager)
         }
     }
 }

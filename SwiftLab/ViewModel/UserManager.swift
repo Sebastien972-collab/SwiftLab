@@ -15,13 +15,12 @@ class UserManager {
     var isEditing: Bool = false
 
     // MARK: - Authentification
-    func login(username: String, password: String) -> Bool {
+    func login(username: String, password: String) {
         // Exemple simplifié, à remplacer par de la vraie logique plus tard
         if username == currentUser.username && password == currentUser.password {
-            isConnected = true
-            return true
+            self.isConnected = true
         }
-        return false
+        self.isConnected = false
     }
     
     func logout() {

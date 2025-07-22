@@ -20,7 +20,9 @@ struct SignInView: View {
                     
                 }
                 Spacer()
-                ContinueButtonView(title: "Se connecter", action: {})
+                ContinueButtonView(title: "Se connecter", action: {
+                    manager.logInUser()
+                })
                 Spacer()
                 ExternalConnectionMethodTypeList(selection: .signIn)
                 Spacer()
@@ -35,6 +37,9 @@ struct SignInView: View {
                 Spacer()
             }
             .navigationTitle(Text("Se connecter"))
+            .alert(manager.error?.localizedDescription ?? "Erreur inattendue", isPresented: $manager.showError) {
+                Button("OK", role: .cancel) {}
+            }
         }
 
     }
