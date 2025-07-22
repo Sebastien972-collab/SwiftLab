@@ -17,7 +17,6 @@ struct Course: Identifiable, Equatable {
     var mentalCard: String
     var section: [SectionOfCourses] = []
     
-    
     var isFinished: Bool = false
     var isInProgress: Bool = false
     
@@ -27,12 +26,6 @@ struct Course: Identifiable, Equatable {
     }
     
 }
-
-
-
-
-
-
 
 extension Course {
     static let allCourses: [Course] = [

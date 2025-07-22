@@ -11,5 +11,6 @@ struct QuizExercice: Hashable {
     var question: String
     var choices : [String]
     var goodAnswer: String
-    var validAnswer: Bool 
+    var correction: String
+    var validAnswer: Bool
 }

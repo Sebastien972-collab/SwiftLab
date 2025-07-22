@@ -7,48 +7,62 @@
 
 import Foundation
 
-
 @Observable
 class ExerciceSoloManager {
     
-    var exercices: Exercices = ExoDatas.swiftBasics
+    // MARK: - Propriétés
+    
+    private(set) var exercices: Exercices
+    private var exercicesSaved: Exercices?
+    
     var selectedAnswer: String = ""
     var exerciceFinished: Bool = false
-    var currentQuestiion: QuizExercice {
-        exercices.exercice[0]
-    }
-    
-
-    init(exercices: Exercices) {
-        self.exercices = exercices
-    }
-    
-    
-    
     
     private(set) var currentQuestionIndex: Int = 0
     
-    /// Vérifie si la réponse donnée est correcte et met à jour `validAnswer`
-    func answerCurrentQuestion(with index: Int) {
+    var currentQuestion: QuizExercice {
+        exercices.exercice[currentQuestionIndex]
+    }
+    
+    // MARK: - Initialisation
+    
+    init(exercices: Exercices) {
+        self.exercices = exercices
+        self.exercicesSaved = exercices // Sauvegarde initiale pour restart
+    }
+    
+    // MARK: - Actions
+    
+    /// Vérifie si la réponse donnée est correcte et avance à la question suivante
+    func answerCurrentQuestion(with answer: String) {
+        selectedAnswer = answer
         
+        // Vérifie la réponse
+        if answer == currentQuestion.goodAnswer {
+            goToNextQuestion()
+        } else {
+            // Optionnel : gérer les mauvaises réponses ou feedback
+        }
     }
     
-    //Passe à la question suivante
+    /// Passe à la question suivante
     func goToNextQuestion() {
-        guard exercices.exercice.isNotEmpty else {
-            self.exerciceFinished = true
-            return
+        if currentQuestionIndex + 1 < exercices.exercice.count {
+            currentQuestionIndex += 1
+        } else {
+            exerciceFinished = true
         }
-        guard selectedAnswer == currentQuestiion.goodAnswer  else { return }
-        guard exercices.exercice.count != 1 else {
-            self.exerciceFinished = true
-            return
-        }
-        exercices.exercice.remove(at: 0)
     }
     
-    // Redémarre l'exercice
+    /// Redémarre l'exercice à partir de la sauvegarde
     func restartExercice() {
+        guard let saved = exercicesSaved else {
+            print("Exercice est vide")
+            return
+        }
+        exercices = saved
+        currentQuestionIndex = 0
+        selectedAnswer = ""
+        exerciceFinished = false
     }
 }
-
