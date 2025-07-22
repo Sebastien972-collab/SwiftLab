@@ -73,5 +73,5 @@ class UserManager {
     func hasCourseInProgress(_ course: Course) -> Bool {
         return currentUser.coursesInProgress.contains(where: { $0 == course })
     }
-    
+
 }
