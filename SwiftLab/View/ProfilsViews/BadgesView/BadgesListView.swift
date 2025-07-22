@@ -14,12 +14,7 @@ struct BadgesListView: View {
     let columns = Array(repeating: GridItem(.flexible(), spacing: 16), count: 4)
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Mes badges")
-                .font(.title2)
-                .bold()
-                .padding(.horizontal)
-
+        VStack(alignment: .leading) {            
             if isScrollEnabled {
                 ScrollView {
                     badgeGrid

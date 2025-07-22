@@ -22,7 +22,7 @@ struct ProfilView: View {
                     .padding(.vertical)
                     
                     CarouselCustomCourse(title: "Terminés")
-                    
+                    BadgesTitleView()
                     BadgesListView(badges: Badge.all, limit: 8, isScrollEnabled: false)
                 }
             }
