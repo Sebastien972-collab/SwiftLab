@@ -7,74 +7,92 @@
 
 import SwiftUI
 
-struct CorrectionExercieView: View {
-   
+struct CorrectionExerciceView: View {
+    
     @State var manager = ExerciceSoloManager(exercices: ExoDatas.swiftBasics)
     @State var valuePage = 1
+    @Namespace var animation
+
     var body: some View {
-        ZStack{
-            Color.customBeige.ignoresSafeArea(.all)
-            ScrollView(showsIndicators: false){
-                VStack{
-                    HStack{
-                        VStack{
-                            Text("correction")
-                                .font(.title)
-                                .bold()
-                                .padding(.horizontal)
-                        }
-                        Spacer()
-                    }
+        ZStack {
+            Color.customBeige.ignoresSafeArea()
+
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 20) {
                     
                     if manager.exerciceFinished {
-                        Text(" Exercice terminé !")
-                            .font(.title)
-                            .padding()
-                        Button {
-                            manager.restartExercice()
-                        } label: {
-                            Text("Revoir les réponse")
-                        }
-
-                    } else {
-                       
-                        QuizView(question: manager.currentQuestiion, showDiferentView: $valuePage, manager: $manager)
-                        
-                        VStack{
-                            VStack{
-                                HStack(alignment: .top){
-                                    VStack{
-                                        Image(systemName: "lightbulb.circle.fill")
-                                            .resizable(capInsets: EdgeInsets())
-                                            .frame(width: 24, height: 24)
-                                    }.padding(.trailing,5)
-                                    
-                                    Text("\(manager.currentQuestiion.correction)")
-                                        .font(.system(size: 14, weight: .medium))
-                                        .multilineTextAlignment(.leading)
-                                        .foregroundStyle(.black)
-                                        .fixedSize(horizontal: false, vertical: true)
+                        VStack(spacing: 16) {
+                            Text("Exercice terminé !")
+                                .font(.title)
+                                .bold()
+                                .transition(.scale)
+                            
+                            Button {
+                                withAnimation(.spring()) {
+                                    manager.restartExercice()
                                 }
-                                
+                            } label: {
+                                Text("Revoir les réponses")
+                                    .padding()
+                                    .frame(maxWidth: .infinity)
+                                    .background(Color.blue)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(12)
+                                    .padding(.horizontal)
                             }
-                            
-                            
                         }
+                        .padding(.top, 50)
+                        .animation(.easeInOut, value: manager.exerciceFinished)
                         
-                        .padding( 20)
-                        .frame(width: 300 )
-                        .background(Color.grayBorder)
-                        .clipShape(RoundedRectangle(cornerRadius: 25))
+                    } else {
+                        
+                        QuizView(
+                            question: manager.currentQuestion,
+                            showDifferentView: $valuePage,
+                            manager: $manager
+                        )
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
+                        .animation(.spring(), value: manager.currentQuestionIndex)
+                        
+                        correctionCardView
+                            .padding(.top, 10)
+                            .transition(.opacity.combined(with: .scale))
+                            .animation(.easeInOut, value: manager.currentQuestionIndex)
                     }
                     
                 }
-                .padding(.top,40)
+                .navigationTitle("Correction")
+                .padding(.top, 40)
             }
         }
-        
+    }
+
+    // Correction bubble/card with icon
+    var correctionCardView: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(alignment: .top, spacing: 8) {
+                Image(systemName: "lightbulb.circle.fill")
+                    .resizable()
+                    .frame(width: 24, height: 24)
+                    .foregroundStyle(.yellow)
+                
+                Text(manager.currentQuestion.correction)
+                    .font(.system(size: 14, weight: .medium))
+                    .lineLimit(nil)
+                    .foregroundStyle(.black)
+                    .multilineTextAlignment(.leading)
+            }
+        }
+        .padding(20)
+        .frame(maxWidth: .infinity)
+        .background(Color.grayBorder)
+        .clipShape(RoundedRectangle(cornerRadius: 25))
+        .padding(.horizontal)
     }
 }
 
 #Preview {
-    CorrectionExercieView()
+    NavigationStack {
+        CorrectionExerciceView()
+    }
 }

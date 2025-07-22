@@ -19,7 +19,7 @@ struct QuizChoiceView: View {
 //        si valeur == 0 alors normal sinno buton bonne reponse active et couleur vert
         Button {
             selectedChoice = choices
-            
+           
             
         } label: {
             ZStack {

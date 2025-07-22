@@ -21,7 +21,7 @@ struct AllCorrectionListView: View {
                     
                     ForEach(corrections,id:\.self) { correction in
                         NavigationLink {
-                            CorrectionExercieView()
+                            CorrectionExerciceView(manager: ExerciceSoloManager(exercices: correction))
                         } label:{
                             CardCorrectionView(correction: correction)
                         }

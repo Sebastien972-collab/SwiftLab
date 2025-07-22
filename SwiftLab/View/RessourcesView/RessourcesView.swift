@@ -15,7 +15,7 @@ struct RessourcesView: View {
                 VStack(alignment: .leading, spacing: 16) {
                     RedoCoursesListView()
                     RedoExercisesListView()
-                    CorrectionsListView()
+                    CarouselCorrection()
                 }
                 .navigationTitle("Ressources")
             }

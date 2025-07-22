@@ -7,38 +7,56 @@
 
 import SwiftUI
 
+
 struct ExerciceSoloView: View {
-    // On crée un manager d'exercice à partir de nos données
     @State var manager = ExerciceSoloManager(exercices: ExoDatas.swiftBasics)
-    @State private var isSelected = false
-    @State var valuePage = 0
-    
+    @State private var valuePage = 0
+
     var body: some View {
-        ZStack{
-            Color.customBeige.ignoresSafeArea(.all)
-            VStack {
-                HStack {
-                    VStack {
-                        Text("Quiz")
+        ZStack {
+            Color.customBeige.ignoresSafeArea()
+
+            VStack(alignment: .leading, spacing: 16) {
+                Text("Quiz")
+                    .font(.title)
+                    .bold()
+                    .padding(.horizontal)
+
+                Spacer()
+
+                if manager.exerciceFinished {
+                    VStack(spacing: 16) {
+                        Text("Exercice terminé !")
                             .font(.title)
                             .bold()
-                            .padding(.horizontal)
-                    }
-                    Spacer()
-                }
-                if manager.exerciceFinished {
-                    Text(" Exercice terminé !")
-                        .font(.title)
+
+                        Button("Recommencer") {
+                            withAnimation {
+                                manager.restartExercice()
+                            }
+                        }
                         .padding()
-                    
+                        .background(Color.orange)
+                        .foregroundColor(.white)
+                        .cornerRadius(12)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .transition(.opacity.combined(with: .scale))
                 } else {
-                    
-                    QuizView(question: manager.currentQuestiion, showDiferentView: $valuePage, manager: $manager)
+                    QuizView(
+                        question: manager.currentQuestion,
+                        showDifferentView: $valuePage,
+                        manager: $manager
+                    )
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
                 }
+
+                Spacer()
             }
-        }       
+            .padding(.top, 40)
+            .animation(.easeInOut, value: manager.exerciceFinished)
+        }
     }
-    
 }
 
 #Preview {
@@ -47,31 +65,41 @@ struct ExerciceSoloView: View {
     }
 }
 
+// MARK: - QuizView
+
 struct QuizView: View {
     var question: QuizExercice
-    
-    @Binding var showDiferentView : Int
-    @Binding var manager:  ExerciceSoloManager
-    
+    @Binding var showDifferentView: Int
+    @Binding var manager: ExerciceSoloManager
+
     var body: some View {
-        VStack {
-            //            Text("\(showDiferentView)")
-            Text(manager.currentQuestiion.question)
-                .font(.largeTitle)
+        VStack(spacing: 20) {
+            Text(question.question)
+                .font(.title2)
+                .bold()
                 .multilineTextAlignment(.center)
                 .padding()
-                .bold()
+
             ForEach(question.choices, id: \.self) { choice in
-                QuizChoiceView(selectedChoice: $manager.selectedAnswer, showDiferentView: $showDiferentView, choices: choice,correctAnswer: question.goodAnswer)
-                
+                QuizChoiceView(
+                    selectedChoice: $manager.selectedAnswer,
+                    showDiferentView: $showDifferentView,
+                    choices: choice,
+                    correctAnswer: question.goodAnswer
+                )
             }
-            ContinueButtonView(title: "Question suivante", color: .customClearOrange) {
+
+            ContinueButtonView(
+                title: "Question suivante",
+                color: .customClearOrange
+            ) {
                 withAnimation {
-                    manager.goToNextQuestion()
+                    manager.answerCurrentQuestion(with: manager.selectedAnswer)
                 }
             }
             .frame(width: 300, height: 60)
-            .padding()
+            .padding(.top, 10)
         }
+        .padding()
     }
 }
