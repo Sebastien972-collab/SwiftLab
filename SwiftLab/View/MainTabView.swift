@@ -20,7 +20,7 @@ struct MainTabView: View {
                ProgressionView()
             }
             Tab("Jeux", systemImage: "gamecontroller.fill") {
-                Text("Mon parcours")
+                MultiGamesView()
             }
             Tab("Ressources", systemImage: "books.vertical.fill") {
                 RessourcesView()
