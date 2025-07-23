@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+
 struct CourseConsultationView: View {
     let course: Course
     var body: some View {
@@ -14,6 +16,13 @@ struct CourseConsultationView: View {
             Color.customBeige.ignoresSafeArea()
             ScrollView {
                 VStack(alignment: .leading) {
+                    HStack{
+                        MignatureParticipant(participants: User.userDatabase)
+                        InviteButton()
+                            .padding(.leading, 16)
+                    }
+                   
+                     
                     Text(course.text)
                         .font(.body)
                         .foregroundColor(.secondary)
@@ -33,19 +42,15 @@ struct CourseConsultationView: View {
                             }
                             
                             if let image = section.imageName {
-                                Image(image)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                                    .frame(maxWidth: .infinity, maxHeight: 300)
-                                    .clipped()
-                                
-                                
+                                ZoomableImageView(imageName: image)
                             }
+
                         }
                         .padding(.horizontal, 3)
                         Divider()
                     }
+                    StartExerciseButton()
+                        .padding(.top, 20 )
                     
                 }
                 .padding()
