@@ -79,5 +79,7 @@ struct CardGameView: View {
 }
 
 #Preview {
-    CardGameView()
+    
+        CardGameView()
+    
 }

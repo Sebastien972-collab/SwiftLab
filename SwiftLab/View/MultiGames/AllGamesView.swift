@@ -18,7 +18,13 @@ struct AllGamesView: View {
         ScrollView(.vertical){
             LazyVGrid(columns: columns, spacing: 25){
 //                for each des exo
-                CardGameView()
+                NavigationLink{
+                    BigCardGameView()
+                } label: {
+                    CardGameView() 
+                }
+                
+                
                 
                 
             }
@@ -27,5 +33,7 @@ struct AllGamesView: View {
 }
 
 #Preview {
-    AllGamesView()
+    
+        AllGamesView()
+   
 }

@@ -16,7 +16,10 @@ struct MultiGamesView: View {
                     HStack{
 //                       switch
                     }
-                    AllGamesView()
+
+                        AllGamesView()
+                   
+                    
                 }
                 .navigationTitle("Jouer")
             }
@@ -25,5 +28,7 @@ struct MultiGamesView: View {
 }
 
 #Preview {
-    MultiGamesView()
+    
+        MultiGamesView()
+    
 }
