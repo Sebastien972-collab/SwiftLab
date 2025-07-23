@@ -21,7 +21,9 @@ struct SignInView: View {
                 }
                 Spacer()
                 ContinueButtonView(title: "Se connecter", action: {
-                    manager.logInUser()
+                    withAnimation {
+                        manager.logInUser()
+                    }
                 })
                 Spacer()
                 ExternalConnectionMethodTypeList(selection: .signIn)

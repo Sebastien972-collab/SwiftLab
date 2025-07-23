@@ -23,7 +23,9 @@ struct SignUpView: View {
                 }
                 Spacer()
                 ContinueButtonView(title: "Créer un compte", action: {
-                    manager.signUp()
+                    withAnimation {
+                        manager.signUp()
+                    }
                 })
                 Spacer()
                 ExternalConnectionMethodTypeList(selection: .signUp)

@@ -18,6 +18,8 @@ class UserManager {
     func login(username: String, password: String) {
         // Exemple simplifié, à remplacer par de la vraie logique plus tard
         if username == currentUser.username && password == currentUser.password {
+            let newUser = User(username: username, password: password)
+            self.currentUser = newUser
             self.isConnected = true
         }
         self.isConnected = false
