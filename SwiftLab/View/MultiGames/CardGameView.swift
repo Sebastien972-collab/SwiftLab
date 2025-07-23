@@ -15,7 +15,7 @@ struct CardGameView: View {
                 Image(.sims)
                     .resizable()
                     .frame(width: 151, height: 93)
-                    .cornerRadius(20)
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
                     .padding(.top, 8)
                 Spacer()
                 VStack(alignment: .leading){

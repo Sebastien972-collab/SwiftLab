@@ -14,7 +14,7 @@ struct BigCardGameView: View {
                 Image(.sims)
                     .resizable()
                     .frame(width: 309, height: 184)
-                    .cornerRadius(20)
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
                     .padding(.top, 16)
                 
                 Text("nom du jeu")
@@ -35,7 +35,7 @@ struct BigCardGameView: View {
                     }
                     .frame(width: 110.0, height:33 )
                     .background(Color.customClearOrange)
-                    .cornerRadius(25)
+                    .clipShape(Capsule())
                 }
             }
             .padding(.horizontal,16)
