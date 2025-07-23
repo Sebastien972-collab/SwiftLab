@@ -14,7 +14,7 @@ struct BadgesListView: View {
     let columns = Array(repeating: GridItem(.flexible(), spacing: 16), count: 4)
 
     var body: some View {
-        VStack(alignment: .leading) {            
+        VStack(alignment: .leading) {
             if isScrollEnabled {
                 ScrollView {
                     badgeGrid
@@ -25,6 +25,8 @@ struct BadgesListView: View {
                     .padding()
             }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.customBeige.ignoresSafeArea())
     }
 
     private var badgeGrid: some View {
@@ -51,6 +53,7 @@ struct BadgesListView: View {
             }
         }
     }
+    
 
     private var displayedBadges: [Badge] {
         if let limit = limit {
@@ -61,6 +64,6 @@ struct BadgesListView: View {
     }
 }
 
-    #Preview {
-        BadgesListView(badges: Badge.all, isScrollEnabled: true)
-    }
+#Preview {
+    BadgesListView(badges: Badge.all, isScrollEnabled: true)
+}
