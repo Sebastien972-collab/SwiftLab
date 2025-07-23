@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+
 struct CourseConsultationView: View {
     let course: Course
     @State private var selectedImageName: Bool = false
@@ -16,10 +18,19 @@ struct CourseConsultationView: View {
             Color.customBeige.ignoresSafeArea()
             ScrollView {
                 VStack(alignment: .leading) {
+                    HStack{
+                        MignatureParticipant(participants: User.userDatabase)
+                        InviteButton()
+                            .padding(.leading, 16)
+                    }
+                   
+                     
                     Text(course.text)
                         .font(.body)
                         .foregroundColor(.secondary)
-                    CourseVideo()
+                    VideoCardView()
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 300)
                     ForEach(course.section) { section in
                         VStack(alignment: .leading) {
                             Text(section.title)
@@ -31,34 +42,19 @@ struct CourseConsultationView: View {
                                     .padding()
                                     .background(Color.gray.opacity(0.1))
                                     .clipShape(RoundedRectangle(cornerRadius: 8))
+                                
                             }
                             
                             if let image = section.imageName {
-                                Image(image)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                                    .frame(maxWidth: .infinity, maxHeight: 300)
-                                    .clipped()
-                                    .contextMenu {
-                                        Button {
-                                            self.image = Image(image)
-                                            selectedImageName.toggle()
-                                        } label: {
-                                            Label("Examiner l'image", systemImage: "eye")
-                                        }
-
-                                        Button(action: {
-                                            // Action pour sauvegarder l'image
-                                        }) {
-                                            Label("Enregistrer l'image", systemImage: "square.and.arrow.down")
-                                        }
-                                    }
+                                ZoomableImageView(imageName: image)
                             }
+
                         }
                         .padding(.horizontal, 3)
                         Divider()
                     }
+                    StartExerciseButton()
+                        .padding(.top, 20 )
                     
                 }
                 .padding()
