@@ -27,6 +27,7 @@ struct AllGamesView: View {
                 
                 
                 
+                
             }
         }
     }

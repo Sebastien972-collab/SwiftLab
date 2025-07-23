@@ -72,6 +72,7 @@ struct CardGameView: View {
             }
             .padding(.horizontal,7)
         }
+        .foregroundStyle(.black)
         .frame(width: 167, height: 199)
         .background(.accent )
         .clipShape(RoundedRectangle(cornerRadius: 16))
