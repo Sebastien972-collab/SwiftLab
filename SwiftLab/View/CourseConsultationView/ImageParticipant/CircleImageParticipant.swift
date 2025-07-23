@@ -14,7 +14,7 @@ struct CircleImageParticipant: View {
             image
                 .resizable()
                 .scaledToFill()
-                .frame(maxWidth: 40, maxHeight: 40)
+                .frame(maxWidth: 15, maxHeight: 15)
                 .clipShape(Circle())
         } placeholder: {
             ProgressView()

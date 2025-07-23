@@ -32,7 +32,7 @@ extension Course {
         Course(
             id: UUID(),
             title: "Introduction à Swift",
-            videoUrl: "https://example.com/video1",
+            videoUrl: "https://vimeo.com/536908653",
             text: "Découverte du langage Swift, son historique et ses avantages.",
             image: "cours1_image.png",
             mentalCard: "carte_mentale_1.png",

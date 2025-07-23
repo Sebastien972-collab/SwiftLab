@@ -45,6 +45,7 @@ struct MignatureParticipant: View {
                             .offset(x: CGFloat(index) * 13)
                     }
                 }
+               
             }
             .padding(.trailing, 25)
         }

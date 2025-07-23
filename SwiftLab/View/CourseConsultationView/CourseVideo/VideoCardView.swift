@@ -10,17 +10,41 @@ import AVKit
 
 
 struct VideoCardView: View {
-    let videoURL: URL
+    //let videoURL: URL
+    @State private var showVideo: Bool = false
 
     var body: some View {
-        VideoPlayer(player: AVPlayer(url: videoURL))
-            .frame(height: 220)
-            .cornerRadius(16)
-            .shadow(radius: 4)
-            .padding(.horizontal)
+        if showVideo, let path = Bundle.main.path(forResource: "video1", ofType: "mp4") {
+            let player = AVPlayer(url: URL(fileURLWithPath: path))
+            VideoPlayer(player: player)
+                .frame(maxWidth: .infinity, maxHeight: 300)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .padding()
+                .onAppear {
+                    player.play()
+                }
+            
+        } else {
+            ZStack {
+                Color.black
+                    .frame(maxWidth: .infinity, maxHeight: 300)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .padding()
+                Button {
+                    withAnimation {
+                        showVideo = true
+                    }
+                } label: {
+                    Image(systemName: "play.circle")
+                        .foregroundStyle(.white)
+                        .font(.largeTitle)
+                }
+            }
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+        }
     }
 }
 
 #Preview {
-    VideoCardView(videoURL: URL(string: "https://www.youtube.com/watch?v=pNs9F1QTKpw")!)
+    VideoCardView()
 }

@@ -26,7 +26,9 @@ struct CourseConsultationView: View {
                     Text(course.text)
                         .font(.body)
                         .foregroundColor(.secondary)
-                    CourseVideo()
+                    VideoCardView()
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 300)
                     ForEach(course.section) { section in
                         VStack(alignment: .leading) {
                             Text(section.title)
