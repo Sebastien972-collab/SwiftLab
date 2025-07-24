@@ -13,15 +13,14 @@ struct CircleImageProfil: View {
         if let url = url {
             AsyncImage(url: url) { phase in
                 if let image = phase.image {
-                    // Displays the loaded image.
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .clipShape(Circle())
-                        .frame(maxWidth: 150, maxHeight: 150)
+                        .frame(maxWidth: 120, maxHeight: 120)
                         
                 } else {
-                    ProgressView() // Acts as a placeholder.
+                    ProgressView()
                 }
             }
         }
