@@ -28,7 +28,7 @@ struct CourseConsultationView: View {
                     Text(course.text)
                         .font(.body)
                         .foregroundColor(.secondary)
-                    VideoCardView()
+                    VideoCardView(imageName: course.videoName ?? "video1")
                         .frame(maxWidth: .infinity)
                         .frame(height: 300)
                     ForEach(course.section) { section in
