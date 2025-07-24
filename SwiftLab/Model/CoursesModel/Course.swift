@@ -16,8 +16,7 @@ struct Course: Identifiable, Equatable {
     var image: String
     var mentalCard: String
     var section: [SectionOfCourses] = []
-  
-    
+    let test: Quiz
     var isFinished: Bool = false
     var isInProgress: Bool = false
     
@@ -60,7 +59,16 @@ extension Course {
  """, imageName: nil),
                 SectionOfCourses(title: "Tableau synthèse ", text: nil, imageName: "cours-1-image-tableau"),
                 SectionOfCourses(title: "Carte Mentale", text: nil, imageName: "cours-1-carte-mentale")
-                     ]),
+            ], test: Quiz(
+                text: "Quel est l'avantage principal de SwiftUI par rapport à UIKit ?",
+                answer: "Il permet de décrire l'interface de manière déclarative",
+                choices: [
+                    "Il est compatible avec Android",
+                    "Il nécessite plus de code mais est plus rapide",
+                    "Il permet de décrire l'interface de manière déclarative",
+                    "Il remplace automatiquement les images par des icônes"
+                ]
+            )),
         
         
         Course(
@@ -88,7 +96,17 @@ extension Course {
  """, imageName: nil),
                 SectionOfCourses(title: "Tableau synthèse ", text: nil, imageName: "cours-2-image-tableau"),
                 SectionOfCourses(title: "Carte Mentale", text: nil, imageName: "cours-2-carte-mentale")
-                     ]),
+            ], test: Quiz(
+                text: "Quelle est la différence entre 'let' et 'var' en Swift ?",
+                answer: "'let' crée une constante, 'var' une variable",
+                choices: [
+                    "'let' est utilisé pour les chaînes, 'var' pour les nombres",
+                    "'let' crée une constante, 'var' une variable",
+                    "'var' est réservé aux fonctions",
+                    "'let' ne fonctionne qu’avec les Booléens"
+                ]
+            )
+),
             
             
         Course(
@@ -134,7 +152,17 @@ extension Course {
  """, imageName: nil),
                 SectionOfCourses(title: "Tableau synthèse ", text: nil, imageName: "cours-3-image-tableau"),
                 SectionOfCourses(title: "Carte Mentale", text: nil, imageName: "cours-3-carte-mentale")
-                     ]
+            ], test: Quiz(
+                text: "Quel opérateur retourne 'true' uniquement si les deux conditions sont vraies ?",
+                answer: "&&",
+                choices: [
+                    "||",
+                    "&&",
+                    "!",
+                    "=="
+                ]
+            )
+
         ),
         
 
@@ -183,7 +211,17 @@ extension Course {
  """, imageName: nil),
                 SectionOfCourses(title: "Tableau synthèse ", text: nil, imageName: "cours-4-image-tableau"),
                 SectionOfCourses(title: "Carte Mentale", text: nil, imageName: "cours-4-carte-mentale")
-                     ]
+            ], test: Quiz(
+                text: "Quelle structure est la plus adaptée pour gérer plusieurs cas précis dans Swift ?",
+                answer: "switch",
+                choices: [
+                    "if / else",
+                    "while",
+                    "for",
+                    "switch"
+                ]
+            )
+
         ),
         
         
@@ -197,7 +235,17 @@ extension Course {
             videoName: "https://example.com/video5",
             text: "Utilisation de if, else et switch.",
             image: "cours5_image.png",
-            mentalCard: "carte_mentale_5.png",
+            mentalCard: "carte_mentale_5.png", test: Quiz(
+                text: "Que fait une structure 'if' en Swift ?",
+                answer: "Elle exécute un bloc de code si une condition est vraie",
+                choices: [
+                    "Elle affiche toujours un message d'erreur",
+                    "Elle répète une action plusieurs fois",
+                    "Elle exécute un bloc de code si une condition est vraie",
+                    "Elle importe un fichier externe"
+                ]
+            )
+,
         ),
         Course(
             id: UUID(),
@@ -205,7 +253,17 @@ extension Course {
             videoName: "https://example.com/video6",
             text: "Répéter des actions avec for et while.",
             image: "cours6_image.png",
-            mentalCard: "carte_mentale_6.png",
+            mentalCard: "carte_mentale_6.png", test: Quiz(
+                text: "Quelle est la différence entre 'for' et 'while' ?",
+                answer: "'for' s’utilise avec un nombre d’itérations connu, 'while' avec une condition dynamique",
+                choices: [
+                    "'for' répète à l’infini",
+                    "'while' est utilisé uniquement dans UIKit",
+                    "'for' est plus rapide que 'while'",
+                    "'for' s’utilise avec un nombre d’itérations connu, 'while' avec une condition dynamique"
+                ]
+            )
+,
         ),
         Course(
             id: UUID(),
@@ -213,7 +271,17 @@ extension Course {
             videoName: "https://example.com/video7",
             text: "Définir et appeler des fonctions en Swift.",
             image: "cours7_image.png",
-            mentalCard: "carte_mentale_7.png",
+            mentalCard: "carte_mentale_7.png", test: Quiz(
+                text: "Comment appelle-t-on une fonction simple en Swift ?",
+                answer: "en utilisant son nom suivi de parenthèses",
+                choices: [
+                    "en déclarant une variable",
+                    "en écrivant 'call nomDeFonction'",
+                    "en utilisant son nom suivi de parenthèses",
+                    "avec la syntaxe 'function nom()'"
+                ]
+            )
+,
         ),
         Course(
             id: UUID(),
@@ -221,7 +289,17 @@ extension Course {
             videoName: "https://example.com/video8",
             text: "Comprendre les fonctions anonymes (closures).",
             image: "cours8_image.png",
-            mentalCard: "carte_mentale_8.png",
+            mentalCard: "carte_mentale_8.png", test: Quiz(
+                text: "Qu’est-ce qu’une closure en Swift ?",
+                answer: "Une fonction sans nom que l’on peut passer comme valeur",
+                choices: [
+                    "Une classe spéciale",
+                    "Une fonction qui ferme une vue",
+                    "Une fonction sans nom que l’on peut passer comme valeur",
+                    "Un raccourci clavier"
+                ]
+            )
+,
         ),
         Course(
             id: UUID(),
@@ -229,7 +307,17 @@ extension Course {
             videoName: "https://example.com/video9",
             text: "Premiers pas avec SwiftUI et sa structure déclarative.",
             image: "cours9_image.png",
-            mentalCard: "carte_mentale_9.png",
+            mentalCard: "carte_mentale_9.png", test: Quiz(
+                text: "Comment SwiftUI définit-il une interface ?",
+                answer: "De façon déclarative, en fonction de l’état des données",
+                choices: [
+                    "En codant chaque pixel",
+                    "De façon impérative",
+                    "Avec des storyboard uniquement",
+                    "De façon déclarative, en fonction de l’état des données"
+                ]
+            )
+,
         ),
         Course(
             id: UUID(),
@@ -237,7 +325,17 @@ extension Course {
             videoName: "https://example.com/video10",
             text: "Architecture MVVM : séparation logique, vue et modèle.",
             image: "cours10_image.png",
-            mentalCard: "carte_mentale_10.png",
+            mentalCard: "carte_mentale_10.png", test: Quiz(
+                text: "Quel est l’objectif du pattern MVVM ?",
+                answer: "Séparer les responsabilités entre données, logique et interface",
+                choices: [
+                    "Créer un seul fichier de code pour tout faire",
+                    "Simplifier UIKit",
+                    "Fusionner modèle et vue",
+                    "Séparer les responsabilités entre données, logique et interface"
+                ]
+            )
+,
         )
     ]
 }

@@ -13,6 +13,7 @@ struct CourseConsultationView: View {
     let course: Course
     @State private var selectedImageName: Bool = false
     @State private var image: Image? = nil
+    @State private var showQuizt: Bool = false
     var body: some View {
         ZStack {
             Color.customBeige.ignoresSafeArea()
@@ -23,6 +24,7 @@ struct CourseConsultationView: View {
                         InviteButton()
                             .padding(.leading, 16)
                     }
+                    
                    
                      
                     Text(course.text)
@@ -53,9 +55,22 @@ struct CourseConsultationView: View {
                         .padding(.horizontal, 3)
                         Divider()
                     }
-                    StartExerciseButton()
-                        .padding(.top, 20 )
-                    
+                    HStack(content: {
+                        Spacer()
+                        ContinueButtonView(title: "Lancer exercise", color: .customClearOrange) {
+                            showQuizt.toggle()
+                        }
+                        Spacer()
+                    })
+                    .navigationDestination(isPresented: $showQuizt) {
+                        VStack {
+                            Text(course.test.text)
+                            Text("En cours de développement")
+                                .italic()
+                                .foregroundStyle(.secondary)
+                        }
+                        
+                    }
                 }
                 .padding()
                 .navigationTitle(course.title)
