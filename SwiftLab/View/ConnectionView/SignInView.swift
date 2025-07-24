@@ -9,6 +9,10 @@ import SwiftUI
 
 struct SignInView: View {
     @Binding var manager: ConnectionManager
+    enum Champs {
+    case username, password
+    }
+    @FocusState private var activeField: Champs?
     var body: some View {
         ZStack {
             Color.customBeige.ignoresSafeArea(edges: .all)
@@ -16,7 +20,20 @@ struct SignInView: View {
                 Spacer()
                 VStack(spacing: 20) {
                     CustomTextField(placeholder: "Email", text: $manager.username)
+                        .focused($activeField, equals: .username)
+                        .submitLabel(.next)
+                        .onSubmit {
+                            activeField = .password
+                        }
                     CustomSecureField(password: $manager.password)
+                        .focused($activeField, equals: .password)
+                        .submitLabel(.send)
+                        .onSubmit {
+                            activeField = nil
+                            withAnimation {
+                                manager.logInUser()
+                            }
+                        }
                     
                 }
                 Spacer()
@@ -39,8 +56,27 @@ struct SignInView: View {
                 Spacer()
             }
             .navigationTitle(Text("Se connecter"))
-            .alert(manager.error?.localizedDescription ?? "Erreur inattendue", isPresented: $manager.showError) {
-                Button("OK", role: .cancel) {}
+            .alert(
+                isPresented: $manager.showError,
+                error: manager.error
+            ) { error in
+                Button("OK", role: .cancel) {
+                    manager.showError = false
+                }
+            } message: { error in
+                Text(error.recoverySuggestion ?? "Désolé, un problème est survenu. Veuillez réessayer ultérieurement.")
+            }
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button {
+                        withAnimation {
+                            activeField = nil
+                        }
+                    } label: {
+                        Text("Ok")
+                    }
+
+                }
             }
         }
 
@@ -48,5 +84,7 @@ struct SignInView: View {
 }
 
 #Preview {
-    SignInView(manager: .constant(.init()))
+    NavigationStack {
+        SignInView(manager: .constant(.init()))
+    }
 }

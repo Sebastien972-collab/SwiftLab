@@ -21,7 +21,7 @@ final class User: Identifiable, Equatable {
     
     
     static func == (lhs: User, rhs: User) -> Bool {
-        lhs.username == rhs.username && lhs.imageUrl == rhs.imageUrl
+        lhs.username == rhs.username
     }
     
     //MARK: - Add functions
@@ -71,7 +71,11 @@ extension User {
             User(username: "Asia", password: "", imageUrl: URL(string: "https://images.pexels.com/photos/21134688/pexels-photo-21134688.jpeg")!),
             User(username: "Marthe", password: "",imageUrl: URL(string: "https://images.pexels.com/photos/3436831/pexels-photo-3436831.jpeg")!),
             User(username: "Robert", password: "",imageUrl: URL(string: "https://images.pexels.com/photos/28578372/pexels-photo-28578372.jpeg")!),
-            User(username: "Vanessa", password: "",imageUrl: URL(string: "https://images.pexels.com/photos/18316138/pexels-photo-18316138.jpeg")!)
+            User(username: "Vanessa", password: "",imageUrl: URL(string: "https://images.pexels.com/photos/18316138/pexels-photo-18316138.jpeg")!),
+            User(username: "Sebby", password: "sebby"),
+            User(username: "bob", password: "1234"),
+            User(username: "Tipsy", password: "tipsy"),
+            User(username: "Dembo", password: "777")
         ]
     
         return users
@@ -79,3 +83,4 @@ extension User {
 
 
 }
+

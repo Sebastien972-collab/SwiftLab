@@ -12,6 +12,7 @@ struct ConnectionView: View {
     @State private var manager = ConnectionManager()
     @State private var signInViewisPresented: Bool = false
     @State private var registerViewisPresented: Bool = false
+    
     var body: some View {
         NavigationStack {
             ZStack {
