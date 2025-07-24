@@ -15,14 +15,24 @@ class UserManager {
     var isEditing: Bool = false
 
     // MARK: - Authentification
-    func login(username: String, password: String) {
+    func login(username: String, password: String) throws {
         // Exemple simplifié, à remplacer par de la vraie logique plus tard
-        if username == currentUser.username && password == currentUser.password {
-            let newUser = User(username: username, password: password)
-            self.currentUser = newUser
-            self.isConnected = true
+        let newUser = User(username: username, password: password)
+        guard User.userDatabase.contains(newUser) else {
+            print("User \(newUser.username) with password \(newUser.password) is not logged in")
+            throw ConnectionError.usernameNotFound
         }
-        self.isConnected = false
+        for user in User.userDatabase {
+            if newUser == user {
+                if user.password == newUser.password {
+                    self.isConnected = true
+                } else {
+                    throw ConnectionError.wrongPassword
+                }
+            }
+        }
+        print("User \(newUser.username) is logged in")
+        self.isConnected = true
     }
     
     func logout() {

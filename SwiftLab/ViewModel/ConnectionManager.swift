@@ -8,7 +8,7 @@
 import Foundation
 
 @Observable
-class ConnectionManager {
+final class ConnectionManager {
     
     var userManager: UserManager = .init()
     var username: String = ""
@@ -25,13 +25,19 @@ class ConnectionManager {
     
     func logInUser()  {
         guard checkField() else { return }
-        userManager.login(username: username, password: password)
+        do {
+            try userManager.login(username: username, password: password)
+        } catch  {
+            self.error = error as? ConnectionError ?? .unknownError
+            self.showError = true
+        }
     }
     
     func signUp() {
         guard checkField() else { return }
         userManager.register(username: username, password: password)
     }
+    
     
     
     func checkField() -> Bool {

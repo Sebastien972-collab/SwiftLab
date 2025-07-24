@@ -11,7 +11,7 @@ struct Course: Identifiable, Equatable {
     
     var id: UUID
     var title: String
-    var videoUrl: String?
+    var videoName: String?
     var text: String
     var image: String
     var mentalCard: String
@@ -34,7 +34,7 @@ extension Course {
         Course(
             id: UUID(),
             title: "Introduction à Swift",
-            videoUrl: "https://vimeo.com/536908653",
+            videoName: "video1",
             text: "Découverte du langage Swift, son historique et ses avantages.",
             image: "cours1_image.png",
             mentalCard: "carte_mentale_1.png",
@@ -66,7 +66,7 @@ extension Course {
         Course(
             id: UUID(),
             title: "Variables, constantes et types de données en Swift",
-            videoUrl: "https://example.com/video2",
+            videoName: "video2",
             text: "Apprenez à déclarer des variables et des constantes en Swift.",
             image: "cours2_image.png",
             mentalCard: "carte_mentale_2.png",
@@ -94,7 +94,7 @@ extension Course {
         Course(
             id: UUID(),
             title: "Opérateurs",
-            videoUrl: "https://example.com/video4",
+            videoName: "video3",
             text: "Addition, soustraction, comparaison et logique.",
             image: "cours4_image.png",
             mentalCard: "carte_mentale_4.png",
@@ -141,7 +141,7 @@ extension Course {
         Course(
             id: UUID(),
             title: "Les Structures de Contrôle en Swift",
-            videoUrl: "https://example.com/video3",
+            videoName: "video4",
             text: "Comprendre les structure de contrôle comme les conditions et les boucles.",
             image: "cours3_image.png",
             mentalCard: "carte_mentale_3.png",
@@ -194,7 +194,7 @@ extension Course {
         Course(
             id: UUID(),
             title: "Conditions",
-            videoUrl: "https://example.com/video5",
+            videoName: "https://example.com/video5",
             text: "Utilisation de if, else et switch.",
             image: "cours5_image.png",
             mentalCard: "carte_mentale_5.png",
@@ -202,7 +202,7 @@ extension Course {
         Course(
             id: UUID(),
             title: "Boucles",
-            videoUrl: "https://example.com/video6",
+            videoName: "https://example.com/video6",
             text: "Répéter des actions avec for et while.",
             image: "cours6_image.png",
             mentalCard: "carte_mentale_6.png",
@@ -210,7 +210,7 @@ extension Course {
         Course(
             id: UUID(),
             title: "Fonctions",
-            videoUrl: "https://example.com/video7",
+            videoName: "https://example.com/video7",
             text: "Définir et appeler des fonctions en Swift.",
             image: "cours7_image.png",
             mentalCard: "carte_mentale_7.png",
@@ -218,7 +218,7 @@ extension Course {
         Course(
             id: UUID(),
             title: "Closures",
-            videoUrl: "https://example.com/video8",
+            videoName: "https://example.com/video8",
             text: "Comprendre les fonctions anonymes (closures).",
             image: "cours8_image.png",
             mentalCard: "carte_mentale_8.png",
@@ -226,7 +226,7 @@ extension Course {
         Course(
             id: UUID(),
             title: "SwiftUI Introduction",
-            videoUrl: "https://example.com/video9",
+            videoName: "https://example.com/video9",
             text: "Premiers pas avec SwiftUI et sa structure déclarative.",
             image: "cours9_image.png",
             mentalCard: "carte_mentale_9.png",
@@ -234,7 +234,7 @@ extension Course {
         Course(
             id: UUID(),
             title: "MVVM",
-            videoUrl: "https://example.com/video10",
+            videoName: "https://example.com/video10",
             text: "Architecture MVVM : séparation logique, vue et modèle.",
             image: "cours10_image.png",
             mentalCard: "carte_mentale_10.png",

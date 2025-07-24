@@ -10,11 +10,11 @@ import AVKit
 
 
 struct VideoCardView: View {
-    //let videoURL: URL
+    let imageName: String
     @State private var showVideo: Bool = false
 
     var body: some View {
-        if showVideo, let path = Bundle.main.path(forResource: "video1", ofType: "mp4") {
+        if showVideo, let path = Bundle.main.path(forResource: imageName, ofType: "mp4") {
             let player = AVPlayer(url: URL(fileURLWithPath: path))
             VideoPlayer(player: player)
                 .frame(maxWidth: .infinity, maxHeight: 300)
@@ -46,5 +46,5 @@ struct VideoCardView: View {
 }
 
 #Preview {
-    VideoCardView()
+    VideoCardView(imageName: "video1")
 }
