@@ -23,11 +23,7 @@ struct AllGamesView: View {
                 } label: {
                     CardGameView() 
                 }
-                
-                
-                
-                
-                
+    
             }
         }
     }

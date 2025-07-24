@@ -16,10 +16,8 @@ struct MultiGamesView: View {
                     HStack{
 //                       switch
                     }
-
                         AllGamesView()
-                   
-                    
+  
                 }
                 .navigationTitle("Jouer")
             }
