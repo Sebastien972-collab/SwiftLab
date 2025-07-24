@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ConnectionView: View {
-    let userManger: UserManager
+    @Environment(UserManager.self) private var userManager
     @State private var manager = ConnectionManager()
     @State private var signInViewisPresented: Bool = false
     @State private var registerViewisPresented: Bool = false
@@ -30,14 +30,14 @@ struct ConnectionView: View {
                     
                     VStack(spacing: 15) {
                         ContinueButtonView(title: "Connexion", action: {
-                            manager.userManager = userManger
+                            manager.userManager = userManager
                             signInViewisPresented.toggle()
                         })
                         .navigationDestination(isPresented: $signInViewisPresented) {
                             SignInView(manager: $manager)
                         }
                         ContinueButtonView(title: "Inscription", color: .white, action: {
-                            manager.userManager = userManger
+                            manager.userManager = userManager
                             registerViewisPresented.toggle()
                         })
                         .navigationDestination(isPresented: $registerViewisPresented) {
@@ -46,13 +46,9 @@ struct ConnectionView: View {
                     }
                     
                     Spacer()
-                    Button {
-                        
-                    } label: {
-                        Text("Continuer en tant qu'invité")
-                            .underline()
-                            .foregroundStyle(.black)
-                            .bold()
+                    GuestContinueButton {
+                        manager.userManager = userManager
+                        manager.loginInGest()
                     }
                 }
             }
@@ -61,5 +57,6 @@ struct ConnectionView: View {
 }
 
 #Preview {
-    ConnectionView(userManger: .init())
+    ConnectionView()
+        .environment(UserManager())
 }
