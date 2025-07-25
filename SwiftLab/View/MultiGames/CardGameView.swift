@@ -12,15 +12,21 @@ struct CardGameView: View {
         VStack{
             VStack{
                 
-                Image(.sims)
+                Image(Multigames.exercice1.image)
                     .resizable()
                     .frame(width: 151, height: 93)
                     .clipShape(RoundedRectangle(cornerRadius: 16))
                     .padding(.top, 8)
                 Spacer()
                 VStack(alignment: .leading){
-                    Text("non du games")
+                    Text(Multigames.exercice1.name)
+                        .lineLimit(2)
+                        .fixedSize(horizontal: false, vertical: true)
                         .fontWeight(.medium)
+                        
+                        
+                        
+                        
 
                     HStack(spacing: 2){
                         Text("difficulté :")
@@ -66,14 +72,15 @@ struct CardGameView: View {
                             
                         }
                         
-                    }.padding(.bottom)
+                    }.padding(.bottom,8)
                     
                 }
+                
             }
             .padding(.horizontal,7)
         }
         .foregroundStyle(.black)
-        .frame(width: 167, height: 199)
+        .frame(width: 167, height: 209)
         .background(.accent )
         .clipShape(RoundedRectangle(cornerRadius: 16))
     }

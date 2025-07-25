@@ -13,17 +13,17 @@ let columns = [
     
 ]
 struct AllGamesView: View {
-    
+//    @State var games = MultiGamesManager()
     var body: some View {
         ScrollView(.vertical){
             LazyVGrid(columns: columns, spacing: 25){
-//                for each des exo
-                NavigationLink{
-                    BigCardGameView()
-                } label: {
-                    CardGameView() 
-                }
-    
+//                ForEach(Multigames.allGames) { games in
+                    NavigationLink{
+                        BigCardGameView()
+                    } label: {
+                        CardGameView()
+                    }
+//                }
             }
         }
     }

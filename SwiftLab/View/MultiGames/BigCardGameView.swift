@@ -13,16 +13,17 @@ struct BigCardGameView: View {
             Color.customBeige.ignoresSafeArea()
             VStack{
                 VStack(alignment: .leading){
-                    Image(.sims)
+                    Image(Multigames.exercice1.image)
                         .resizable()
                         .frame(width: 309, height: 184)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                         .padding(.top, 16)
                     
-                    Text("nom du jeu")
-                        .fontWeight(.medium)
+                    Text(Multigames.exercice1.name)
+                        .font(.title2)
+                        .fontWeight(.bold)
                     
-                    Text("decsriptif du jeux")
+                    Text(Multigames.exercice1.description)
                         .fontWeight(.medium)
                     Spacer()
                     HStack {
