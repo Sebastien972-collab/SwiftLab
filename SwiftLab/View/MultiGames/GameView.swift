@@ -100,6 +100,7 @@ struct GameView: View {
                         }
                         
                         .padding(.horizontal,10)
+                        .padding(.top,5)
                         if let isCorrect = isCorrect {
                             Text(isCorrect ? " Bonne réponse !" : " Mauvaise réponse")
                                 .foregroundStyle(isCorrect ? .green : .red)
