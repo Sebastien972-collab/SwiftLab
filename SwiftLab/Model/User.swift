@@ -8,7 +8,7 @@
 import Foundation
 
 
-final class User: Identifiable, Equatable {
+final class User: Identifiable, Equatable{
     
     let id = UUID()
     var username: String

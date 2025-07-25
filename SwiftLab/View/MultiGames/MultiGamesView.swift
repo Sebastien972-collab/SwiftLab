@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct MultiGamesView: View {
+    
     var body: some View {
-        NavigationStack{
+        NavigationStack(){
             ZStack{
                 Color.customBeige.ignoresSafeArea()
                 VStack{
                     HStack{
 //                       switch
                     }
-                        AllGamesView()
+                    AllGamesView()
+
   
                 }
                 .navigationTitle("Jouer")

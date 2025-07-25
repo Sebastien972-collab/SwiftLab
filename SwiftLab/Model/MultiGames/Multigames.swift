@@ -23,7 +23,9 @@ struct Multigames :Identifiable  {
         name: "Déclaration de variable",
         difficulte: 1,
         description: "Complète la déclaration pour créer une variable appelée nom avec la valeur \"Jean\"",
-        goodAnswer: "var nom = \"Jean\"",
+        goodAnswer: """
+        var nom = "Jean"
+        """,
         group: [],
         image: "sims" ,
         codeBefore: "",

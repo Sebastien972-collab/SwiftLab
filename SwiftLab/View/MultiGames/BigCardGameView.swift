@@ -9,6 +9,7 @@ import SwiftUI
 
 struct BigCardGameView: View {
     let game : Multigames
+
     var body: some View {
         ZStack{
             Color.customBeige.ignoresSafeArea()
@@ -32,6 +33,7 @@ struct BigCardGameView: View {
                         NavigationLink {
                             
                             GameView(game: game)
+
                             
                         } label: {
                             Text("lancer")

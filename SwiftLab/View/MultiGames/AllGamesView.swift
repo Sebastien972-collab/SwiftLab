@@ -14,7 +14,7 @@ let columns = [
 ]
 struct AllGamesView: View {
     @State private var manager = MultiGamesManager()
-    @State private var path = NavigationPath()
+
        
     var body: some View {
         
@@ -30,6 +30,7 @@ struct AllGamesView: View {
                     }
                 }
             }
+
             
         
     }
@@ -37,6 +38,6 @@ struct AllGamesView: View {
 
 #Preview {
     
-        AllGamesView()
+    AllGamesView( )
    
 }
