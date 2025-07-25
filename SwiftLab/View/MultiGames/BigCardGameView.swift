@@ -8,29 +8,30 @@
 import SwiftUI
 
 struct BigCardGameView: View {
+    let game : Multigames
     var body: some View {
         ZStack{
             Color.customBeige.ignoresSafeArea()
             VStack{
                 VStack(alignment: .leading){
-                    Image(Multigames.exercice1.image)
+                    Image(game.image)
                         .resizable()
                         .frame(width: 309, height: 184)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                         .padding(.top, 16)
                     
-                    Text(Multigames.exercice1.name)
+                    Text(game.name)
                         .font(.title2)
                         .fontWeight(.bold)
                     
-                    Text(Multigames.exercice1.description)
+                    Text(game.description)
                         .fontWeight(.medium)
                     Spacer()
                     HStack {
                         Spacer()
                         NavigationLink {
                             
-                            GameView()
+                            GameView(game: game)
                             
                         } label: {
                             Text("lancer")
@@ -56,6 +57,6 @@ struct BigCardGameView: View {
 
 #Preview {
     
-        BigCardGameView()
+        BigCardGameView(game: Multigames.exercice1)
     
 }

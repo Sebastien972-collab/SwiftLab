@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Multigames :Identifiable{
+struct Multigames :Identifiable  {
     var id : UUID
     var name : String
     var difficulte : Int

@@ -8,55 +8,45 @@
 import SwiftUI
 
 struct CardGameView: View {
+    
+    let game : Multigames
+    
     var body: some View {
+        
         VStack{
             VStack{
                 
-                Image(Multigames.exercice1.image)
+                Image(game.image)
                     .resizable()
                     .frame(width: 151, height: 93)
                     .clipShape(RoundedRectangle(cornerRadius: 16))
                     .padding(.top, 8)
                 Spacer()
                 VStack(alignment: .leading){
-                    Text(Multigames.exercice1.name)
+                    Text(game.name)
                         .lineLimit(2)
                         .fixedSize(horizontal: false, vertical: true)
                         .fontWeight(.medium)
-                        
-                        
-                        
-                        
-
+                    
+                    
+                    
+                    
+                    
                     HStack(spacing: 2){
                         Text("difficulté :")
                             .font(.caption)
                             .fontWeight(.medium)
                         Spacer()
                         
-                        // for each etoile jaune
-                        // for each etoile grise en z stack??
-                        Image(systemName: "star.fill")
-                            .resizable()
-                            .frame(width: 14, height: 14)
-                            
-                        Image(systemName: "star.fill")
-                            .resizable()
-                            .frame(width: 14, height: 14)
-                            
-                            
-                        Image(systemName: "star.fill")
-                            .resizable()
-                            .frame(width: 14, height: 14)
-                            
-                        Image(systemName: "star.fill")
-                            .resizable()
-                            .frame(width: 14, height: 14)
-                            
-                        Image(systemName: "star.fill")
-                            .resizable()
-                            .frame(width: 14, height: 14)
-                            
+                        
+                        ForEach(0..<5, id: \.self) { index in
+                            Image(systemName: index < game.difficulte ? "star.fill" : "star")
+                                
+                                .resizable()
+                                .frame(width: 14, height: 14)
+                                
+                        }
+                       
                     }
                     HStack{
                         Text("En ligne")
@@ -64,12 +54,13 @@ struct CardGameView: View {
                             .fontWeight(.medium)
                         Spacer()
                         ZStack{
-                            Image(systemName: "pencil.circle.fill")
-                                .resizable()
-                                .frame(width: 14, height: 14)
-                            
-                           //metre laffichage a dembo
-                            
+//                            ForEach(game.group) { _ in joueur
+                                Image(systemName: "pencil.circle.fill")
+                                    .resizable()
+                                    .frame(width: 14, height: 14)
+                                
+                                //metre laffichage a dembo
+//                            }
                         }
                         
                     }.padding(.bottom,8)
@@ -88,6 +79,6 @@ struct CardGameView: View {
 
 #Preview {
     
-        CardGameView()
+    CardGameView(game: Multigames.exercice1)
     
 }
