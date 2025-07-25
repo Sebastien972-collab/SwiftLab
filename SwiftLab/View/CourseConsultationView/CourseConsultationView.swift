@@ -10,9 +10,9 @@ import SwiftUI
 
 
 struct CourseConsultationView: View {
+    var manager: CourseManager = .init()
     let course: Course
     @State private var selectedImageName: Bool = false
-    @State private var image: Image? = nil
     @State private var showQuizt: Bool = false
     var body: some View {
         ZStack {
@@ -24,9 +24,6 @@ struct CourseConsultationView: View {
                         InviteButton()
                             .padding(.leading, 16)
                     }
-                    
-                   
-                     
                     Text(course.text)
                         .font(.body)
                         .foregroundColor(.secondary)
@@ -52,6 +49,9 @@ struct CourseConsultationView: View {
                             }
 
                         }
+                        .onAppear(perform: {
+
+                        })
                         .padding(.horizontal, 3)
                         Divider()
                     }
@@ -77,6 +77,9 @@ struct CourseConsultationView: View {
                 .navigationBarTitleDisplayMode(.inline)
                 
             }
+        }
+        .onAppear {
+            manager.launchCourse(course)
         }
     }
 }

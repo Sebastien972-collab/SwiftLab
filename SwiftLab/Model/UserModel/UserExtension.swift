@@ -1,51 +1,11 @@
 //
-//  User.swift
+//  UserExtension.swift
 //  SwiftLab
 //
-//  Created by Sébastien Daguin on 07/07/2025.
+//  Created by Sébastien Daguin on 25/07/2025.
 //
 
 import Foundation
-
-
-final class User: Identifiable, Equatable {
-    
-    let id = UUID()
-    var username: String
-    var password: String
-    var imageUrl: URL?
-    var coursesInProgress: [Course] = []
-    var exoInProgress: [Exercices] = []
-    
-
-    
-    
-    static func == (lhs: User, rhs: User) -> Bool {
-        lhs.username == rhs.username
-    }
-    
-    //MARK: - Add functions
-    func addExoInProgress(_ course: Exercices) {
-        guard !exoInProgress.contains(where: { $0 == course }) else { return }
-        exoInProgress.append(course)
-       
-    }
-    
-    func removeExoInProgresse(_ exercice: Exercices) {
-        guard exoInProgress.contains(exercice), let index = exoInProgress.firstIndex(of: exercice) else { return }
-        exoInProgress.remove(at: index)
-    }
-    
-    init(username: String, password: String) {
-        self.username = username
-        self.password = password
-    }
-    convenience init(username: String, password: String, imageUrl: URL) {
-        self.init(username: username, password: password)
-        self.imageUrl = imageUrl
-    }
-    
-}
 
 extension User {
     static var guest: User {
@@ -80,7 +40,9 @@ extension User {
     
         return users
     }
-
-
 }
-
+extension User: Equatable {
+    static func == (lhs: User, rhs: User) -> Bool {
+        lhs.username == rhs.username
+    }
+}

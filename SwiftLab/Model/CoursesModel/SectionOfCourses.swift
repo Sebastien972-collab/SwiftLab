@@ -7,9 +7,10 @@
 
 import Foundation
 
-struct SectionOfCourses: Identifiable {
+struct SectionOfCourses: Identifiable, Equatable {
     let id: UUID = UUID()
     let title: String
     let text: String?
     let imageName: String?
+    var isRead: Bool = false
 }

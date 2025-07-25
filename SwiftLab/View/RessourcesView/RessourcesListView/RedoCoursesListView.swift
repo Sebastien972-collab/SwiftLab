@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct RedoCoursesListView: View {
+    @State var allCourses = Course.allCourses
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack {
@@ -26,7 +27,7 @@ struct RedoCoursesListView: View {
             // Horizontal scrollable carousel
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
-                    ForEach(Course.allCourses) { course in
+                    ForEach($allCourses) { $course in
                         NavigationLink(destination: CourseConsultationView(course: course)) {
                             RessourcesCoursesCard(course: course)
                         }

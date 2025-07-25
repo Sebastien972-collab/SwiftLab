@@ -8,15 +8,10 @@
 import SwiftUI
 
 struct CarouselCustomCourse: View {
-    let title: String
-    
-    init(title: String = "Cours") {
-        self.title = title
-    }
-    
+    @State private var manager: CourseManager = .init()
+    var title: String  = "Cours"
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            
             HStack {
                 Text(title)
                     .font(.title2)
@@ -27,17 +22,15 @@ struct CarouselCustomCourse: View {
                     Text("Voir tous")
                         .font(.caption)
                 }
-
             }
             .padding(.horizontal)
-            
             ScrollView(.horizontal, showsIndicators: false) {
                 LazyHStack(spacing: 16) {
-                    ForEach(Course.allCourses) { course in
+                    ForEach(manager.allCourses) { course in
                         NavigationLink {
-                            CourseConsultationView(course: course)
+                            CourseConsultationView(manager: manager, course: course)
                         } label: {
-                            CourseCard(course: course, progress: 0.45)
+                            CourseCard(course: course, progress: course.progressPercent)
                         }
                         .buttonStyle(.plain)
                         .scaleEffect(1.0)
