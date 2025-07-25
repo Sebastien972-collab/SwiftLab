@@ -72,15 +72,17 @@ class UserManager {
     
     // MARK: - Exercices
     func addExerciceInProgress(_ exercice: Exercices) {
+        guard !currentUser.exoInProgress.contains(exercice) else {return}
         currentUser.addExoInProgress(exercice)
     }
     
     func removeExerciceInProgress(_ exercice: Exercices) {
+        guard currentUser.exoInProgress.contains(exercice) else {return}
         currentUser.removeExoInProgresse(exercice)
     }
     
     func hasExerciceInProgress(_ exercice: Exercices) -> Bool {
-        return currentUser.exoInProgress.contains(where: { $0 == exercice })
+         currentUser.exoInProgress.contains(where: { $0 == exercice })
     }
     
     // MARK: - Cours
@@ -97,7 +99,7 @@ class UserManager {
     }
     
     func hasCourseInProgress(_ course: Course) -> Bool {
-        return currentUser.coursesInProgress.contains(where: { $0 == course })
+         currentUser.coursesInProgress.contains(where: { $0 == course })
     }
 
 }
