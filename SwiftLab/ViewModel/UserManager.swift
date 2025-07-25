@@ -16,24 +16,37 @@ class UserManager {
 
     // MARK: - Authentification
     func login(username: String, password: String) throws {
-        // Exemple simplifié, à remplacer par de la vraie logique plus tard
         let newUser = User(username: username, password: password)
+        
         guard User.userDatabase.contains(newUser) else {
-            print("User \(newUser.username) with password \(newUser.password) is not logged in")
             throw ConnectionError.usernameNotFound
         }
+
         for user in User.userDatabase {
-            if newUser == user {
+            if user.username == newUser.username {
                 if user.password == newUser.password {
+                    self.currentUser = user
                     self.isConnected = true
+                    print("User \(user.username) is logged in")
+                    return
                 } else {
                     throw ConnectionError.wrongPassword
                 }
             }
         }
-        print("User \(newUser.username) is logged in")
-        self.isConnected = true
+        
+        throw ConnectionError.unknownError
     }
+
+    
+    func loginInGuestMode() {
+        currentUser = .guest
+        isConnected = true
+        isWorking = false
+        isEditing = false
+        print("User is in guest mode")
+    }
+
     
     func logout() {
         isConnected = false
@@ -55,17 +68,21 @@ class UserManager {
         }
     }
     
+    
+    
     // MARK: - Exercices
     func addExerciceInProgress(_ exercice: Exercices) {
+        guard !currentUser.exoInProgress.contains(exercice) else {return}
         currentUser.addExoInProgress(exercice)
     }
     
     func removeExerciceInProgress(_ exercice: Exercices) {
+        guard currentUser.exoInProgress.contains(exercice) else {return}
         currentUser.removeExoInProgresse(exercice)
     }
     
     func hasExerciceInProgress(_ exercice: Exercices) -> Bool {
-        return currentUser.exoInProgress.contains(where: { $0 == exercice })
+         currentUser.exoInProgress.contains(where: { $0 == exercice })
     }
     
     // MARK: - Cours
@@ -82,7 +99,7 @@ class UserManager {
     }
     
     func hasCourseInProgress(_ course: Course) -> Bool {
-        return currentUser.coursesInProgress.contains(where: { $0 == course })
+         currentUser.coursesInProgress.contains(where: { $0 == course })
     }
 
 }

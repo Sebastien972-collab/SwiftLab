@@ -22,17 +22,23 @@ final class ConnectionManager {
     var isWorking: Bool = false
     var isEditing: Bool = false
     
-    
-    func logInUser()  {
+    @MainActor
+    func logInUser() {
         guard checkField() else { return }
         do {
             try userManager.login(username: username, password: password)
-        } catch  {
+            self.isConnected = userManager.isConnected // ← Synchronisation
+        } catch {
             self.error = error as? ConnectionError ?? .unknownError
             self.showError = true
         }
     }
+    @MainActor
+    func loginInGest() {
+        userManager.loginInGuestMode()
+    }
     
+    @MainActor
     func signUp() {
         guard checkField() else { return }
         userManager.register(username: username, password: password)
@@ -48,5 +54,4 @@ final class ConnectionManager {
         }
         return true
     }
-    
 }

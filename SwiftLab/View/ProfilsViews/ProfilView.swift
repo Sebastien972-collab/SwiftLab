@@ -26,6 +26,7 @@ struct ProfilView: View {
                     BadgesListView(badges: Badge.all, limit: 8, isScrollEnabled: false)
                 }
             }
+            .navigationTitle(Text("Mon profil"))
         }
     }
 }
