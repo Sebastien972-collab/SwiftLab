@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Multigames {
+struct Multigames :Identifiable{
+    var id : UUID
     var name : String
     var difficulte : Int
     var description : String
@@ -18,6 +19,7 @@ struct Multigames {
     var codeAfter : String
     
     static let exercice1 = Multigames(
+        id: UUID() ,
         name: "Déclaration de variable",
         difficulte: 1,
         description: "Complète la déclaration pour créer une variable appelée nom avec la valeur \"Jean\"",
@@ -29,6 +31,7 @@ struct Multigames {
     )
     
     static let exercice2 = Multigames(
+        id: UUID() ,
         name: "Fonction retour",
         difficulte: 2,
         description: "Complète la signature de la fonction pour qu'elle retourne un Int",
@@ -40,6 +43,7 @@ struct Multigames {
     )
 
    static let exercice3 = Multigames(
+        id: UUID() ,
         name: "Boucle for-in",
         difficulte: 2,
         description: "Complète la syntaxe de la boucle for pour parcourir les nombres de 1 à 5",
@@ -50,6 +54,7 @@ struct Multigames {
         codeAfter: " {\n    print(i)\n}"
     )
     static let exercice4 = Multigames(
+        id: UUID() ,
         name: "Condition simple",
         difficulte: 2,
         description: "Complète la condition pour vérifier si la variable `age` est supérieure ou égale à 18.",
@@ -60,6 +65,7 @@ struct Multigames {
         codeAfter: " {\n    print(\"Majeur\")\n}"
     )
     static let exercice5 = Multigames(
+        id: UUID() ,
         name: "Déclaration de tableau",
         difficulte: 1,
         description: "Complète la déclaration pour créer un tableau d'entiers nommé `nombres` contenant 1, 2 et 3.",
@@ -71,6 +77,7 @@ struct Multigames {
     )
     
     static let exercice6 = Multigames(
+        id: UUID() ,
         name: "Parcourir un tableau",
         difficulte: 3,
         description: "Complète la ligne pour parcourir un tableau appelé `fruits` avec une boucle for.",
@@ -82,6 +89,7 @@ struct Multigames {
     )
     
     static let exercice7 = Multigames(
+        id: UUID() ,
         name: "Déballage optionnel",
         difficulte: 3,
         description: "Complète la condition pour vérifier si `nom` contient une valeur.",
