@@ -27,6 +27,8 @@ struct Course: Identifiable, Equatable {
         lhs.title == rhs.title && lhs.text == rhs.text
     }
     
+    
+    
 }
 
 

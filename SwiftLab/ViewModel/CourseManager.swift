@@ -18,11 +18,18 @@ class CourseManager {
     init() {
         loadCourses()
     }
+    
+    convenience init(userManager: UserManager) {
+        self.init()
+        self.userManager = userManager
+        
+
+    }
 
     func loadCourses() {
         allCourses = Course.allCourses
     }
-    
+    @MainActor
     func launchCourse(_ course: Course) {
         workInProgress = true
         self.course = course
@@ -30,10 +37,23 @@ class CourseManager {
         coursInLaunch = true
         workInProgress = false
     }
-    func updateSectionIsRead(_ section: SectionOfCourses) {
-        guard  course.section.contains(section), let index = course.section.firstIndex(of: section) else { return }
+    
+    @MainActor
+    func addCourseInProgresse(_ course: Course) {
+        self.userManager.addCourseInProgress(course)
+    }
+    @MainActor
+    func updateSectionIsRead(_ section: SectionOfCourses) async  {
+        guard self.userManager.currentUser.coursesInProgress.contains(course) else { return }
+        guard course.section.contains(section), let index = course.section.firstIndex(of: section) else { return }
         self.course.section[index].isRead = true
-        
+        self.userManager.updateCourse(with: course)
+    }
+    
+    func updateSectionIsRead(with index: Int)  {
+        guard self.course.section.count > index else { return }
+        self.course.section[index].isRead = true
+        self.userManager.updateCourse(with: course)
     }
     func selectCourse(by id: UUID) {
         guard let course = allCourses.first(where: { $0.id == id }) else { return }

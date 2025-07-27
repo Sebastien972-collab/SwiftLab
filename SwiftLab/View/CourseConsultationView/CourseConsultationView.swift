@@ -10,8 +10,8 @@ import SwiftUI
 
 
 struct CourseConsultationView: View {
-    var manager: CourseManager = .init()
-    let course: Course
+    @Environment(CourseManager.self) var manager
+    var course: Course
     @State private var selectedImageName: Bool = false
     @State private var showQuizt: Bool = false
     var body: some View {
@@ -24,18 +24,18 @@ struct CourseConsultationView: View {
                         InviteButton()
                             .padding(.leading, 16)
                     }
-                    Text(course.text)
+                    Text(manager.course.text)
                         .font(.body)
                         .foregroundColor(.secondary)
-                    VideoCardView(imageName: course.videoName ?? "video1")
+                    VideoCardView(imageName: manager.course.videoName ?? "video1")
                         .frame(maxWidth: .infinity)
                         .frame(height: 300)
-                    ForEach(course.section) { section in
+                    ForEach(manager.course.section.indices, id: \.self) { index in
                         VStack(alignment: .leading) {
-                            Text(section.title)
+                            Text(course.section[index].title)
                                 .font(.title2)
                                 .bold()
-                            if let text = section.text {
+                            if let text = course.section[index].text {
                                 Text(text)
                                     .foregroundColor(.primary)
                                     .padding()
@@ -44,13 +44,13 @@ struct CourseConsultationView: View {
                                 
                             }
                             
-                            if let image = section.imageName {
+                            if let image = course.section[index].imageName {
                                 ZoomableImageView(imageName: image)
                             }
 
                         }
                         .onAppear(perform: {
-
+                            manager.updateSectionIsRead(with: index)
                         })
                         .padding(.horizontal, 3)
                         Divider()
@@ -89,3 +89,4 @@ struct CourseConsultationView: View {
         CourseConsultationView(course: .allCourses[0])
     }
 }
+

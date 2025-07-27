@@ -15,11 +15,15 @@ struct MainTabView: View {
     @State private var selection = Selection.courses
     @Environment(\.modelContext) private var modelContext
     @Environment(UserManager.self) private var userManager
+    
     var body: some View {
         if userManager.isConnected {
             TabView {
                 Tab("Mon parcours", systemImage: "graduationcap.fill") {
                    ProgressionView()
+                        .onAppear {
+                           print( userManager.currentUser.coursProgressPercent)
+                        }
                 }
                 Tab("Jeux", systemImage: "gamecontroller.fill") {
                     MultiGamesView()

@@ -48,11 +48,11 @@ struct CourseCard: View {
                 
                 // Progression
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("Progression \(Int(progress * 100))%")
+                    Text("Progression \(Int(course.progressPercent * 100))%")
                         .font(.system(size: 10, weight: .medium))
                         .foregroundStyle(.white.opacity(0.9))
                     
-                    ProgressView(value: progress)
+                    ProgressView(value: course.progressPercent)
                         .progressViewStyle(LinearProgressViewStyle())
                         .scaleEffect(x: 1, y: 0.8, anchor: .center)
                         .accentColor(.orange)

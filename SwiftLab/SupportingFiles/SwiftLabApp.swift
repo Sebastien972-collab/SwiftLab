@@ -21,11 +21,16 @@ struct SwiftLabApp: App {
         }
     }()
     @State private var userManager: UserManager = .init()
+    @State private var courseManager: CourseManager = .init()
     var body: some Scene {
         WindowGroup {
             MainTabView()
                 .preferredColorScheme(.light)
+                .onAppear {
+                    courseManager.userManager = userManager
+                }
                 .environment(userManager)
+                .environment(courseManager)
         }
         .modelContainer(sharedModelContainer)
     }

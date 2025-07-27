@@ -68,7 +68,12 @@ class UserManager {
         }
     }
     
+    //MARK: - Courses
     
+    func updateCourse(with course: Course) {
+        guard self.currentUser.coursesInProgress.contains(course), let index = self.currentUser.coursesInProgress.firstIndex(of: course) else { return }
+        self.currentUser.coursesInProgress[index] = course
+    }
     
     // MARK: - Exercices
     func addExerciceInProgress(_ exercice: Exercices) {

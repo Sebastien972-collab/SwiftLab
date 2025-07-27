@@ -14,7 +14,7 @@ final class User: Identifiable {
     var username: String
     var password: String
     var imageUrl: URL?
-    var coursesInProgress: [Course] = []
+    var coursesInProgress: [Course] = [Course.allCourses[0]]
     var exoInProgress: [Exercices] = []
     var coursProgressPercent: Double {
         guard !coursesInProgress.isEmpty else { return 0.0 }

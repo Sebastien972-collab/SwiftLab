@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct CarouselCustomCourse: View {
-    @State private var manager: CourseManager = .init()
+    @Environment(UserManager.self) private var userManager
+    @Environment(CourseManager.self) private var manager: CourseManager
     var title: String  = "Cours"
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -25,12 +26,12 @@ struct CarouselCustomCourse: View {
             }
             .padding(.horizontal)
             ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: 16) {
-                    ForEach(manager.allCourses) { course in
+                HStack(spacing: 16) {
+                    ForEach(manager.userManager.currentUser.coursesInProgress) { course in
                         NavigationLink {
-                            CourseConsultationView(manager: manager, course: course)
+                            CourseConsultationView(course: course)
                         } label: {
-                            CourseCard(course: course, progress: course.progressPercent)
+                            CourseCard(course: course, progress: manager.progress(for: course))
                         }
                         .buttonStyle(.plain)
                         .scaleEffect(1.0)
@@ -43,6 +44,9 @@ struct CarouselCustomCourse: View {
             .scrollTargetBehavior(.viewAligned)
             .scrollBounceBehavior(.basedOnSize)
         }
+        .onAppear(perform: {
+            manager.userManager = userManager
+        })
         .accessibilityElement(children: .contain)
         .accessibilityLabel("Section des \(title.lowercased())")
     }
@@ -61,5 +65,7 @@ struct CarouselCustomCourse: View {
                 CarouselCustomCourse()
             }
         }
+        .environment(UserManager())
+        .environment(CourseManager())
     }
 }
