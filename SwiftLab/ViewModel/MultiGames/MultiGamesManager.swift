@@ -10,7 +10,7 @@ import Foundation
 @Observable
 class MultiGamesManager {
     
-    private(set) var games: [Multigames] = Multigames.allGames
+    var games: [Multigames] = Multigames.allGames
     
     
 }

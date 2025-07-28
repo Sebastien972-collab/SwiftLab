@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct GameView: View {
-    let game : Multigames
+    @Binding var game: Multigames
     @State var userAnswer : String = ""
     @State private var isCorrect: Bool? = nil
     @State private var showConfirmation = false
     @Environment(\.dismiss) private var dismiss
-   
+    
     @FocusState private var isFocused : Bool
     
     var body: some View {
@@ -108,7 +108,7 @@ struct GameView: View {
                         }
                         
                         
-
+                        
                     }
                     .frame(width: 329, height: 395)
                     .background(.customBlue )
@@ -117,8 +117,9 @@ struct GameView: View {
                     .padding(.bottom)
                     
                     
-                                        
+                    
                 }
+                
                 .toolbar {
                     ToolbarItem(placement: .confirmationAction) {
                         if isFocused {
@@ -137,17 +138,23 @@ struct GameView: View {
                 }
                 
             }
-            VStack{
+            VStack {
+                Spacer()
+                
                 ButtonHelpView()
+                    .frame(height: 50)
+                    .padding(.bottom, -15)
             }
+            
         }
         
     }
+    
 }
 
 #Preview {
-    GameView(game: Multigames.exercice1)
-
+    GameView(game: .constant(Multigames.allGames[0]))
+    
 }
 
 

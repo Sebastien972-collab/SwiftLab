@@ -15,7 +15,6 @@ class ButtonHelpController: UIViewController{
     private let button: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Un appel à un ami ?", for: .normal)
-        
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()

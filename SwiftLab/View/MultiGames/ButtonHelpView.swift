@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import UIKit
+import SafariServices
 
 struct ButtonHelpView: View {
     var body: some View {

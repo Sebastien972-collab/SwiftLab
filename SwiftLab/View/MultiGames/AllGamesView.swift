@@ -20,12 +20,12 @@ struct AllGamesView: View {
         
             ScrollView(.vertical ,showsIndicators: false){
                 LazyVGrid(columns: columns, spacing: 25){
-                    ForEach(manager.games) { games in
+                    ForEach(Array(manager.games.enumerated()), id: \.element.id) { index, games in
                         
                         NavigationLink{
-                            BigCardGameView(game: games)
+                            BigCardGameView(game: $manager.games[index])
                         } label: {
-                            CardGameView(game: games)
+                            CardGameView(game: $manager.games[index])
                         }
                     }
                 }
