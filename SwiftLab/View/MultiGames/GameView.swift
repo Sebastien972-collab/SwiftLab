@@ -108,6 +108,7 @@ struct GameView: View {
                         }
                         
                         
+
                     }
                     .frame(width: 329, height: 395)
                     .background(.customBlue )
@@ -115,12 +116,8 @@ struct GameView: View {
                     .padding(.top)
                     .padding(.bottom)
                     
-                    Button {
-                        
-                    } label: {
-                        Text("Un appel à un ami ?")
-                    }
                     
+                                        
                 }
                 .toolbar {
                     ToolbarItem(placement: .confirmationAction) {
@@ -138,6 +135,10 @@ struct GameView: View {
                         Text(game.name)
                     }
                 }
+                
+            }
+            VStack{
+                ButtonHelpView()
             }
         }
         
@@ -148,3 +149,8 @@ struct GameView: View {
     GameView(game: Multigames.exercice1)
 
 }
+
+
+
+
+
