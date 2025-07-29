@@ -10,7 +10,7 @@ import SwiftUI
 struct CarouselCustomCourse: View {
     @Environment(UserManager.self) private var userManager
     @Environment(CourseManager.self) private var manager: CourseManager
-    @State var courses: [Course]
+    var courses: [Course]
     var title: String  = "Cours"
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -26,28 +26,35 @@ struct CarouselCustomCourse: View {
                 }
             }
             .padding(.horizontal)
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 16) {
-                    ForEach($courses) { course in
-                        NavigationLink {
-                            CourseConsultationView(course: course)
-                        } label: {
-                            CourseCard(course: course)
+            if manager.coursesInProgress.isNotEmpty {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 16) {
+                        ForEach(courses) { course in
+                            NavigationLink {
+                                CourseConsultationView(course: course)
+                            } label: {
+                                CourseCard(course: course)
+                            }
+                            .buttonStyle(.plain)
+                            .scaleEffect(1.0)
+                            .animation(.easeInOut(duration: 0.1), value: UUID())
                         }
-                        .buttonStyle(.plain)
-                        .scaleEffect(1.0)
-                        .animation(.easeInOut(duration: 0.1), value: UUID())
                     }
+                    .padding(.vertical, 2)
                 }
-                .padding(.vertical, 2)
+                .contentMargins(.horizontal, 16)
+                .scrollTargetBehavior(.viewAligned)
+                .scrollBounceBehavior(.basedOnSize)
             }
-            .contentMargins(.horizontal, 16)
-            .scrollTargetBehavior(.viewAligned)
-            .scrollBounceBehavior(.basedOnSize)
+            else {
+                Text("Veuillez commencer par vous inscrire à un cours")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    .padding()
+            }
         }
         .onAppear(perform: {
             manager.refreshCourse()
-            print(manager.progress(for: courses.first!))
         })
         .accessibilityElement(children: .contain)
         .accessibilityLabel("Section des \(title.lowercased())")

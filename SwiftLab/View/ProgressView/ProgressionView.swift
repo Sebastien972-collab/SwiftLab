@@ -20,6 +20,9 @@ struct ProgressionView: View {
                     CarouselCustomExercice()
                 }
             }
+            .onAppear(perform: {
+                courseManager.refreshCourse()
+            })
             .navigationTitle("Mon parcours")
             .navigationBarTitleDisplayMode(.automatic)
             .preferredColorScheme(nil)

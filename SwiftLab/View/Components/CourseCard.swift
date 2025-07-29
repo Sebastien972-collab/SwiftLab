@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct CourseCard: View {
-    @Binding var course: Course
-    
+     var course: Course
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             // SFSymbol & badge
@@ -73,5 +72,5 @@ struct CourseCard: View {
 }
 
 #Preview {
-    CourseCard(course: .constant(.allCourses[0]))
+    CourseCard(course: .allCourses[0])
 }
