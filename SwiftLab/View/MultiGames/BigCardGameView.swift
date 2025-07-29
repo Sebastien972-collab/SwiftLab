@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BigCardGameView: View {
-    let game : Multigames
+    var game : Game
 
     var body: some View {
         ZStack{
@@ -59,6 +59,6 @@ struct BigCardGameView: View {
 
 #Preview {
     
-        BigCardGameView(game: Multigames.exercice1)
+    BigCardGameView(game: Game.allGames[0])
     
 }

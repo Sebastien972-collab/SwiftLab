@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Multigames :Identifiable  {
+struct Game :Identifiable  {
     var id : UUID
     var name : String
     var difficulte : Int
@@ -18,7 +18,7 @@ struct Multigames :Identifiable  {
     var codeBefore : String
     var codeAfter : String
     
-    static let exercice1 = Multigames(
+    static let exercice1 = Game(
         id: UUID() ,
         name: "Déclaration de variable",
         difficulte: 1,
@@ -32,7 +32,7 @@ struct Multigames :Identifiable  {
         codeAfter: ""
     )
     
-    static let exercice2 = Multigames(
+    static let exercice2 = Game(
         id: UUID() ,
         name: "Fonction retour",
         difficulte: 2,
@@ -44,7 +44,7 @@ struct Multigames :Identifiable  {
         codeAfter: " {\n    return a + b\n}"
     )
 
-   static let exercice3 = Multigames(
+   static let exercice3 = Game(
         id: UUID() ,
         name: "Boucle for-in",
         difficulte: 2,
@@ -55,7 +55,7 @@ struct Multigames :Identifiable  {
         codeBefore: "",
         codeAfter: " {\n    print(i)\n}"
     )
-    static let exercice4 = Multigames(
+    static let exercice4 = Game(
         id: UUID() ,
         name: "Condition simple",
         difficulte: 2,
@@ -66,7 +66,7 @@ struct Multigames :Identifiable  {
         codeBefore: "if ",
         codeAfter: " {\n    print(\"Majeur\")\n}"
     )
-    static let exercice5 = Multigames(
+    static let exercice5 = Game(
         id: UUID() ,
         name: "Déclaration de tableau",
         difficulte: 1,
@@ -78,7 +78,7 @@ struct Multigames :Identifiable  {
         codeAfter: ""
     )
     
-    static let exercice6 = Multigames(
+    static let exercice6 = Game(
         id: UUID() ,
         name: "Parcourir un tableau",
         difficulte: 3,
@@ -90,7 +90,7 @@ struct Multigames :Identifiable  {
         codeAfter: " {\n    print(fruit)\n}"
     )
     
-    static let exercice7 = Multigames(
+    static let exercice7 = Game(
         id: UUID() ,
         name: "Déballage optionnel",
         difficulte: 3,
@@ -103,7 +103,7 @@ struct Multigames :Identifiable  {
     )
     
     
-    static let allGames: [Multigames] = [
+    static let allGames: [Game] = [
         exercice1,
         exercice2,
         exercice3,

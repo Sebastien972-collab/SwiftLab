@@ -6,14 +6,15 @@
 //
 
 import SwiftUI
-
+import WebKit
 struct GameView: View {
-    let game : Multigames
+    var game: Game
     @State var userAnswer : String = ""
     @State private var isCorrect: Bool? = nil
     @State private var showConfirmation = false
+    @State private var showWebView = false
     @Environment(\.dismiss) private var dismiss
-   
+    
     @FocusState private var isFocused : Bool
     
     var body: some View {
@@ -21,7 +22,7 @@ struct GameView: View {
             Color.customBeige.ignoresSafeArea()
             
             ScrollView {
-                VStack(alignment: .leading){
+                VStack(alignment: .center){
                     VStack{
                         Image(game.image)
                             .resizable()
@@ -33,7 +34,6 @@ struct GameView: View {
                     .background(.accent )
                     .clipShape(RoundedRectangle(cornerRadius: 16))
                     VStack{
-                        
                         VStack{
                             Text(game.description)
                                 .font(.body)
@@ -108,18 +108,23 @@ struct GameView: View {
                         }
                         
                         
+                        
                     }
                     .frame(width: 329, height: 395)
                     .background(.customBlue )
                     .clipShape(RoundedRectangle(cornerRadius: 16))
                     .padding(.top)
                     .padding(.bottom)
+                    ButtonHelpView(action: {
+                        showWebView.toggle()
+                    })
+                    .navigationDestination(isPresented: $showWebView, destination: {
+                        SafariView(url: "https://www.udemy.com/course/apprendre-swift/?couponCode=KEEPLEARNING")
+                    })
+                    .padding()
                     
-                    Button {
-                        
-                    } label: {
-                        Text("Un appel à un ami ?")
-                    }
+                    
+                    
                     
                 }
                 .toolbar {
@@ -138,13 +143,21 @@ struct GameView: View {
                         Text(game.name)
                     }
                 }
+                
             }
+            
         }
         
     }
+    
 }
 
 #Preview {
-    GameView(game: Multigames.exercice1)
-
+    GameView(game: Game.allGames[0])
+    
 }
+
+
+
+
+
