@@ -11,7 +11,7 @@ import SwiftUI
 struct Level : Identifiable, Equatable {
     let id: Int
     let questions : [QuizExercice]
-    static func ==(lhs: Level, rhs: Level)-> Bool {lhs.id == rhs.id}
+    static func == (lhs: Level, rhs: Level) -> Bool { lhs.id == rhs.id }
 }
 
 struct Question {

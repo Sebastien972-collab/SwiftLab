@@ -18,11 +18,6 @@ struct CustomGameLevelView: View {
     @Binding var selectedLevel: Int
     @Binding var questionIndex: Int
 
-    init(level: Level, selectedLevel: Binding<Int>, questionIndex: Binding<Int>) {
-        self.level = level
-        self._selectedLevel = selectedLevel
-        self._questionIndex = questionIndex
-    }
 
     var body: some View {
         VStack(spacing: 46) {
