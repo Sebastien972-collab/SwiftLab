@@ -8,9 +8,7 @@
 import Foundation
 
 @Observable
-class MultiGamesManager {
-    
-    var games: [Multigames] = Multigames.allGames
-    
+class GamesManager {
+    var games: [Game] = Game.allGames
     
 }

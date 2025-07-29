@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BigCardGameView: View {
-   @Binding var game : Multigames
+    var game : Game
 
     var body: some View {
         ZStack{
@@ -32,7 +32,7 @@ struct BigCardGameView: View {
                         Spacer()
                         NavigationLink {
                             
-                            GameView(game: $game)
+                            GameView(game: game)
 
                             
                         } label: {
@@ -59,6 +59,6 @@ struct BigCardGameView: View {
 
 #Preview {
     
-    BigCardGameView(game: .constant(Multigames.allGames[0]))
+    BigCardGameView(game: Game.allGames[0])
     
 }

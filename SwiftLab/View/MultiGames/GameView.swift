@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GameView: View {
-    @Binding var game: Multigames
+    var game: Game
     @State var userAnswer : String = ""
     @State private var isCorrect: Bool? = nil
     @State private var showConfirmation = false
@@ -153,7 +153,7 @@ struct GameView: View {
 }
 
 #Preview {
-    GameView(game: .constant(Multigames.allGames[0]))
+    GameView(game: Game.allGames[0])
     
 }
 
