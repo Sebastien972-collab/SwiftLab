@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProgressMapView: View {
    
-    @State private var progressManager: ProgressMapManager = .init()
+    @Environment(ProgressMapManager.self) private var progressMapManager
     var body: some View {
         NavigationView{
             LevelsProgressView(levels: progressManager.levels, selectedLevel: $progressManager.selectedLevel, questionIndex: $progressManager.questionIndex)
@@ -21,4 +21,5 @@ struct ProgressMapView: View {
 
 #Preview {
     ProgressMapView()
+        .environment(ProgressMapManager())
 }

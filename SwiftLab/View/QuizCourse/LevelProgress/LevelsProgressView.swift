@@ -8,28 +8,24 @@
 import SwiftUI
 
 struct LevelsProgressView: View {
-    
-    let levels: [Level] // mon ajour !!!!!!!!!!!
-    
-    @Binding var selectedLevel: Int
-    @Binding var questionIndex: Int
-   
-    
+    @Environment(ProgressMapManager.self) private var progressMapManager
+
     var body: some View {
-        ScrollView{
-            VStack(spacing: 0){
-                ForEach(levels){ level in
-                    LevelView(level: level, selectedLevel: $selectedLevel, questionIndex: $questionIndex, isLast : level == levels.last ?? level)
-                    
+        ScrollView {
+            VStack(spacing: 0) {
+                ForEach(progressMapManager.levels) { level in
+                    LevelView(
+                        level: level,
+                        selectedLevel: $progressMapManager.selectedLevel,
+                        questionIndex: $progressMapManager.questionIndex,
+                        isLast: level == progressMapManager.levels.last
+                    )
                 }
             }
         }
     }
 }
 
-#Preview {
-    ProgressMapView()
-}
 
 
 // le code que j'ai remplacé

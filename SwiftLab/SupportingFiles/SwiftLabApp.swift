@@ -22,6 +22,7 @@ struct SwiftLabApp: App {
     }()
     @State private var userManager: UserManager = .init()
     @State private var courseManager: CourseManager = .init()
+    @State private var progressMapManager: ProgressMapManager = .init()
     var body: some Scene {
         WindowGroup {
             MainTabView()
@@ -31,6 +32,7 @@ struct SwiftLabApp: App {
                 }
                 .environment(userManager)
                 .environment(courseManager)
+                .environment(progressMapManager)
         }
         .modelContainer(sharedModelContainer)
     }
