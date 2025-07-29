@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct CourseCard: View {
-    let course: Course
-    var progress: Double
+    @Binding var course: Course
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -48,11 +47,11 @@ struct CourseCard: View {
                 
                 // Progression
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("Progression \(Int(progress * 100))%")
+                    Text("Progression \(Int(course.progressPercent * 100))%")
                         .font(.system(size: 10, weight: .medium))
                         .foregroundStyle(.white.opacity(0.9))
                     
-                    ProgressView(value: progress)
+                    ProgressView(value: course.progressPercent)
                         .progressViewStyle(LinearProgressViewStyle())
                         .scaleEffect(x: 1, y: 0.8, anchor: .center)
                         .accentColor(.orange)
@@ -74,5 +73,5 @@ struct CourseCard: View {
 }
 
 #Preview {
-        CourseCard(course: .allCourses[0], progress: 0.5)
+    CourseCard(course: .constant(.allCourses[0]))
 }

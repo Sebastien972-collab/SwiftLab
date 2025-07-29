@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct ProgressionView: View {
-    
+    @Environment(UserManager.self) private var userManager
+    @Environment(CourseManager.self) private var courseManager
     var body: some View {
         NavigationStack {
             ZStack {
                 Color.customBeige.ignoresSafeArea()
                 ScrollView(showsIndicators: false) {
-                    ProgressionCercle(progress: 0.62)
-                    CarouselCustomCourse()
+                    ProgressionCercle(progress: courseManager.coursProgressPercent )
+                    CarouselCustomCourse(courses: courseManager.coursesInProgress)
                     CarouselCustomExercice()
                 }
             }
@@ -28,4 +29,6 @@ struct ProgressionView: View {
 
 #Preview {
     ProgressionView()
+        .environment(UserManager())
+        .environment(CourseManager())
 }

@@ -9,12 +9,13 @@ import SwiftUI
 import SwiftData
 
 struct MainTabView: View {
-    enum Selection {
+    private enum Selection {
         case courses, game, coursesListe, profile
     }
     @State private var selection = Selection.courses
     @Environment(\.modelContext) private var modelContext
-    @State private var userManager: UserManager = .init()
+    @Environment(UserManager.self) private var userManager
+    
     var body: some View {
         if userManager.isConnected {
             TabView {
@@ -32,11 +33,12 @@ struct MainTabView: View {
                 }
             }
         } else {
-            ConnectionView(userManger: userManager)
+            ConnectionView()
         }
     }
 }
 
 #Preview {
     MainTabView()
+        .environment(UserManager())
 }

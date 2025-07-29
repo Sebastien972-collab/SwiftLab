@@ -8,15 +8,12 @@
 import SwiftUI
 
 struct CarouselCustomCourse: View {
-    let title: String
-    
-    init(title: String = "Cours") {
-        self.title = title
-    }
-    
+    @Environment(UserManager.self) private var userManager
+    @Environment(CourseManager.self) private var manager: CourseManager
+    @State var courses: [Course]
+    var title: String  = "Cours"
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            
             HStack {
                 Text(title)
                     .font(.title2)
@@ -27,17 +24,15 @@ struct CarouselCustomCourse: View {
                     Text("Voir tous")
                         .font(.caption)
                 }
-
             }
             .padding(.horizontal)
-            
             ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: 16) {
-                    ForEach(Course.allCourses) { course in
+                HStack(spacing: 16) {
+                    ForEach($courses) { course in
                         NavigationLink {
                             CourseConsultationView(course: course)
                         } label: {
-                            CourseCard(course: course, progress: 0.45)
+                            CourseCard(course: course)
                         }
                         .buttonStyle(.plain)
                         .scaleEffect(1.0)
@@ -50,6 +45,10 @@ struct CarouselCustomCourse: View {
             .scrollTargetBehavior(.viewAligned)
             .scrollBounceBehavior(.basedOnSize)
         }
+        .onAppear(perform: {
+            manager.refreshCourse()
+            print(manager.progress(for: courses.first!))
+        })
         .accessibilityElement(children: .contain)
         .accessibilityLabel("Section des \(title.lowercased())")
     }
@@ -65,8 +64,10 @@ struct CarouselCustomCourse: View {
         ZStack {
             Color.customBeige.ignoresSafeArea()
             VStack {
-                CarouselCustomCourse()
+                CarouselCustomCourse(courses: Course.allCourses)
             }
         }
+        .environment(UserManager())
+        .environment(CourseManager())
     }
 }

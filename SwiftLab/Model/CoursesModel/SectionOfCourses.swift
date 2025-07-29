@@ -7,9 +7,22 @@
 
 import Foundation
 
-struct SectionOfCourses: Identifiable {
+final class SectionOfCourses: Identifiable, Equatable {
     let id: UUID = UUID()
     let title: String
     let text: String?
     let imageName: String?
+    var isRead: Bool = false
+    
+    
+    init(title: String, text: String?, imageName: String?) {
+        self.title = title
+        self.text = text
+        self.imageName = imageName
+    }
+    
+    static func == (lhs: SectionOfCourses, rhs: SectionOfCourses) -> Bool {
+        lhs.title == rhs.title && lhs.text == rhs.text && lhs.imageName == rhs.imageName
+    }
+    
 }

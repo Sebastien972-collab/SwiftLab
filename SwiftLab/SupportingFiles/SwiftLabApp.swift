@@ -20,11 +20,17 @@ struct SwiftLabApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-
+    @State private var userManager: UserManager = .init()
+    @State private var courseManager: CourseManager = .init()
     var body: some Scene {
         WindowGroup {
             MainTabView()
                 .preferredColorScheme(.light)
+                .onAppear {
+                    courseManager.userManager = userManager
+                }
+                .environment(userManager)
+                .environment(courseManager)
         }
         .modelContainer(sharedModelContainer)
     }

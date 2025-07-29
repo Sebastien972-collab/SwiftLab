@@ -8,7 +8,6 @@
 import Foundation
 
 struct Course: Identifiable, Equatable {
-    
     var id: UUID
     var title: String
     var videoName: String?
@@ -17,13 +16,20 @@ struct Course: Identifiable, Equatable {
     var mentalCard: String
     var section: [SectionOfCourses] = []
     let test: Quiz
-    var isFinished: Bool = false
+    var isFinished: Bool {
+         progressPercent == 1.0
+    }
     var isInProgress: Bool = false
-    
+    var progressPercent: Double {
+        guard section.isNotEmpty else { return 1.0 }
+        return Double(section.filter({ $0.isRead }).count) / Double(section.count)
+    }
     
     static func == (lhs: Course, rhs: Course) -> Bool {
         lhs.title == rhs.title && lhs.text == rhs.text
     }
+    
+    
     
 }
 
