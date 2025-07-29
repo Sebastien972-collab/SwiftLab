@@ -21,9 +21,6 @@ struct MainTabView: View {
             TabView {
                 Tab("Mon parcours", systemImage: "graduationcap.fill") {
                    ProgressionView()
-                        .onAppear {
-                           print( userManager.currentUser.coursProgressPercent)
-                        }
                 }
                 Tab("Jeux", systemImage: "gamecontroller.fill") {
                     MultiGamesView()

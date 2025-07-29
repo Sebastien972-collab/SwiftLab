@@ -14,17 +14,9 @@ final class User: Identifiable {
     var username: String
     var password: String
     var imageUrl: URL?
-    var coursesInProgress: [Course] = [Course.allCourses[0]]
+    
     var exoInProgress: [Exercices] = []
-    var coursProgressPercent: Double {
-        guard !coursesInProgress.isEmpty else { return 0.0 }
-        var total = 0.0
-        for course in coursesInProgress {
-            total += course.progressPercent
-        }
-        
-        return total / Double(Course.allCourses.count)
-    }
+    
 
     //MARK: - Initializer
     init(username: String, password: String) {

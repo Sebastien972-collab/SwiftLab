@@ -28,7 +28,7 @@ struct RedoCoursesListView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
                     ForEach($allCourses) { $course in
-                        NavigationLink(destination: CourseConsultationView(course: course)) {
+                        NavigationLink(destination: CourseConsultationView(course: $course)) {
                             RessourcesCoursesCard(course: course)
                         }
                         .buttonStyle(.plain)

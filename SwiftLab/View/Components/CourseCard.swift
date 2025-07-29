@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct CourseCard: View {
-    let course: Course
-    var progress: Double
+    @Binding var course: Course
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -74,5 +73,5 @@ struct CourseCard: View {
 }
 
 #Preview {
-        CourseCard(course: .allCourses[0], progress: 0.5)
+    CourseCard(course: .constant(.allCourses[0]))
 }

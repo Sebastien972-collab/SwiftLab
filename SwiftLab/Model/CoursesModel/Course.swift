@@ -16,10 +16,12 @@ struct Course: Identifiable, Equatable {
     var mentalCard: String
     var section: [SectionOfCourses] = []
     let test: Quiz
-    var isFinished: Bool = false
+    var isFinished: Bool {
+         progressPercent == 1.0
+    }
     var isInProgress: Bool = false
     var progressPercent: Double {
-        guard !section.isEmpty else { return 0.0 }
+        guard section.isNotEmpty else { return 1.0 }
         return Double(section.filter({ $0.isRead }).count) / Double(section.count)
     }
     

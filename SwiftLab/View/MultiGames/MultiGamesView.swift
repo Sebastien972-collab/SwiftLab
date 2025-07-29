@@ -14,21 +14,13 @@ struct MultiGamesView: View {
             ZStack{
                 Color.customBeige.ignoresSafeArea()
                 VStack{
-                    HStack{
-//                       switch
-                    }
                     AllGamesView()
-
-  
                 }
                 .navigationTitle("Jouer")
             }
         }
     }
 }
-
 #Preview {
-    
-        MultiGamesView()
-    
+    MultiGamesView()
 }

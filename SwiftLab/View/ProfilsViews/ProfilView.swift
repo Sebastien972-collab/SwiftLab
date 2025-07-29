@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProfilView: View {
     @State var manager = ProfilManager()
+    @Environment(CourseManager.self) private var courseManager
     var body: some View {
         NavigationStack {
             ZStack {
@@ -21,7 +22,9 @@ struct ProfilView: View {
                     }
                     .padding(.vertical)
                     
-                    CarouselCustomCourse(title: "Terminés")
+                    if courseManager.coursesFinished.isNotEmpty {
+                        CarouselCustomCourse(courses: courseManager.coursesFinished, title: "Terminés")
+                    }
                     BadgesTitleView()
                     BadgesListView(badges: Badge.all, limit: 8, isScrollEnabled: false)
                 }
