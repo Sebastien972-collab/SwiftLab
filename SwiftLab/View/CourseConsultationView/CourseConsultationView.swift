@@ -64,7 +64,7 @@ struct CourseConsultationView: View {
                     })
                     .navigationDestination(isPresented: $showQuizt) {
                         VStack {
-                            Text(course.test.text)
+                            Text(course.text)
                             Text("En cours de développement")
                                 .italic()
                                 .foregroundStyle(.secondary)
