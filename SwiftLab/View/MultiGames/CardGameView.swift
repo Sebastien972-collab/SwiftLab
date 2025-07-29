@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CardGameView: View {
     
-    @Binding var game : Multigames
+var game : Game
     
     var body: some View {
         
@@ -79,6 +79,6 @@ struct CardGameView: View {
 
 #Preview {
     
-    CardGameView(game: .constant(Multigames.allGames[0]))
+    CardGameView(game: Game.allGames[0])
     
 }

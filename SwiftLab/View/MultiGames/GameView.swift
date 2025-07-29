@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
-
+import WebKit
 struct GameView: View {
-    @Binding var game: Multigames
+    var game: Game
     @State var userAnswer : String = ""
     @State private var isCorrect: Bool? = nil
     @State private var showConfirmation = false
+    @State private var showWebView = false
     @Environment(\.dismiss) private var dismiss
     
     @FocusState private var isFocused : Bool
@@ -21,7 +22,7 @@ struct GameView: View {
             Color.customBeige.ignoresSafeArea()
             
             ScrollView {
-                VStack(alignment: .leading){
+                VStack(alignment: .center){
                     VStack{
                         Image(game.image)
                             .resizable()
@@ -33,7 +34,6 @@ struct GameView: View {
                     .background(.accent )
                     .clipShape(RoundedRectangle(cornerRadius: 16))
                     VStack{
-                        
                         VStack{
                             Text(game.description)
                                 .font(.body)
@@ -115,11 +115,18 @@ struct GameView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 16))
                     .padding(.top)
                     .padding(.bottom)
+                    ButtonHelpView(action: {
+                        showWebView.toggle()
+                    })
+                    .navigationDestination(isPresented: $showWebView, destination: {
+                        SafariView(url: "https://www.udemy.com/course/apprendre-swift/?couponCode=KEEPLEARNING")
+                    })
+                    .padding()
+                    
                     
                     
                     
                 }
-                
                 .toolbar {
                     ToolbarItem(placement: .confirmationAction) {
                         if isFocused {
@@ -138,13 +145,6 @@ struct GameView: View {
                 }
                 
             }
-            VStack {
-                Spacer()
-                
-                ButtonHelpView()
-                    .frame(height: 50)
-                    .padding(.bottom, -15)
-            }
             
         }
         
@@ -153,7 +153,7 @@ struct GameView: View {
 }
 
 #Preview {
-    GameView(game: .constant(Multigames.allGames[0]))
+    GameView(game: Game.allGames[0])
     
 }
 
