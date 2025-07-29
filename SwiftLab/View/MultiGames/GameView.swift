@@ -76,7 +76,6 @@ struct GameView: View {
                             Spacer()
                             Button {
                                 showConfirmation = true
-                                dismiss()
                             } label: {
                                 Text("Envoyer")
                                     .foregroundStyle(.white)
