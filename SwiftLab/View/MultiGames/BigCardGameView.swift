@@ -31,10 +31,7 @@ struct BigCardGameView: View {
                     HStack {
                         Spacer()
                         NavigationLink {
-                            
                             GameView(game: game)
-
-                            
                         } label: {
                             Text("lancer")
                                 .foregroundStyle(.black)

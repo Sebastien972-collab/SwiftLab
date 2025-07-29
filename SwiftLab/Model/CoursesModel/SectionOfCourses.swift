@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class SectionOfCourses: Identifiable, Equatable {
+final class SectionOfCourses: Identifiable, Equatable, Hashable {
     let id: UUID = UUID()
     let title: String
     let text: String?
@@ -23,6 +23,12 @@ final class SectionOfCourses: Identifiable, Equatable {
     
     static func == (lhs: SectionOfCourses, rhs: SectionOfCourses) -> Bool {
         lhs.title == rhs.title && lhs.text == rhs.text && lhs.imageName == rhs.imageName
+    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(title)
+        hasher.combine(text)
+        hasher.combine(imageName)
     }
     
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Course: Identifiable, Equatable {
+struct Course: Identifiable, Equatable, Hashable {
     var id: UUID
     var title: String
     var videoName: String?

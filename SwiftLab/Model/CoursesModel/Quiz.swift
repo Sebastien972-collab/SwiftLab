@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Quiz {
+struct Quiz: Hashable {
     var text: String
     var answer: String
     var choices: [String]

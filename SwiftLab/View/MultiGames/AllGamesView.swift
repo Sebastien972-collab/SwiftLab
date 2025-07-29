@@ -14,8 +14,6 @@ let columns = [
 ]
 struct AllGamesView: View {
     @State private var manager = GamesManager()
-
-       
     var body: some View {
         
             ScrollView(.vertical ,showsIndicators: false){
