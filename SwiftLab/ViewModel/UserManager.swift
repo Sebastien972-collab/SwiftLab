@@ -70,10 +70,7 @@ class UserManager {
     
     //MARK: - Courses
     
-    func updateCourse(with course: Course) {
-        guard self.currentUser.coursesInProgress.contains(course), let index = self.currentUser.coursesInProgress.firstIndex(of: course) else { return }
-        self.currentUser.coursesInProgress[index] = course
-    }
+   
     
     // MARK: - Exercices
     func addExerciceInProgress(_ exercice: Exercices) {
@@ -91,20 +88,7 @@ class UserManager {
     }
     
     // MARK: - Cours
-    func addCourseInProgress(_ course: Course) {
-        if !currentUser.coursesInProgress.contains(where: { $0 == course }) {
-            currentUser.coursesInProgress.append(course)
-        }
-    }
     
-    func removeCourseInProgress(_ course: Course) {
-        if let index = currentUser.coursesInProgress.firstIndex(where: { $0 == course }) {
-            currentUser.coursesInProgress.remove(at: index)
-        }
-    }
     
-    func hasCourseInProgress(_ course: Course) -> Bool {
-         currentUser.coursesInProgress.contains(where: { $0 == course })
-    }
 
 }

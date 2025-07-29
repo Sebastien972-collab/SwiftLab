@@ -11,7 +11,7 @@ import SwiftUI
 
 struct CourseConsultationView: View {
     @Environment(CourseManager.self) var manager
-    var course: Course
+    @Binding var course: Course
     @State private var selectedImageName: Bool = false
     @State private var showQuizt: Bool = false
     var body: some View {
@@ -24,14 +24,14 @@ struct CourseConsultationView: View {
                         InviteButton()
                             .padding(.leading, 16)
                     }
-                    Text(manager.course.text)
+                    Text(course.text)
                         .font(.body)
                         .foregroundColor(.secondary)
-                    VideoCardView(imageName: manager.course.videoName ?? "video1")
+                    VideoCardView(imageName: course.videoName ?? "video1")
                         .frame(maxWidth: .infinity)
                         .frame(height: 300)
-                    ForEach(manager.course.section.indices, id: \.self) { index in
-                        VStack(alignment: .leading) {
+                    ForEach(course.section.indices, id: \.self) { index in
+                        LazyVStack(alignment: .leading) {
                             Text(course.section[index].title)
                                 .font(.title2)
                                 .bold()
@@ -47,10 +47,15 @@ struct CourseConsultationView: View {
                             if let image = course.section[index].imageName {
                                 ZoomableImageView(imageName: image)
                             }
-
+                            
                         }
                         .onAppear(perform: {
-                            manager.updateSectionIsRead(with: index)
+                            manager.updateSectionIsRead(with: course, and: index)
+                            self.course.section[index].isRead = true
+                            let indexCourse = manager.coursesInProgress.firstIndex(of: course)
+                            print("Section de \(manager.coursesInProgress[indexCourse!].title) est marquée comme \(manager.coursesInProgress[indexCourse!].section[index].isRead)")
+                            
+                            
                         })
                         .padding(.horizontal, 3)
                         Divider()
@@ -73,20 +78,37 @@ struct CourseConsultationView: View {
                     }
                 }
                 .padding()
-                .navigationTitle(course.title)
-                .navigationBarTitleDisplayMode(.inline)
                 
             }
         }
         .onAppear {
             manager.launchCourse(course)
         }
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text(course.title)
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                } label: {
+                    VStack {
+                        Image(systemName: course.isFinished ? "checkmark.circle.fill" : "circle")
+                            .labelStyle(.iconOnly)
+                            .foregroundColor(course.isFinished ? .green : .gray)
+                            .animation(.easeInOut, value: course.isFinished)
+                    }
+                }
+                
+                
+            }
+        }
     }
 }
 
 #Preview {
     NavigationStack {
-        CourseConsultationView(course: .allCourses[0])
+        CourseConsultationView(course: .constant(.allCourses[0]))
+            .environment(CourseManager())
     }
 }
 
