@@ -20,7 +20,11 @@ struct CircleImageProfil: View {
                         .frame(maxWidth: 120, maxHeight: 120)
                         
                 } else {
-                    ProgressView()
+                    Image(systemName: "person.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .clipShape(Circle())
+                        .frame(maxWidth: 120, maxHeight: 120)
                 }
             }
         }
