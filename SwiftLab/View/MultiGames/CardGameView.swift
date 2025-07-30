@@ -9,13 +9,11 @@ import SwiftUI
 
 struct CardGameView: View {
     
-var game : Game
+    var game : Game
     
-    var body: some View {
-        
+    var body: some View { 
         VStack{
             VStack{
-                
                 Image(game.image)
                     .resizable()
                     .frame(width: 151, height: 93)
@@ -27,46 +25,26 @@ var game : Game
                         .lineLimit(2)
                         .fixedSize(horizontal: false, vertical: true)
                         .fontWeight(.medium)
-                    
-                    
-                    
-                    
-                    
                     HStack(spacing: 2){
                         Text("difficulté :")
                             .font(.caption)
                             .fontWeight(.medium)
                         Spacer()
-                        
-                        
                         ForEach(0..<5, id: \.self) { index in
                             Image(systemName: index < game.difficulte ? "star.fill" : "star")
-                                
                                 .resizable()
                                 .frame(width: 14, height: 14)
-                                
                         }
-                       
                     }
                     HStack{
                         Text("En ligne")
                             .font(.caption)
                             .fontWeight(.medium)
                         Spacer()
-                        ZStack{
-//                            ForEach(game.group) { _ in joueur
-                                Image(systemName: "pencil.circle.fill")
-                                    .resizable()
-                                    .frame(width: 14, height: 14)
-                                
-                                //metre laffichage a dembo
-//                            }
-                        }
-                        
+                        MignatureParticipant(participants: User.userDatabase)
+                            .padding(.trailing)
                     }.padding(.bottom,8)
-                    
                 }
-                
             }
             .padding(.horizontal,7)
         }

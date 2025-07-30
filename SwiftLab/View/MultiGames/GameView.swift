@@ -20,8 +20,7 @@ struct GameView: View {
     var body: some View {
         ZStack{
             Color.customBeige.ignoresSafeArea()
-            
-            ScrollView {
+            ScrollView(showsIndicators: false){
                 VStack(alignment: .center){
                     VStack{
                         Image(game.image)
@@ -42,7 +41,6 @@ struct GameView: View {
                                 .disabled(true)
                                 .background(Color.gray.opacity(0.1))
                                 .cornerRadius(8)
-                            
                             TextField("Ta réponse ici...", text: $userAnswer)
                                 .focused($isFocused)
                                 .textInputAutocapitalization(.never)
@@ -53,13 +51,11 @@ struct GameView: View {
                                     isCorrect = userAnswer.trimmingCharacters(in: .whitespacesAndNewlines) == game.goodAnswer.trimmingCharacters(in: .whitespacesAndNewlines)
                                     isFocused = false
                                 }
-                            
                             TextEditor(text: .constant(game.codeAfter))
                                 .frame(height: 60)
                                 .disabled(true)
                                 .background(Color.gray.opacity(0.1))
                                 .cornerRadius(8)
-                            
                         }
                         .frame(width: 308, height: 289)
                         .background(.grayBorder )
@@ -76,7 +72,6 @@ struct GameView: View {
                             .frame(width: 110.0, height:33 )
                             .background(Color.white)
                             .clipShape(Capsule())
-                            
                             Spacer()
                             Button {
                                 showConfirmation = true
@@ -98,7 +93,6 @@ struct GameView: View {
                                 Text("Ta réponse a été envoyée.")
                             }
                         }
-                        
                         .padding(.horizontal,10)
                         .padding(.top,5)
                         if let isCorrect = isCorrect {
@@ -106,9 +100,6 @@ struct GameView: View {
                                 .foregroundStyle(isCorrect ? .green : .red)
                                 .font(.headline)
                         }
-                        
-                        
-                        
                     }
                     .frame(width: 329, height: 395)
                     .background(.customBlue )
@@ -122,10 +113,6 @@ struct GameView: View {
                         SafariView(url: "https://www.udemy.com/course/apprendre-swift/?couponCode=KEEPLEARNING")
                     })
                     .padding()
-                    
-                    
-                    
-                    
                 }
                 .toolbar {
                     ToolbarItem(placement: .confirmationAction) {
@@ -134,22 +121,16 @@ struct GameView: View {
                                 isFocused = false
                             } label: {
                                 Text("Done")
-                                
                             }
                         }
-                        
                     }
                     ToolbarItem(placement: .principal) {
                         Text(game.name)
                     }
                 }
-                
             }
-            
         }
-        
     }
-    
 }
 
 #Preview {
