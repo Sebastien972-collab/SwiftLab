@@ -20,7 +20,7 @@ struct CarouselCustomExercice: View {
                 Spacer()
                 NavigationLink(destination: AllExercisesListView()) {
                     Text("Voir tous")
-                        .font(.caption)
+                        .font(.footnote)
                 }
             }
             .padding(.horizontal)

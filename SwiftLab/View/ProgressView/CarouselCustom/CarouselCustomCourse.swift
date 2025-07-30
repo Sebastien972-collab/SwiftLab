@@ -22,7 +22,7 @@ struct CarouselCustomCourse: View {
                 Spacer()
                 NavigationLink(destination: AllCoursesListView()) {
                     Text("Voir tous")
-                        .font(.caption)
+                        .font(.footnote)
                 }
             }
             .padding(.horizontal)

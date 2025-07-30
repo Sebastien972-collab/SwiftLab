@@ -22,7 +22,7 @@ struct BadgesTitleView: View {
             Spacer()
             NavigationLink(destination: BadgesListView(badges: Badge.all)) {
                 Text("Voir tous")
-                    .font(.caption)
+                    .font(.footnote)
             }
         }
         .padding(.horizontal)
