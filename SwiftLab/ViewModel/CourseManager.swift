@@ -8,11 +8,11 @@
 import Foundation
 
 @Observable
-class CourseManager {
+final class CourseManager {
     var allCourses: [Course] = Course.allCourses
     var userManager: UserManager = .init()
     
-    var coursesInProgress: [Course] = [Course.allCourses[0]]
+    var coursesInProgress: [Course] = []
     var coursesFinished: [Course] {
         coursesInProgress.filter { $0.progressPercent == 1.0 }
     }
@@ -71,10 +71,6 @@ class CourseManager {
 //        guard let course = allCourses.first(where: { $0.id == id }) else { return }
 //        self.course = course
     }
-    
-//    func refreshCourse() {
-//        coursesFinished
-//    }
 
     func progress(for course: Course) -> Double {
         guard let index = allCourses.firstIndex(where: { $0.id == course.id }) else {

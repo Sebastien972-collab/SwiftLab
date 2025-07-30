@@ -27,8 +27,8 @@ struct RedoCoursesListView: View {
             // Horizontal scrollable carousel
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
-                    ForEach($allCourses) { $course in
-                        NavigationLink(destination: CourseConsultationView(course: $course)) {
+                    ForEach(allCourses) { course in
+                        NavigationLink(destination: CourseConsultationView(course: course)) {
                             RessourcesCoursesCard(course: course)
                         }
                         .buttonStyle(.plain)
