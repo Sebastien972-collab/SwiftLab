@@ -29,7 +29,7 @@ struct QuizChoiceView: View {
                 // si quiz fini ou .. == true alors montre color good answer ou recree un page ?
                     .foregroundStyle(.black)
                     .font(.headline)
-                    .lineLimit(2) // ou nil pour illimité
+                    .lineLimit(nil) // ou nil pour illimité
                     .minimumScaleFactor(0.75)
                     .padding()
                 
