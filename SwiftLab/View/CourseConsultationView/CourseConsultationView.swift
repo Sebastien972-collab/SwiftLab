@@ -64,6 +64,7 @@ struct CourseConsultationView: View {
                         Spacer()
                         ContinueButtonView(title: "Lancer exercise", color: .customClearOrange) {
                             showQuizt.toggle()
+                            
                         }
                         Spacer()
                     })
