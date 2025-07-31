@@ -15,24 +15,18 @@ struct QuizChoiceView: View {
     @State private var offset: CGFloat = 0
     let correctAnswer : String
     var body: some View {
-        
-//        si valeur == 0 alors normal sinno buton bonne reponse active et couleur vert
         Button {
             selectedChoice = choices
-           
-            
         } label: {
             ZStack {
                 Capsule()
                     .fill(selectedChoice == choices ? Color.customClearOrange : Color.white)
                 Text(choices)
-                // si quiz fini ou .. == true alors montre color good answer ou recree un page ?
                     .foregroundStyle(.black)
                     .font(.headline)
                     .lineLimit(nil) // ou nil pour illimité
                     .minimumScaleFactor(0.75)
-                    .padding()
-                
+                    .padding()    
             }
         }
         .onAppear {
@@ -41,7 +35,6 @@ struct QuizChoiceView: View {
             }
         }
         .frame(width: 300, height: 70)
-        
     }
 }
 

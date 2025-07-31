@@ -26,11 +26,8 @@ struct AllCorrectionListView: View {
                             CardCorrectionView(correction: correction)
                         }
                     }
-    
                 }
-                
             }
-            
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 16)
@@ -38,9 +35,7 @@ struct AllCorrectionListView: View {
         .navigationBarTitleDisplayMode(.large)
         .background(Color.customBeige.ignoresSafeArea())
     }
-    
 }
-
 
 #Preview {
     NavigationStack {

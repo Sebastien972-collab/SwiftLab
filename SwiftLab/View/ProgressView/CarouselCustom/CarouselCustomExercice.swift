@@ -11,7 +11,7 @@ struct CarouselCustomExercice: View {
     @State private var exercices = ExoDatas.allExercices
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 12) {
             HStack {
                 Text("Exercices")
                     .font(.title2)
@@ -23,8 +23,7 @@ struct CarouselCustomExercice: View {
                         .font(.footnote)
                 }
             }
-            .padding(.horizontal)
-            
+            .padding(.horizontal,20)
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
                     ForEach(exercices, id: \.self) { exercice in
@@ -41,6 +40,7 @@ struct CarouselCustomExercice: View {
                 .padding(.horizontal)
                 .padding(.vertical, 2)
             }
+            
             .scrollTargetBehavior(.viewAligned)
             .scrollBounceBehavior(.basedOnSize)
         }

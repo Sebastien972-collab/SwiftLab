@@ -19,9 +19,7 @@ struct CardExerciceView: View {
                     .resizable()
                     .foregroundStyle(.white)
                     .frame(width: 26, height: 18)
-                
                 Spacer()
-                
                 Text("Nouveau")
                     .font(.system(size: 8, weight: .medium))
                     .foregroundStyle(.white)
@@ -34,7 +32,6 @@ struct CardExerciceView: View {
             }
             .padding(.horizontal, 16)
             .padding(.top, 16)
-            
             // Titre des exo
             VStack(alignment: .leading, spacing: 4) {
                 Text(exercice.nameOfExercices)
@@ -43,16 +40,13 @@ struct CardExerciceView: View {
                     .lineLimit(2)
                     .multilineTextAlignment(.leading)
                     .fixedSize(horizontal: false, vertical: true)
-                
                 Spacer()
-                
                 // Progression
                 VStack(alignment: .leading, spacing: 6) {
                     // Texte de progression
                     Text("progression \(Int(progress * 100))%")
                         .font(.system(size: 10, weight: .medium))
-                        .foregroundStyle(.white.opacity(0.9))
-                    
+                        .foregroundStyle(.white.opacity(0.9)) 
                     // Barre de progression
                     ProgressView(value: progress)
                         .progressViewStyle(LinearProgressViewStyle())

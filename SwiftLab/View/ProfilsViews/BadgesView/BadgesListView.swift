@@ -10,9 +10,9 @@ struct BadgesListView: View {
     var badges: [Badge]
     var limit: Int? = nil
     var isScrollEnabled: Bool = true
-
+    
     let columns = Array(repeating: GridItem(.flexible(), spacing: 16), count: 4)
-
+    
     var body: some View {
         VStack(alignment: .leading) {
             if isScrollEnabled {
@@ -28,7 +28,7 @@ struct BadgesListView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.customBeige.ignoresSafeArea())
     }
-
+    
     private var badgeGrid: some View {
         LazyVGrid(columns: columns) {
             ForEach(displayedBadges) { badge in
@@ -53,8 +53,6 @@ struct BadgesListView: View {
             }
         }
     }
-    
-
     private var displayedBadges: [Badge] {
         if let limit = limit {
             return Array(badges.prefix(limit))

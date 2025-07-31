@@ -46,7 +46,6 @@ struct ProgressionCercle: View {
                     .font(.callout)
                     .fontWeight(.medium)
                     .foregroundColor(.primary)
-                
                 Text("\(Int(progress * 100))%")
                     .font(.title)
                     .fontWeight(.bold)
@@ -64,5 +63,5 @@ struct ProgressionCercle: View {
 }
 
 #Preview {
-        ProgressionCercle(progress: 0.62)
+    ProgressionCercle(progress: 0.62)
 }
