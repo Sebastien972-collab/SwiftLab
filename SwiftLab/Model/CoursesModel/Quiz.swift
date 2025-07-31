@@ -12,5 +12,8 @@ struct Quiz {
     var answer: String
     var choices: [String]
     
+     func tranform() -> QuizExercice {
+        QuizExercice(question: text, choices: choices, goodAnswer: answer, correction: "", validAnswer: false)
+    }
     
 }

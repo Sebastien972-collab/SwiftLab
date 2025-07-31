@@ -11,6 +11,7 @@ import SwiftUI
 struct ExerciceSoloView: View {
     @State var manager = ExerciceSoloManager(exercices: ExoDatas.swiftBasics)
     @State private var valuePage = 0
+    @Binding var exercice: Exercices?
 
     var body: some View {
         ZStack {
@@ -54,12 +55,16 @@ struct ExerciceSoloView: View {
             .padding(.top, 40)
             .animation(.easeInOut, value: manager.exerciceFinished)
         }
+        .onAppear {
+            guard let exercexercice = exercice else { return }
+            self.manager = .init(exercices: exercexercice)
+        }
     }
 }
 
 #Preview {
     NavigationStack {
-        ExerciceSoloView()
+        ExerciceSoloView(exercice: .constant(nil))
     }
 }
 
