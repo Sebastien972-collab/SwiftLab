@@ -17,7 +17,6 @@ struct CardCorrectionView: View {
                 .foregroundColor(Color.white)
                 .frame(width: 24, height: 20)
                 .padding(.top,8)
-                
             Spacer()
             Text("\(correction.nameOfExercices)")
                 .font(.system(size: 16, weight: .bold))
@@ -31,7 +30,6 @@ struct CardCorrectionView: View {
         .frame(width: 150, height: 140)
         .background(Color.pourpre)
         .clipShape(RoundedRectangle(cornerRadius: 16))
-
     }
 }
 

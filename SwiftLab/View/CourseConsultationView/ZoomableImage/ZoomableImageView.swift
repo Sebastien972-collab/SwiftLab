@@ -11,7 +11,6 @@ struct ZoomableImageView: View {
     
     @GestureState private var zoom = 1.0
 
-    
     var body: some View {
         Image(imageName)
             .resizable()

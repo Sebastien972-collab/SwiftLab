@@ -40,22 +40,17 @@ struct CourseConsultationView: View {
                                     .foregroundColor(.primary)
                                     .padding()
                                     .background(Color.gray.opacity(0.1))
-                                    .clipShape(RoundedRectangle(cornerRadius: 8))
-                                
+                                    .clipShape(RoundedRectangle(cornerRadius: 8))    
                             }
-                            
                             if let image = course.section[index].imageName {
                                 ZoomableImageView(imageName: image)
                             }
-                            
                         }
                         .onAppear(perform: {
                             manager.updateSectionIsRead(with: course, and: index)
                             self.course.section[index].isRead = true
                             let indexCourse = manager.coursesInProgress.firstIndex(of: course)
                             print("Section de \(manager.coursesInProgress[indexCourse!].title) est marquée comme \(manager.coursesInProgress[indexCourse!].section[index].isRead)")
-                            
-                            
                         })
                         .padding(.horizontal, 3)
                         Divider()
@@ -74,11 +69,9 @@ struct CourseConsultationView: View {
                                 .italic()
                                 .foregroundStyle(.secondary)
                         }
-                        
                     }
                 }
                 .padding()
-                
             }
         }
         .onAppear {
@@ -98,8 +91,6 @@ struct CourseConsultationView: View {
                             .animation(.easeInOut, value: course.isFinished)
                     }
                 }
-                
-                
             }
         }
     }

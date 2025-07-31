@@ -23,7 +23,6 @@ struct RedoCoursesListView: View {
                 }
             }
             .padding(.horizontal, 20)
-            
             // Horizontal scrollable carousel
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) {
@@ -35,10 +34,8 @@ struct RedoCoursesListView: View {
                     }
                 }
                 .padding(.horizontal, 20)
-                
             }
             .scrollTargetBehavior(.viewAligned)
-            
         }
     }
 }

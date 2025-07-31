@@ -8,7 +8,7 @@
 import SwiftUI
 
 
- struct AllExercisesListView: View {
+struct AllExercisesListView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 20) {

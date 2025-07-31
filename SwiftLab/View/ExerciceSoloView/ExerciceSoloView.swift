@@ -11,23 +11,20 @@ import SwiftUI
 struct ExerciceSoloView: View {
     @State var manager = ExerciceSoloManager(exercices: ExoDatas.swiftBasics)
     @State private var valuePage = 0
-
+    
     var body: some View {
         ZStack {
             Color.customBeige.ignoresSafeArea()
-
             VStack(alignment: .leading, spacing: 16) {
                 Text("Quiz")
                     .font(.title)
                     .bold()
                     .padding(.horizontal)
-
                 if manager.exerciceFinished {
                     VStack(spacing: 16) {
                         Text("Exercice terminé !")
                             .font(.title)
                             .bold()
-
                         Button("Recommencer") {
                             withAnimation {
                                 manager.restartExercice()
@@ -48,7 +45,6 @@ struct ExerciceSoloView: View {
                     )
                     .transition(.move(edge: .bottom).combined(with: .opacity))
                 }
-
                 Spacer()
             }
             .padding(.top, 40)
@@ -69,7 +65,7 @@ struct QuizView: View {
     var question: QuizExercice
     @Binding var showDifferentView: Int
     @Binding var manager: ExerciceSoloManager
-
+    
     var body: some View {
         VStack(spacing: 20) {
             Text(question.question)
@@ -78,7 +74,6 @@ struct QuizView: View {
                 .lineLimit(nil)
                 .multilineTextAlignment(.center)
                 .padding()
-
             ForEach(question.choices, id: \.self) { choice in
                 QuizChoiceView(
                     selectedChoice: $manager.selectedAnswer,
@@ -87,7 +82,6 @@ struct QuizView: View {
                     correctAnswer: question.goodAnswer
                 )
             }
-
             ContinueButtonView(
                 title: "Question suivante",
                 color: .customClearOrange

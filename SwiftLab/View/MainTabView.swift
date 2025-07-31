@@ -20,7 +20,7 @@ struct MainTabView: View {
         if userManager.isConnected {
             TabView {
                 Tab("Mon parcours", systemImage: "graduationcap.fill") {
-                   ProgressionView()
+                    ProgressionView()
                 }
                 Tab("Jeux", systemImage: "gamecontroller.fill") {
                     MultiGamesView()

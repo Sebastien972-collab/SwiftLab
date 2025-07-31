@@ -18,17 +18,13 @@ struct RedoExercisesListView: View {
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.primary)
-                
                 Spacer()
-                
                 NavigationLink(destination: AllExercisesListView()) {
                     Text("Voir tous")
                         .font(.caption)
-                       
                 }
             }
             .padding(.horizontal, 20)
-            
             // Horizontal scrollable carousel
             ScrollView(.horizontal, showsIndicators: false) {
                 
@@ -40,14 +36,10 @@ struct RedoExercisesListView: View {
                             RessourcesExercicesCard(exercice: exercice)
                         }
                         .buttonStyle(.plain)
-                        
                     }
                 }
-                
                 .padding(.horizontal, 20)
-              
             }
-            
             .scrollTargetBehavior(.viewAligned)
             .scrollBounceBehavior(.basedOnSize)
         }

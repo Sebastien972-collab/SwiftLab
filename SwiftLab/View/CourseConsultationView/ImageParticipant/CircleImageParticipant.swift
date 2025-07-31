@@ -19,12 +19,8 @@ struct CircleImageParticipant: View {
         } placeholder: {
             ProgressView()
         }
-            
-            
     }
-}
-
-    
+}    
 #Preview {
     ZStack {
         Color.white.ignoresSafeArea()

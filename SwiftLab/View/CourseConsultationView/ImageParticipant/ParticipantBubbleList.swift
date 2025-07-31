@@ -44,8 +44,7 @@ struct MignatureParticipant: View {
                             .clipShape(Circle())
                             .offset(x: CGFloat(index) * 13)
                     }
-                }
-               
+                } 
             }
             .padding(.trailing, 25)
         }

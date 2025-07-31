@@ -12,7 +12,7 @@ import AVKit
 struct VideoCardView: View {
     let imageName: String
     @State private var showVideo: Bool = false
-
+    
     var body: some View {
         if showVideo, let path = Bundle.main.path(forResource: imageName, ofType: "mp4") {
             let player = AVPlayer(url: URL(fileURLWithPath: path))
@@ -23,7 +23,6 @@ struct VideoCardView: View {
                 .onAppear {
                     player.play()
                 }
-            
         } else {
             ZStack {
                 Color.black

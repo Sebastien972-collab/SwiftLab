@@ -18,7 +18,6 @@ struct CircleImageProfil: View {
                         .aspectRatio(contentMode: .fill)
                         .clipShape(Circle())
                         .frame(maxWidth: 120, maxHeight: 120)
-                        
                 } else {
                     Image(systemName: "person.fill")
                         .resizable()
