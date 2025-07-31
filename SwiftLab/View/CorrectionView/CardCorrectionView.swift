@@ -20,7 +20,7 @@ struct CardCorrectionView: View {
                 
             Spacer()
             Text("\(correction.nameOfExercices)")
-                .font(.system(size: 16, weight: .medium))
+                .font(.system(size: 16, weight: .bold))
                 .lineLimit(nil)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity, alignment: .center)

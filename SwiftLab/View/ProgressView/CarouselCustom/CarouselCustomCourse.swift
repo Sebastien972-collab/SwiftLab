@@ -25,7 +25,7 @@ struct CarouselCustomCourse: View {
                         .font(.footnote)
                 }
             }
-            .padding(.horizontal)
+            .padding(.horizontal, 20)
             if manager.coursesInProgress.isNotEmpty {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 16) {
