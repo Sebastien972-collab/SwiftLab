@@ -11,7 +11,7 @@ import SwiftUI
 
 struct CourseConsultationView: View {
     @Environment(CourseManager.self) var manager
-    @Binding var course: Course
+    var course: Course
     @State private var selectedImageName: Bool = false
     @State private var showQuizt: Bool = false
     var body: some View {
@@ -107,7 +107,7 @@ struct CourseConsultationView: View {
 
 #Preview {
     NavigationStack {
-        CourseConsultationView(course: .constant(.allCourses[0]))
+        CourseConsultationView(course:.allCourses[0])
             .environment(CourseManager())
     }
 }

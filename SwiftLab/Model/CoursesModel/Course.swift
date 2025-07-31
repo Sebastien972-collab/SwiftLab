@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Course: Identifiable, Equatable, Hashable {
+class Course: Identifiable, Equatable {
     var id: UUID
     var title: String
     var videoName: String?
@@ -17,7 +17,7 @@ struct Course: Identifiable, Equatable, Hashable {
     var section: [SectionOfCourses] = []
     let test: Quiz
     var isFinished: Bool {
-         progressPercent == 1.0
+        progressPercent == 1.0
     }
     var isInProgress: Bool = false
     var progressPercent: Double {
@@ -28,9 +28,36 @@ struct Course: Identifiable, Equatable, Hashable {
     static func == (lhs: Course, rhs: Course) -> Bool {
         lhs.title == rhs.title && lhs.text == rhs.text
     }
+    init(id: UUID = UUID(),
+         title: String,
+         videoName: String? = nil,
+         text: String,
+         image: String,
+         mentalCard: String,
+         section: [SectionOfCourses] = [],
+         test: Quiz) {
+        
+        self.id = id
+        self.title = title
+        self.videoName = videoName
+        self.text = text
+        self.image = image
+        self.mentalCard = mentalCard
+        self.section = section
+        self.test = test
+    }
     
-    
-    
+    // Init de convenance simplifié (exemple sans id passé, avec id auto-généré)
+    convenience init(title: String, text: String, image: String, mentalCard: String, test: Quiz) {
+        self.init(id: UUID(),
+                  title: title,
+                  videoName: nil,
+                  text: text,
+                  image: image,
+                  mentalCard: mentalCard,
+                  section: [],
+                  test: test)
+    }
 }
 
 
@@ -46,10 +73,10 @@ extension Course {
             section: [
                 SectionOfCourses(title: "Text Cours", text: """
                     Swift est un langage moderne, sécurisé et performant, développé par Apple et présenté pour la première fois en 2014. Il a été conçu pour remplacer Objective-C, avec l’ambition d’apporter simplicité, sécurité et rapidité au développement sur les plateformes Apple.
-
+                    
                     En 2019, Apple introduit SwiftUI, un nouveau framework qui permet de construire des interfaces utilisateur de manière déclarative. Plutôt que de dire comment construire l’interface (comme en UIKit), on décrit simplement **ce qu’on
                     veut voir**, et SwiftUI s’occupe du rendu en fonction de l’état des données.
-
+                    
                     Swift + SwiftUI : écrire moins de code, plus lisible, plus dynamique.
                     """, imageName: nil),
                 SectionOfCourses(title: "Image cours", text: nil, imageName: "cours-1-image-1"),
@@ -112,9 +139,9 @@ extension Course {
                     "'let' ne fonctionne qu’avec les Booléens"
                 ]
             )
-),
-            
-            
+        ),
+        
+        
         Course(
             id: UUID(),
             title: "Opérateurs",
@@ -138,11 +165,11 @@ extension Course {
     • var a = 10 : création d’une variable avec une valeur initiale.
   Opérateurs arithmétiques :
     • +, /, % → manipulent des nombres.
-
+ 
   Opérateurs composés :
     • a += 2 équivaut à a = a + 2
     • b *= 2 équivaut à b = b * 2
-
+ 
   Opérateurs de comparaison :
     • Renvoient un Bool (true ou false) :
         • == : égalité
@@ -150,7 +177,7 @@ extension Course {
         • > : supérieur
         • < : inférieur
         • >= et <= : supérieur ou égal / inférieur ou égal
-
+ 
    Opérateurs logiques :
     • && : ET logique — les deux doivent être vrais
     • || : OU logique — au moins un doit être vrai
@@ -168,10 +195,10 @@ extension Course {
                     "=="
                 ]
             )
-
+            
         ),
         
-
+        
         Course(
             id: UUID(),
             title: "Les Structures de Contrôle en Swift",
@@ -189,27 +216,27 @@ extension Course {
                 SectionOfCourses(title: "Exemple code", text: nil, imageName: "cours-4-code-1"),
                 SectionOfCourses(title: "Explication  du code", text: """
    if / else – Feu de circulation
-
+ 
       • On teste la valeur de couleurFeu.
       • Si elle est "vert" → on affiche que la voiture avance.
       • Sinon (ex : "rouge" ou autre) → on affiche qu’elle s’arrête.
       • C’est un test conditionnel simple pour exécuter un bloc ou un autre.
-
+ 
    switch – Menu de restaurant
-
+ 
       • On vérifie le choix de plat via platChoisi.
       • Pour chaque case, une réponse spécifique est affichée (pizza, burger, salade).
       • Si le plat ne correspond à aucun cas connu, le default est déclenché.
       • Pratique quand on a **plusieurs cas précis à gérer**.
-
+ 
   for – Chronomètre avec nombre connu
-
+ 
       • On utilise une boucle for pour répéter une action de 1 à 5.
       • Chaque seconde est affichée avec print(" Seconde X").
       • Idéal quand tu sais **combien de fois tu veux répéter** une action.
-
+ 
   while – Chronomètre en décompte
-
+ 
       • La variable secondesRestantes commence à 5.
       • La boucle continue tant que la condition > 0 est vraie.
       • À chaque tour, on affiche le temps restant et on décrémente 1.
@@ -227,7 +254,7 @@ extension Course {
                     "switch"
                 ]
             )
-
+            
         ),
         
         
@@ -251,7 +278,7 @@ extension Course {
                     "Elle importe un fichier externe"
                 ]
             )
-,
+            ,
         ),
         Course(
             id: UUID(),
@@ -269,7 +296,7 @@ extension Course {
                     "'for' s’utilise avec un nombre d’itérations connu, 'while' avec une condition dynamique"
                 ]
             )
-,
+            ,
         ),
         Course(
             id: UUID(),
@@ -287,7 +314,7 @@ extension Course {
                     "avec la syntaxe 'function nom()'"
                 ]
             )
-,
+            ,
         ),
         Course(
             id: UUID(),
@@ -305,7 +332,7 @@ extension Course {
                     "Un raccourci clavier"
                 ]
             )
-,
+            ,
         ),
         Course(
             id: UUID(),
@@ -323,7 +350,7 @@ extension Course {
                     "De façon déclarative, en fonction de l’état des données"
                 ]
             )
-,
+            ,
         ),
         Course(
             id: UUID(),
@@ -341,7 +368,7 @@ extension Course {
                     "Séparer les responsabilités entre données, logique et interface"
                 ]
             )
-,
+            ,
         )
     ]
 }
