@@ -14,19 +14,21 @@ struct ProfilView: View {
         NavigationStack {
             ZStack {
                 Color.customBeige.ignoresSafeArea()
-                VStack {
+                ScrollView(showsIndicators: false) {
                     VStack {
-                        CircleImageProfil(url: manager.userManager.currentUser.imageUrl)
-                        Text(manager.userManager.currentUser.username)
-                            .font(.title2)
+                        VStack {
+                            CircleImageProfil(url: manager.userManager.currentUser.imageUrl)
+                            Text(manager.userManager.currentUser.username)
+                                .font(.title2)
+                        }
+                        .padding(.vertical)
+                        
+                        if courseManager.coursesFinished.isNotEmpty {
+                            CarouselCustomCourse(courses: courseManager.coursesFinished, title: "Terminés")
+                        }
+                        BadgesTitleView()
+                        BadgesListView(badges: Badge.all, limit: 8, isScrollEnabled: false)
                     }
-                    .padding(.vertical)
-                    
-                    if courseManager.coursesFinished.isNotEmpty {
-                        CarouselCustomCourse(courses: courseManager.coursesFinished, title: "Terminés")
-                    }
-                    BadgesTitleView()
-                    BadgesListView(badges: Badge.all, limit: 8, isScrollEnabled: false)
                 }
             }
             .navigationTitle(Text("Mon profil"))
@@ -37,4 +39,5 @@ struct ProfilView: View {
 
 #Preview {
     ProfilView()
+        .environment(CourseManager())
 }

@@ -20,7 +20,7 @@ struct GameView: View {
     var body: some View {
         ZStack{
             Color.customBeige.ignoresSafeArea()
-            ScrollView {
+            ScrollView(showsIndicators: false){
                 VStack(alignment: .center){
                     VStack{
                         Image(game.image)
@@ -72,7 +72,6 @@ struct GameView: View {
                             .frame(width: 110.0, height:33 )
                             .background(Color.white)
                             .clipShape(Capsule())
-                            
                             Spacer()
                             Button {
                                 showConfirmation = true
@@ -116,6 +115,7 @@ struct GameView: View {
                     .navigationDestination(isPresented: $showWebView, destination: {
                         SafariView(url: "https://www.udemy.com/course/apprendre-swift/?couponCode=KEEPLEARNING")
                     })
+                    .padding()
                 }
                 .toolbar {
                     ToolbarItem(placement: .confirmationAction) {
@@ -124,7 +124,6 @@ struct GameView: View {
                                 isFocused = false
                             } label: {
                                 Text("Done")
-                                
                             }
                         }
                     }

@@ -22,8 +22,6 @@ struct ExerciceSoloView: View {
                     .bold()
                     .padding(.horizontal)
 
-                Spacer()
-
                 if manager.exerciceFinished {
                     VStack(spacing: 16) {
                         Text("Exercice terminé !")
@@ -77,6 +75,7 @@ struct QuizView: View {
             Text(question.question)
                 .font(.title2)
                 .bold()
+                .lineLimit(nil)
                 .multilineTextAlignment(.center)
                 .padding()
 

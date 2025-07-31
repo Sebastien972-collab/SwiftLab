@@ -17,11 +17,11 @@ struct CarouselCustomExercice: View {
                     .font(.title2)
                     .fontWeight(.bold)
                     .foregroundColor(.primary)
-               Spacer()
+                Spacer()
                 NavigationLink(destination: AllExercisesListView()) {
-                                    Text("Voir tous")
-                                        .font(.caption)
-                                }
+                    Text("Voir tous")
+                        .font(.footnote)
+                }
             }
             .padding(.horizontal)
             
