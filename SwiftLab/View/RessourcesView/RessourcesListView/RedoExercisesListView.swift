@@ -31,7 +31,7 @@ struct RedoExercisesListView: View {
                 HStack(spacing: 16) {
                     ForEach(exercices, id: \.self) { exercice in
                         NavigationLink {
-                            ExerciceSoloView(manager: ExerciceSoloManager(exercices: exercice))
+                            ExerciceSoloView(manager: ExerciceSoloManager(exercices: exercice), exercice: .constant(nil))
                         } label: {
                             RessourcesExercicesCard(exercice: exercice)
                         }

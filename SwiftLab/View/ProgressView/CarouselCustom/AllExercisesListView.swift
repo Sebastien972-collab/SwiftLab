@@ -5,34 +5,27 @@
 //  Created by Thibault on 18/07/2025.
 //
 
-import SwiftUI
+//
+//  AllExercisesListView.swift
+//  SwiftLab
+//
+//  Created by Thibault on 18/07/2025.
+//
 
+import SwiftUI
 
 struct AllExercisesListView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 20) {
-                // Grouper les exercices par paires (by: 2)
                 ForEach(Array(stride(from: 0, to: ExoDatas.allExercices.count, by: 2)), id: \.self) { index in
                     HStack(spacing: 16) {
-                        // Premier exercice de la paire
-                        NavigationLink {
-                            ExerciceSoloView(manager: ExerciceSoloManager(exercices: ExoDatas.allExercices[index]))
-                        } label: {
-                            CardExerciceView(exercice: ExoDatas.allExercices[index])
-                        }
-                        .buttonStyle(.plain)
-                        .frame(maxWidth: .infinity)
-                        
-                        // Deuxième exercice de la paire
+                        let first = ExoDatas.allExercices[index]
+                        ExerciseCardLink(exercice: first)
+
                         if index + 1 < ExoDatas.allExercices.count {
-                            NavigationLink {
-                                ExerciceSoloView(manager: ExerciceSoloManager(exercices: ExoDatas.allExercices[index + 1]))
-                            } label: {
-                                CardExerciceView(exercice: ExoDatas.allExercices[index + 1])
-                            }
-                            .buttonStyle(.plain)
-                            .frame(maxWidth: .infinity)
+                            let second = ExoDatas.allExercices[index + 1]
+                            ExerciseCardLink(exercice: second)
                         } else {
                             Spacer()
                                 .frame(maxWidth: .infinity)
@@ -48,6 +41,24 @@ struct AllExercisesListView: View {
         .background(Color.customBeige.ignoresSafeArea())
     }
 }
+
+// MARK: - Vue réutilisable pour une carte d'exercice avec navigation
+
+struct ExerciseCardLink: View {
+    let exercice: Exercices
+
+    var body: some View {
+        NavigationLink {
+            ExerciceSoloView(manager: ExerciceSoloManager(exercices: exercice), exercice: .constant(nil))
+        } label: {
+            CardExerciceView(exercice: exercice)
+        }
+        .buttonStyle(.plain)
+        .frame(maxWidth: .infinity)
+    }
+}
+
+// MARK: - Preview
 
 #Preview {
     NavigationStack {

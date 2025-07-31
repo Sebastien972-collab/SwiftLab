@@ -1,31 +1,33 @@
 //
-//  ExerciceSoloView.swift
+//  ExercicesCoursesView.swift
 //  SwiftLab
 //
-//  Created by cyrilH on 09/07/2025.
+//  Created by Dembo on 30/07/2025.
 //
 
 import SwiftUI
 
 
-struct ExerciceSoloView: View {
-    @State var manager = ExerciceSoloManager(exercices: ExoDatas.swiftBasics)
+struct ExercicesCoursesView: View {
+    @State var manager = ExercicesCoursesManager(exercicesCourses: ExercicesCourseDatas.swiftCourse1)
     @State private var valuePage = 0
-    @Binding var exercice: Exercices?
 
     var body: some View {
         ZStack {
             Color.customBeige.ignoresSafeArea()
+
             VStack(alignment: .leading, spacing: 16) {
                 Text("Quiz")
                     .font(.title)
                     .bold()
                     .padding(.horizontal)
+
                 if manager.exerciceFinished {
                     VStack(spacing: 16) {
                         Text("Exercice terminé !")
                             .font(.title)
                             .bold()
+
                         Button("Recommencer") {
                             withAnimation {
                                 manager.restartExercice()
@@ -39,38 +41,35 @@ struct ExerciceSoloView: View {
                     .frame(maxWidth: .infinity)
                     .transition(.opacity.combined(with: .scale))
                 } else {
-                    QuizView(
+                    QuizCoursesView(
                         question: manager.currentQuestion,
                         showDifferentView: $valuePage,
                         manager: $manager
                     )
                     .transition(.move(edge: .bottom).combined(with: .opacity))
                 }
+
                 Spacer()
             }
             .padding(.top, 40)
             .animation(.easeInOut, value: manager.exerciceFinished)
-        }
-        .onAppear {
-            guard let exercexercice = exercice else { return }
-            self.manager = .init(exercices: exercexercice)
         }
     }
 }
 
 #Preview {
     NavigationStack {
-        ExerciceSoloView(exercice: .constant(nil))
+        ExercicesCoursesView()
     }
 }
 
 // MARK: - QuizView
 
-struct QuizView: View {
-    var question: QuizExercice
+struct QuizCoursesView: View {
+    var question: QuizCoursesExercices
     @Binding var showDifferentView: Int
-    @Binding var manager: ExerciceSoloManager
-    
+    @Binding var manager: ExercicesCoursesManager
+
     var body: some View {
         VStack(spacing: 20) {
             Text(question.question)
@@ -79,6 +78,7 @@ struct QuizView: View {
                 .lineLimit(nil)
                 .multilineTextAlignment(.center)
                 .padding()
+
             ForEach(question.choices, id: \.self) { choice in
                 QuizChoiceView(
                     selectedChoice: $manager.selectedAnswer,
@@ -87,6 +87,7 @@ struct QuizView: View {
                     correctAnswer: question.goodAnswer
                 )
             }
+
             ContinueButtonView(
                 title: "Question suivante",
                 color: .customClearOrange

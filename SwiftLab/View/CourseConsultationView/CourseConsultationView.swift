@@ -14,6 +14,7 @@ struct CourseConsultationView: View {
     var course: Course
     @State private var selectedImageName: Bool = false
     @State private var showQuizt: Bool = false
+    @State private var exercices: Exercices?
     var body: some View {
         ZStack {
             Color.customBeige.ignoresSafeArea()
@@ -58,17 +59,16 @@ struct CourseConsultationView: View {
                     HStack(content: {
                         Spacer()
                         ContinueButtonView(title: "Lancer exercise", color: .customClearOrange) {
+                            self.exercices = Exercices(nameOfExercices: course.title, exerciceFinished: false, exercice:  [course.test])
+                            
                             showQuizt.toggle()
+                            
                         }
                         Spacer()
                     })
                     .navigationDestination(isPresented: $showQuizt) {
-                        VStack {
-                            Text(course.test.text)
-                            Text("En cours de développement")
-                                .italic()
-                                .foregroundStyle(.secondary)
-                        }
+                        ExerciceSoloView(exercice: $exercices)
+                        
                     }
                 }
                 .padding()
