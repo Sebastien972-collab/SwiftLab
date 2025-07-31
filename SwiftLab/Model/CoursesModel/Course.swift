@@ -15,7 +15,7 @@ class Course: Identifiable, Equatable {
     var image: String
     var mentalCard: String
     var section: [SectionOfCourses] = []
-    let test: Quiz
+    let test: QuizExercice
     var isFinished: Bool {
         progressPercent == 1.0
     }
@@ -35,7 +35,7 @@ class Course: Identifiable, Equatable {
          image: String,
          mentalCard: String,
          section: [SectionOfCourses] = [],
-         test: Quiz) {
+         test: QuizExercice) {
         
         self.id = id
         self.title = title
@@ -48,7 +48,7 @@ class Course: Identifiable, Equatable {
     }
     
     // Init de convenance simplifié (exemple sans id passé, avec id auto-généré)
-    convenience init(title: String, text: String, image: String, mentalCard: String, test: Quiz) {
+    convenience init(title: String, text: String, image: String, mentalCard: String, test: QuizExercice) {
         self.init(id: UUID(),
                   title: title,
                   videoName: nil,
@@ -101,7 +101,7 @@ extension Course {
                     "Il permet de décrire l'interface de manière déclarative",
                     "Il remplace automatiquement les images par des icônes"
                 ]
-            )),
+            ).tranform()),
         
         
         Course(
@@ -138,7 +138,7 @@ extension Course {
                     "'var' est réservé aux fonctions",
                     "'let' ne fonctionne qu’avec les Booléens"
                 ]
-            )
+            ).tranform()
         ),
         
         
@@ -194,7 +194,7 @@ extension Course {
                     "!",
                     "=="
                 ]
-            )
+            ).tranform()
             
         ),
         
@@ -253,7 +253,7 @@ extension Course {
                     "for",
                     "switch"
                 ]
-            )
+            ).tranform()
             
         ),
         
@@ -277,7 +277,7 @@ extension Course {
                     "Elle exécute un bloc de code si une condition est vraie",
                     "Elle importe un fichier externe"
                 ]
-            )
+            ).tranform()
             ,
         ),
         Course(
@@ -295,7 +295,7 @@ extension Course {
                     "'for' est plus rapide que 'while'",
                     "'for' s’utilise avec un nombre d’itérations connu, 'while' avec une condition dynamique"
                 ]
-            )
+            ).tranform()
             ,
         ),
         Course(
@@ -313,7 +313,7 @@ extension Course {
                     "en utilisant son nom suivi de parenthèses",
                     "avec la syntaxe 'function nom()'"
                 ]
-            )
+            ).tranform()
             ,
         ),
         Course(
@@ -331,7 +331,7 @@ extension Course {
                     "Une fonction sans nom que l’on peut passer comme valeur",
                     "Un raccourci clavier"
                 ]
-            )
+            ).tranform()
             ,
         ),
         Course(
@@ -349,7 +349,7 @@ extension Course {
                     "Avec des storyboard uniquement",
                     "De façon déclarative, en fonction de l’état des données"
                 ]
-            )
+            ).tranform()
             ,
         ),
         Course(
@@ -367,7 +367,7 @@ extension Course {
                     "Fusionner modèle et vue",
                     "Séparer les responsabilités entre données, logique et interface"
                 ]
-            )
+            ).tranform()
             ,
         )
     ]
