@@ -9,40 +9,43 @@ import SwiftUI
 
 struct AllCoursesListView: View {
     @State private var courses = Course.allCourses
-    
+
     var body: some View {
-//        ScrollView(showsIndicators: false) {
-//            VStack(spacing: 20) {
-//                ForEach($courses) { course in
-//                    HStack(spacing: 16) {
-//                        NavigationLink {
-//                            CourseConsultationView(course: course)
-//                        } label: {
-//                            CourseCard(course: course)
-//                        }
-//                        .buttonStyle(.plain)
-//                        .frame(maxWidth: .infinity)
-//                        if index + 1 < courses.count {
-//                            NavigationLink {
-//                                CourseConsultationView(course: course)
-//                            } label: {
-//                                CourseCard(course: course)
-//                            }
-//                            .buttonStyle(.plain)
-//                            .frame(maxWidth: .infinity)
-//                        } else {
-//                            Spacer()
-//                                .frame(maxWidth: .infinity)
-//                        }
-//                    }
-//                }
-//            }
-//            .padding(.horizontal, 20)
-//            .padding(.vertical, 16)
-//        }
-//        .navigationTitle("Liste des cours")
-//        .navigationBarTitleDisplayMode(.large)
-//        .background(Color.customBeige.ignoresSafeArea())
+        ScrollView(showsIndicators: false) {
+            VStack(spacing: 20) {
+                ForEach(Array(stride(from: 0, to: courses.count, by: 2)), id: \.self) { index in
+                    HStack(spacing: 16) {
+                        // Premier élément
+                        NavigationLink {
+                            CourseConsultationView(course: courses[index])
+                        } label: {
+                            CourseCard(course: courses[index])
+                        }
+                        .buttonStyle(.plain)
+                        .frame(maxWidth: .infinity)
+                        
+                        // Deuxième élément si présent
+                        if index + 1 < courses.count {
+                            NavigationLink {
+                                CourseConsultationView(course: courses[index + 1])
+                            } label: {
+                                CourseCard(course: courses[index + 1])
+                            }
+                            .buttonStyle(.plain)
+                            .frame(maxWidth: .infinity)
+                        } else {
+                            Spacer()
+                                .frame(maxWidth: .infinity)
+                        }
+                    }
+                }
+            }
+            .padding(.horizontal, 20)
+            .padding(.vertical, 16)
+        }
+        .navigationTitle("Liste des cours")
+        .navigationBarTitleDisplayMode(.large)
+        .background(Color.customBeige.ignoresSafeArea())
     }
 }
 

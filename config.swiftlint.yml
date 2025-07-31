@@ -1,0 +1,21 @@
+disabled_rules:
+  - trailing_whitespace
+  - force_cast
+
+opt_in_rules:
+  - explicit_init
+  - vertical_parameter_alignment
+
+included:
+  - MyApp
+
+excluded:
+  - Pods
+  - Carthage
+  - DerivedData
+
+line_length: 120
+type_body_length:
+  warning: 300
+  error: 500
+
