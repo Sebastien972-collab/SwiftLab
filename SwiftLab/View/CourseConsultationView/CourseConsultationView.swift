@@ -68,12 +68,7 @@ struct CourseConsultationView: View {
                         Spacer()
                     })
                     .navigationDestination(isPresented: $showQuizt) {
-                        VStack {
-                            Text(course.test.text)
-                            Text("En cours de développement")
-                                .italic()
-                                .foregroundStyle(.secondary)
-                        }
+                        ExercicesCoursesView()
                         
                     }
                 }
